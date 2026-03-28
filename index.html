@@ -1,110 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>HumanRightsAI.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
-    }
+<title>HumanRightsAI.org</title>
 
-    header {
-      padding: 40px;
-      text-align: center;
-      background: #111;
-      border-bottom: 1px solid #333;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
 
-    h1 {
-      margin: 0;
-      font-size: 36px;
-      letter-spacing: 1px;
-    }
+/* LANGUAGE SWITCH */
+.lang-switch {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 10;
+}
 
-    .subtitle {
-      margin-top: 10px;
-      color: #aaa;
-      font-size: 18px;
-    }
+.lang-switch button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
 
-    .section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('AI Summit 1.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      border: 1px solid #fff;
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+}
 
-    .btn:hover {
-      background: #fff;
-      color: #000;
-    }
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #333;
-      color: #777;
-      font-size: 14px;
-    }
-  </style>
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  color: #ccc;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #000;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>HumanRightsAI.org</h1>
-  <div class="subtitle">
-    Baku Ombudsmen Summit 2026
+<!-- LANGUAGE -->
+<div class="lang-switch">
+  <button onclick="setLang('en')">ENG</button>
+  <button onclick="setLang('az')">AZ</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 data-en="HumanRightsAI.org" data-az="HumanRightsAI.org"></h1>
+    <p data-en="Baku Ombudsmen Summit 2026"
+       data-az="Bakı Ombudsmanlar Sammiti 2026"></p>
+    <p data-en="Human Rights in the Age of Artificial Intelligence"
+       data-az="Süni İntellekt Dövründə İnsan Hüquqları"></p>
   </div>
-  <div class="subtitle">
-    Human Rights in the Age of Artificial Intelligence
-  </div>
-</header>
-
-<section class="section">
-  <h2>About the Summit</h2>
-  <p>
-    The Baku Ombudsmen Summit 2026 brings together Ombudsman institutions,
-    National Human Rights Institutions, and international experts to explore
-    the opportunities, risks and responsibilities of artificial intelligence
-    in the context of human rights.
-  </p>
 </section>
 
+<!-- ABOUT -->
 <section class="section">
-  <h2>Key Themes</h2>
-  <p>
-    • AI and human rights protection<br>
-    • Ethical and responsible AI<br>
-    • Digital transformation and justice<br>
-    • The role of Ombudsman institutions
-  </p>
+  <h2 data-en="About the Platform"
+      data-az="Platforma haqqında"></h2>
+
+  <p data-en="This platform is established to explore the evolving relationship between artificial intelligence and human rights in the context of contemporary global challenges."
+     data-az="Bu platforma müasir qlobal çağırışlar fonunda süni intellekt ilə insan hüquqları arasındakı inkişaf edən əlaqələri araşdırmaq məqsədilə yaradılmışdır."></p>
+
+  <p data-en="Its main objective is to promote human-centered AI development and ensure that technological progress strengthens the protection of fundamental rights."
+     data-az="Əsas məqsəd süni intellektin insan mərkəzli inkişafını təşviq etmək və texnoloji tərəqqinin insan hüquqlarının müdafiəsini gücləndirməsinə nail olmaqdır."></p>
 </section>
 
+<!-- SUMMIT -->
 <section class="section">
-  <h2>Registration</h2>
-  <p>Registration will open soon.</p>
-  <a href="#" class="btn">Register</a>
+  <h2 data-en="Baku Ombudsmen Summit 2026"
+      data-az="Bakı Ombudsmanlar Sammiti 2026"></h2>
+
+  <p data-en="The Summit will bring together Ombudsman institutions, NHRIs, and international experts to discuss AI and human rights."
+     data-az="Sammit Ombudsman təsisatlarını, milli insan hüquqları institutlarını və beynəlxalq ekspertləri süni intellekt və insan hüquqları mövzusunda bir araya gətirəcəkdir."></p>
+
+  <a href="#" class="btn"
+     data-en="Register"
+     data-az="Qeydiyyat"></a>
 </section>
 
-<footer>
-  © 2026 HumanRightsAI.org
-</footer>
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerText = el.getAttribute('data-' + lang);
+  });
+}
+
+// default language
+setLang('en');
+</script>
 
 </body>
 </html>
