@@ -11,18 +11,18 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #0a0a0a;
-  color: #fff;
+  color: #ffffff;
 }
 
 /* LANGUAGE SWITCH */
-.lang-switch {
+.lang {
   position: absolute;
   top: 20px;
   right: 30px;
   z-index: 10;
 }
 
-.lang-switch button {
+.lang button {
   background: transparent;
   border: 1px solid #fff;
   color: #fff;
@@ -34,7 +34,7 @@ body {
 /* HERO */
 .hero {
   height: 100vh;
-  background: url('AI Summit 1.png') center/cover no-repeat;
+  background: url("./Summit 1.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,13 +57,15 @@ body {
 
 .hero h1 {
   font-size: 48px;
+  margin: 0;
 }
 
 .hero p {
   color: #ccc;
+  margin-top: 10px;
 }
 
-/* SECTIONS */
+/* SECTION */
 .section {
   padding: 80px 20px;
   max-width: 900px;
@@ -73,6 +75,17 @@ body {
 
 h2 {
   margin-bottom: 20px;
+}
+
+/* VIDEO */
+.video {
+  margin-top: 30px;
+}
+
+iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
 }
 
 /* BUTTON */
@@ -95,13 +108,13 @@ h2 {
 <body>
 
 <!-- LANGUAGE -->
-<div class="lang-switch">
+<div class="lang">
   <button onclick="setLang('en')">ENG</button>
   <button onclick="setLang('az')">AZ</button>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<div class="hero">
   <div class="hero-content">
     <h1 data-en="HumanRightsAI.org" data-az="HumanRightsAI.org"></h1>
     <p data-en="Baku Ombudsmen Summit 2026"
@@ -109,42 +122,40 @@ h2 {
     <p data-en="Human Rights in the Age of Artificial Intelligence"
        data-az="Süni İntellekt Dövründə İnsan Hüquqları"></p>
   </div>
-</section>
+</div>
 
 <!-- ABOUT -->
-<section class="section">
-  <h2 data-en="About the Platform"
-      data-az="Platforma haqqında"></h2>
+<div class="section">
+  <h2 data-en="About the Platform" data-az="Sayt haqqında"></h2>
 
-  <p data-en="This platform is established to explore the evolving relationship between artificial intelligence and human rights in the context of contemporary global challenges."
-     data-az="Bu platforma müasir qlobal çağırışlar fonunda süni intellekt ilə insan hüquqları arasındakı inkişaf edən əlaqələri araşdırmaq məqsədilə yaradılmışdır."></p>
+  <p data-en="This platform has been established to explore the opportunities and risks arising from the rapid development of artificial intelligence in the context of contemporary global challenges."
+     data-az="Bu platforma müasir çağırışlar fonunda sürətlə inkişaf edən süni intellektin yaratdığı imkan və riskləri araşdırmaq məqsədilə yaradılmışdır."></p>
 
-  <p data-en="Its main objective is to promote human-centered AI development and ensure that technological progress strengthens the protection of fundamental rights."
-     data-az="Əsas məqsəd süni intellektin insan mərkəzli inkişafını təşviq etmək və texnoloji tərəqqinin insan hüquqlarının müdafiəsini gücləndirməsinə nail olmaqdır."></p>
-</section>
+  <p data-en="Its main objective is to promote a human-centered approach and ensure that artificial intelligence contributes to strengthening the protection of human rights."
+     data-az="Əsas məqsəd insan mərkəzli yanaşmanı təşviq etmək və süni intellektin insan hüquqlarının müdafiəsinin gücləndirilməsinə xidmət etməsini təmin etməkdir."></p>
+</div>
 
 <!-- SUMMIT -->
-<section class="section">
-  <h2 data-en="Baku Ombudsmen Summit 2026"
-      data-az="Bakı Ombudsmanlar Sammiti 2026"></h2>
+<div class="section">
+  <h2 data-en="Baku Ombudsmen Summit"
+      data-az="Bakı Ombudsmanlar Sammiti"></h2>
 
-  <p data-en="The Summit will bring together Ombudsman institutions, NHRIs, and international experts to discuss AI and human rights."
-     data-az="Sammit Ombudsman təsisatlarını, milli insan hüquqları institutlarını və beynəlxalq ekspertləri süni intellekt və insan hüquqları mövzusunda bir araya gətirəcəkdir."></p>
+  <p data-en="The Summit brings together Ombudsman institutions, National Human Rights Institutions and international experts to discuss artificial intelligence and human rights."
+     data-az="Sammit Ombudsman təsisatlarını, milli insan hüquqları institutlarını və beynəlxalq ekspertləri süni intellekt və insan hüquqları mövzusunda bir araya gətirir."></p>
 
-  <a href="#" class="btn"
-     data-en="Register"
-     data-az="Qeydiyyat"></a>
-</section>
+  <div class="video">
+    <iframe src="https://www.youtube.com/embed/A-O5gbooyAQ"
+            allowfullscreen></iframe>
+  </div>
+</div>
 
 <script>
 function setLang(lang) {
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.innerText = el.getAttribute('data-' + lang);
+  document.querySelectorAll("[data-en]").forEach(el => {
+    el.innerText = el.getAttribute("data-" + lang);
   });
 }
-
-// default language
-setLang('en');
+setLang("en");
 </script>
 
 </body>
