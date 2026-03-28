@@ -8,9 +8,9 @@
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -19,7 +19,7 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #081a2f;
+      background: #0b1d33;
       color: #ffffff;
       line-height: 1.6;
     }
@@ -27,6 +27,10 @@
     a {
       text-decoration: none;
       color: inherit;
+    }
+
+    button {
+      font-family: inherit;
     }
 
     .container {
@@ -43,17 +47,18 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(8, 26, 47, 0.88);
-      backdrop-filter: blur(8px);
+      background: rgba(11, 29, 51, 0.88);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.10);
     }
 
     .header-inner {
-      min-height: 74px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .nav {
@@ -63,37 +68,42 @@
       flex-wrap: wrap;
     }
 
-    .nav a {
-      color: #d6dfeb;
+    .nav a,
+    .nav button {
+      background: transparent;
+      border: none;
+      color: #d9e3ef;
       font-size: 14px;
-      transition: 0.25s ease;
+      cursor: pointer;
+      transition: color 0.25s ease;
     }
 
-    .nav a:hover {
+    .nav a:hover,
+    .nav button:hover {
       color: #ffffff;
     }
 
     .lang-switch {
       display: flex;
-      gap: 8px;
       align-items: center;
+      gap: 8px;
     }
 
     .lang-btn {
-      background: transparent;
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.45);
       padding: 8px 12px;
       border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: transparent;
+      color: #ffffff;
       cursor: pointer;
       font-size: 13px;
-      transition: 0.25s ease;
+      transition: all 0.25s ease;
     }
 
     .lang-btn:hover,
     .lang-btn.active {
       background: #ffffff;
-      color: #081a2f;
+      color: #0b1d33;
     }
 
     /* HERO */
@@ -101,9 +111,11 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       position: relative;
       background:
-        linear-gradient(rgba(8, 26, 47, 0.42), rgba(8, 26, 47, 0.78)),
+        linear-gradient(rgba(11, 29, 51, 0.42), rgba(11, 29, 51, 0.78)),
         url("./Summit 1.png") center center / cover no-repeat;
     }
 
@@ -111,25 +123,23 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(8,26,47,0.10), rgba(8,26,47,0.55));
+      background: linear-gradient(to bottom, rgba(11,29,51,0.12), rgba(11,29,51,0.55));
       pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      width: 100%;
-      text-align: center;
+      max-width: 980px;
       padding-top: 90px;
     }
 
     .hero-title {
-      font-size: 68px;
+      font-size: 70px;
       line-height: 1.05;
       letter-spacing: 2px;
       text-transform: uppercase;
-      max-width: 980px;
-      margin: 0 auto 20px;
+      margin-bottom: 18px;
       font-weight: 700;
     }
 
@@ -137,15 +147,15 @@
       font-size: 24px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #d9e4f2;
-      margin-bottom: 24px;
+      color: #dbe7f3;
+      margin-bottom: 22px;
     }
 
     .hero-subtitle {
-      max-width: 860px;
+      max-width: 820px;
       margin: 0 auto 34px;
-      font-size: 18px;
       color: #d8e1ec;
+      font-size: 18px;
     }
 
     .hero-actions {
@@ -162,19 +172,19 @@
       min-height: 48px;
       padding: 0 22px;
       border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
       font-size: 15px;
       transition: all 0.25s ease;
-      border: 1px solid rgba(255,255,255,0.38);
     }
 
     .btn-primary {
       background: #ffffff;
-      color: #081a2f;
+      color: #0b1d33;
       border-color: #ffffff;
     }
 
     .btn-primary:hover {
-      background: #dfe7f0;
+      background: #dfe7f1;
     }
 
     .btn-secondary {
@@ -190,20 +200,20 @@
     .section {
       padding: 95px 0;
       border-top: 1px solid rgba(255,255,255,0.08);
-      background: #081a2f;
+      background: #0b1d33;
     }
 
     .section-title {
       text-align: center;
       font-size: 36px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .section-lead {
       max-width: 920px;
       margin: 0 auto;
       text-align: center;
-      color: #d3ddeb;
+      color: #d4deeb;
       font-size: 17px;
     }
 
@@ -211,13 +221,13 @@
       max-width: 980px;
       margin: 36px auto 0;
       padding: 34px;
-      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.10);
       background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
     }
 
     .content-box p {
-      color: #d1dceb;
+      color: #d5deeb;
       font-size: 16px;
       text-align: center;
     }
@@ -226,7 +236,6 @@
       margin-top: 16px;
     }
 
-    /* SUMMIT GRID */
     .summit-grid {
       display: grid;
       grid-template-columns: 1.05fr 1fr;
@@ -249,7 +258,7 @@
     }
 
     .card p {
-      color: #d2ddeb;
+      color: #d5deeb;
       text-align: center;
       font-size: 16px;
     }
@@ -287,15 +296,76 @@
     }
 
     .programme-box p {
-      color: #d4deeb;
+      color: #d5deeb;
       margin-bottom: 20px;
       font-size: 16px;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 620px;
+      background: #102742;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      padding: 28px 26px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-title {
+      font-size: 26px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .document-link {
+      display: block;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: #ffffff;
+      text-align: center;
+      transition: all 0.25s ease;
+      font-size: 16px;
+    }
+
+    .document-link:hover {
+      background: rgba(255,255,255,0.10);
     }
 
     /* FOOTER */
     .site-footer {
       border-top: 1px solid rgba(255,255,255,0.08);
-      background: #061526;
+      background: #08182b;
       padding: 28px 0;
       text-align: center;
       color: #aeb9c8;
@@ -305,13 +375,12 @@
     /* MOBILE */
     @media (max-width: 980px) {
       .header-inner {
-        flex-wrap: wrap;
         justify-content: center;
         padding: 14px 0;
       }
 
       .hero-title {
-        font-size: 50px;
+        font-size: 52px;
       }
 
       .hero-date {
@@ -351,7 +420,8 @@
       .section-lead,
       .content-box p,
       .card p,
-      .programme-box p {
+      .programme-box p,
+      .document-link {
         font-size: 15px;
       }
 
@@ -365,8 +435,13 @@
 
       .content-box,
       .card,
-      .programme-box {
+      .programme-box,
+      .modal-content {
         padding: 22px;
+      }
+
+      .nav {
+        gap: 14px;
       }
     }
   </style>
@@ -379,6 +454,7 @@
         <a href="#about" data-en="About" data-az="Haqqında">About</a>
         <a href="#summit" data-en="Summit" data-az="Sammit">Summit</a>
         <a href="#programme" data-en="Programme" data-az="Proqram">Programme</a>
+        <button type="button" onclick="openDocumentsModal()" data-en="Documents" data-az="Sənədlər">Documents</button>
       </nav>
 
       <div class="lang-switch">
@@ -391,27 +467,15 @@
   <main>
     <section class="hero">
       <div class="container hero-content">
-        <h1
-          class="hero-title"
-          data-en="Baku Ombudsmen Summit"
-          data-az="Bakı Ombudsmanlar Sammiti"
-        >
+        <h1 class="hero-title" data-en="Baku Ombudsmen Summit" data-az="Bakı Ombudsmanlar Sammiti">
           Baku Ombudsmen Summit
         </h1>
 
-        <div
-          class="hero-date"
-          data-en="18–19 June 2026"
-          data-az="18–19 iyun 2026"
-        >
+        <div class="hero-date" data-en="18–19 June 2026" data-az="18–19 iyun 2026">
           18–19 June 2026
         </div>
 
-        <p
-          class="hero-subtitle"
-          data-en="Human Rights in the Age of Artificial Intelligence"
-          data-az="Süni İntellekt Dövründə İnsan Hüquqları"
-        >
+        <p class="hero-subtitle" data-en="Human Rights in the Age of Artificial Intelligence" data-az="Süni İntellekt Dövründə İnsan Hüquqları">
           Human Rights in the Age of Artificial Intelligence
         </p>
 
@@ -441,11 +505,7 @@
 
     <section class="section" id="about">
       <div class="container">
-        <h2
-          class="section-title"
-          data-en="About the Platform"
-          data-az="Platforma haqqında"
-        >
+        <h2 class="section-title" data-en="About the Platform" data-az="Platforma haqqında">
           About the Platform
         </h2>
 
@@ -477,11 +537,7 @@
 
     <section class="section" id="summit">
       <div class="container">
-        <h2
-          class="section-title"
-          data-en="Baku Ombudsmen Summit"
-          data-az="Bakı Ombudsmanlar Sammiti"
-        >
+        <h2 class="section-title" data-en="Baku Ombudsmen Summit" data-az="Bakı Ombudsmanlar Sammiti">
           Baku Ombudsmen Summit
         </h2>
 
@@ -495,10 +551,7 @@
 
         <div class="summit-grid">
           <div class="card">
-            <h3
-              data-en="About the Summit"
-              data-az="Sammit haqqında"
-            >
+            <h3 data-en="About the Summit" data-az="Sammit haqqında">
               About the Summit
             </h3>
 
@@ -518,10 +571,7 @@
           </div>
 
           <div class="card">
-            <h3
-              data-en="Promotional Video"
-              data-az="Tanıtım videosu"
-            >
+            <h3 data-en="Promotional Video" data-az="Tanıtım videosu">
               Promotional Video
             </h3>
 
@@ -547,19 +597,11 @@
 
     <section class="section" id="programme">
       <div class="container">
-        <h2
-          class="section-title"
-          data-en="Main Programme"
-          data-az="Əsas proqram"
-        >
+        <h2 class="section-title" data-en="Main Programme" data-az="Əsas proqram">
           Main Programme
         </h2>
 
-        <p
-          class="section-lead"
-          data-en="The Summit programme is available below in PDF format."
-          data-az="Sammitin proqramı aşağıda PDF formatında təqdim olunur."
-        >
+        <p class="section-lead" data-en="The Summit programme is available below in PDF format." data-az="Sammitin proqramı aşağıda PDF formatında təqdim olunur.">
           The Summit programme is available below in PDF format.
         </p>
 
@@ -587,13 +629,32 @@
   </main>
 
   <footer class="site-footer">
-    <div
-      data-en="© 2026 Baku Ombudsmen Summit. All rights reserved."
-      data-az="© 2026 Bakı Ombudsmanlar Sammiti. Bütün hüquqlar qorunur."
-    >
+    <div data-en="© 2026 Baku Ombudsmen Summit. All rights reserved." data-az="© 2026 Bakı Ombudsmanlar Sammiti. Bütün hüquqlar qorunur.">
       © 2026 Baku Ombudsmen Summit. All rights reserved.
     </div>
   </footer>
+
+  <!-- DOCUMENTS MODAL -->
+  <div id="documentsModal" class="modal" onclick="handleModalBackground(event)">
+    <div class="modal-content">
+      <button class="modal-close" type="button" onclick="closeDocumentsModal()">&times;</button>
+
+      <h3 class="modal-title" data-en="Documents" data-az="Sənədlər">
+        Documents
+      </h3>
+
+      <a
+        class="document-link"
+        href="https://e-qanun.az/framework/59218"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-en="Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028"
+        data-az="Azərbaycan Respublikasının 2025–2028-ci illər üçün süni intellekt Strategiyası"
+      >
+        Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028
+      </a>
+    </div>
+  </div>
 
   <script>
     function setLanguage(lang, button) {
@@ -614,6 +675,28 @@
         button.classList.add("active");
       }
     }
+
+    function openDocumentsModal() {
+      document.getElementById("documentsModal").classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDocumentsModal() {
+      document.getElementById("documentsModal").classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    function handleModalBackground(event) {
+      if (event.target.id === "documentsModal") {
+        closeDocumentsModal();
+      }
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeDocumentsModal();
+      }
+    });
   </script>
 
 </body>
