@@ -16,7 +16,48 @@
     html {
       scroll-behavior: smooth;
     }
+<button class="chat-toggle" id="chatToggle" title="Summit Assistant">💬</button>
 
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-header">
+    <div>
+      <div class="chat-title">Summit Assistant</div>
+      <div class="chat-subtitle">Baku Ombudsmen Summit information</div>
+    </div>
+    <button class="chat-close" id="chatClose">&times;</button>
+  </div>
+
+  <div class="chat-body" id="chatBody">
+    <div class="chat-message bot">
+      <div class="chat-bubble">
+Hello! I can help you with information about the Baku Ombudsmen Summit.
+
+You can ask me about:
+- date
+- registration
+- programme
+- documents
+- video
+- summit topic
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-footer">
+    <div class="chat-input-row">
+      <input
+        type="text"
+        id="chatInput"
+        class="chat-input"
+        placeholder="Ask about the Summit..."
+      />
+      <button id="chatSend" class="chat-send">Send</button>
+    </div>
+    <div class="chat-hints">
+      Examples: “When is the summit?”, “Registration”, “Programme”, “Documents”
+    </div>
+  </div>
+</div>
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #0b1d33;
