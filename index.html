@@ -889,6 +889,129 @@ You can ask me about:
         closeDocumentsModal();
       }
     });
+    const chatToggle = document.getElementById("chatToggle");
+const chatWidget = document.getElementById("chatWidget");
+const chatClose = document.getElementById("chatClose");
+const chatBody = document.getElementById("chatBody");
+const chatInput = document.getElementById("chatInput");
+const chatSend = document.getElementById("chatSend");
+
+chatToggle.addEventListener("click", function () {
+  chatWidget.classList.toggle("show");
+});
+
+chatClose.addEventListener("click", function () {
+  chatWidget.classList.remove("show");
+});
+
+chatSend.addEventListener("click", sendMessage);
+chatInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
+});
+
+function addMessage(text, sender) {
+  const message = document.createElement("div");
+  message.className = "chat-message " + sender;
+
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble";
+  bubble.textContent = text;
+
+  message.appendChild(bubble);
+  chatBody.appendChild(message);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  addMessage(text, "user");
+  chatInput.value = "";
+
+  setTimeout(function () {
+    const reply = getSummitReply(text);
+    addMessage(reply, "bot");
+  }, 350);
+}
+
+function getSummitReply(input) {
+  const q = input.toLowerCase();
+
+  if (
+    q.includes("date") ||
+    q.includes("when") ||
+    q.includes("tarix") ||
+    q.includes("nə vaxt") ||
+    q.includes("ne vaxt")
+  ) {
+    return "The Baku Ombudsmen Summit will take place on 18–19 June 2026.";
+  }
+
+  if (
+    q.includes("registration") ||
+    q.includes("register") ||
+    q.includes("qeydiyyat")
+  ) {
+    return "You can register for the Summit here: https://ombudsman.az/en/summit-form";
+  }
+
+  if (
+    q.includes("programme") ||
+    q.includes("program") ||
+    q.includes("agenda") ||
+    q.includes("proqram")
+  ) {
+    return "The main programme is available in PDF format on the website under the Programme section.";
+  }
+
+  if (
+    q.includes("document") ||
+    q.includes("documents") ||
+    q.includes("sənəd") ||
+    q.includes("sənədlər")
+  ) {
+    return "The Documents section includes the 'Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028': https://e-qanun.az/framework/59218";
+  }
+
+  if (
+    q.includes("video") ||
+    q.includes("stone to code") ||
+    q.includes("from stone to code")
+  ) {
+    return "The promotional video 'From Stone to Code' is available in the Summit section of the website.";
+  }
+
+  if (
+    q.includes("topic") ||
+    q.includes("theme") ||
+    q.includes("mövzu")
+  ) {
+    return "The Summit focuses on human rights in the age of artificial intelligence and promotes dialogue on opportunities, risks and responsibilities arising from AI development.";
+  }
+
+  if (
+    q.includes("about") ||
+    q.includes("what is the summit") ||
+    q.includes("summit nədir") ||
+    q.includes("summit haqqında")
+  ) {
+    return "The Baku Ombudsmen Summit is an international platform bringing together Ombudsman institutions, National Human Rights Institutions, experts and other stakeholders to discuss artificial intelligence and human rights.";
+  }
+
+  if (
+    q.includes("where") ||
+    q.includes("location") ||
+    q.includes("venue") ||
+    q.includes("harada")
+  ) {
+    return "The website currently provides core Summit information. If you would like, the venue information can also be added to the assistant.";
+  }
+
+  return "I can currently help with information about the Summit date, registration, programme, documents, video and topic.";
+}
   </script>
 </body>
 </html>
