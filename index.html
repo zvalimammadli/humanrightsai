@@ -384,29 +384,50 @@
       font-size: 14px;
     }
 
-    .chat-toggle {
+    /* CHATBOT */
+    .chat-launcher {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
-      width: 74px;
-      height: 74px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 4000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-ai-badge {
+      background: #ffffff;
+      color: #0b1d33;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      letter-spacing: 0.4px;
+    }
+
+    .chat-toggle {
+      width: 78px;
+      height: 78px;
       border: none;
       border-radius: 50%;
       background: #ffffff;
       color: #0b1d33;
-      font-size: 30px;
+      font-size: 32px;
       cursor: pointer;
       box-shadow: 0 14px 34px rgba(0,0,0,0.30);
-      z-index: 4000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .chat-widget {
       position: fixed;
       right: 24px;
-      bottom: 108px;
-      width: 390px;
+      bottom: 110px;
+      width: 400px;
       max-width: calc(100vw - 32px);
-      height: 560px;
+      height: 570px;
       background: #102742;
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 22px;
@@ -466,7 +487,7 @@
     }
 
     .chat-bubble {
-      max-width: 85%;
+      max-width: 87%;
       padding: 12px 14px;
       border-radius: 16px;
       font-size: 14px;
@@ -604,16 +625,24 @@
 
       .chat-widget {
         right: 12px;
-        bottom: 92px;
+        bottom: 98px;
         width: calc(100vw - 24px);
         height: 72vh;
       }
 
-      .chat-toggle {
+      .chat-launcher {
         right: 12px;
         bottom: 12px;
-        width: 72px;
-        height: 72px;
+      }
+
+      .chat-ai-badge {
+        font-size: 12px;
+        padding: 9px 12px;
+      }
+
+      .chat-toggle {
+        width: 74px;
+        height: 74px;
       }
     }
   </style>
@@ -822,6 +851,7 @@
           </p>
 
           <div class="cultural-list">
+            <div data-en="19 June 2026 – Cultural programme date" data-az="19 iyun 2026 – Mədəni proqramın tarixi">19 June 2026 – Cultural programme date</div>
             <div data-en="10:00 – Departure from the hotel" data-az="10:00 – Oteldən yola düşmə">10:00 – Departure from the hotel</div>
             <div data-en="11:00 – Arrival at Gobustan Reserve" data-az="11:00 – Qobustan qoruğuna çatma">11:00 – Arrival at Gobustan Reserve</div>
             <div data-en="11:15 – Visit to Gobustan Museum" data-az="11:15 – Qobustan Muzeyinə səfər">11:15 – Visit to Gobustan Museum</div>
@@ -844,10 +874,7 @@
   <div id="documentsModal" class="modal" onclick="handleModalBackground(event)">
     <div class="modal-content">
       <button class="modal-close" type="button" onclick="closeDocumentsModal()">&times;</button>
-
-      <h3 class="modal-title" data-en="Documents" data-az="Sənədlər">
-        Documents
-      </h3>
+      <h3 class="modal-title" data-en="Documents" data-az="Sənədlər">Documents</h3>
 
       <a
         class="document-link"
@@ -862,30 +889,34 @@
     </div>
   </div>
 
-  <button class="chat-toggle" id="chatToggle" title="Summit Assistant">💬</button>
+  <div class="chat-launcher">
+    <div class="chat-ai-badge" id="chatAiBadge">AI</div>
+    <button class="chat-toggle" id="chatToggle" title="AI Summit Assistant">💬</button>
+  </div>
 
   <div class="chat-widget" id="chatWidget">
     <div class="chat-header">
       <div>
-        <div class="chat-title" data-en="Summit Assistant" data-az="Sammit köməkçisi">Summit Assistant</div>
-        <div class="chat-subtitle" data-en="Baku Ombudsmen Summit information" data-az="Bakı Ombudsmanlar Sammiti haqqında məlumat">Baku Ombudsmen Summit information</div>
+        <div class="chat-title" id="chatTitle">Summit AI Assistant</div>
+        <div class="chat-subtitle" id="chatSubtitle">Baku Ombudsmen Summit information</div>
       </div>
       <button class="chat-close" id="chatClose">&times;</button>
     </div>
 
     <div class="chat-body" id="chatBody">
       <div class="chat-message bot">
-        <div class="chat-bubble">
-Hello! I can help you with information about the Baku Ombudsmen Summit.
+        <div class="chat-bubble" id="initialBotMessage">
+Hello! I am the AI Summit Assistant.
 
 You can ask me about:
 - date
 - registration
 - deadline
+- travel expenses
 - venue
+- hotel
 - programme
 - cultural programme
-- documents
 - airport transfer
         </div>
       </div>
@@ -896,8 +927,8 @@ You can ask me about:
         <input type="text" id="chatInput" class="chat-input" placeholder="Ask about the Summit..." />
         <button id="chatSend" class="chat-send">Send</button>
       </div>
-      <div class="chat-hints" data-en="Examples: deadline, registration, cultural programme, venue, airport transfer" data-az="Nümunələr: deadline, qeydiyyat, mədəni proqram, məkan, hava limanı transferi">
-        Examples: deadline, registration, cultural programme, venue, airport transfer
+      <div class="chat-hints" id="chatHints">
+        Examples: travel expenses, registration, cultural programme, venue, hotel
       </div>
     </div>
   </div>
@@ -917,23 +948,45 @@ You can ask me about:
       });
 
       const input = document.getElementById("chatInput");
+      const sendBtn = document.getElementById("chatSend");
+      const title = document.getElementById("chatTitle");
+      const subtitle = document.getElementById("chatSubtitle");
+      const badge = document.getElementById("chatAiBadge");
+      const initial = document.getElementById("initialBotMessage");
+      const hints = document.getElementById("chatHints");
+
       if (input) {
         input.placeholder = lang === "az" ? "Sammit haqqında sual verin..." : "Ask about the Summit...";
       }
 
-      const sendBtn = document.getElementById("chatSend");
       if (sendBtn) {
         sendBtn.textContent = lang === "az" ? "Göndər" : "Send";
       }
 
-      const chatBody = document.getElementById("chatBody");
-      if (chatBody && chatBody.children.length === 1) {
-        const firstBubble = chatBody.querySelector(".chat-bubble");
-        if (firstBubble) {
-          firstBubble.textContent = lang === "az"
-            ? "Salam! Mən Bakı Ombudsmanlar Sammiti haqqında məlumat verməyə kömək edə bilərəm.\n\nMəndən bunları soruşa bilərsiniz:\n- tarix\n- qeydiyyat\n- son tarix\n- məkan\n- proqram\n- mədəni proqram\n- sənədlər\n- hava limanı transferi"
-            : "Hello! I can help you with information about the Baku Ombudsmen Summit.\n\nYou can ask me about:\n- date\n- registration\n- deadline\n- venue\n- programme\n- cultural programme\n- documents\n- airport transfer";
-        }
+      if (title) {
+        title.textContent = lang === "az" ? "AI Sammit Köməkçisi" : "Summit AI Assistant";
+      }
+
+      if (subtitle) {
+        subtitle.textContent = lang === "az"
+          ? "Bakı Ombudsmanlar Sammiti haqqında məlumat"
+          : "Baku Ombudsmen Summit information";
+      }
+
+      if (badge) {
+        badge.textContent = "AI";
+      }
+
+      if (initial && chatBody && chatBody.children.length === 1) {
+        initial.textContent = lang === "az"
+          ? "Salam! Mən AI Sammit Köməkçisiyəm.\n\nMəndən bunları soruşa bilərsiniz:\n- tarix\n- qeydiyyat\n- son tarix\n- səfər xərcləri\n- məkan\n- otel\n- proqram\n- mədəni proqram\n- hava limanı transferi"
+          : "Hello! I am the AI Summit Assistant.\n\nYou can ask me about:\n- date\n- registration\n- deadline\n- travel expenses\n- venue\n- hotel\n- programme\n- cultural programme\n- airport transfer";
+      }
+
+      if (hints) {
+        hints.textContent = lang === "az"
+          ? "Nümunələr: səfər xərcləri, qeydiyyat, mədəni proqram, məkan, otel"
+          : "Examples: travel expenses, registration, cultural programme, venue, hotel";
       }
 
       document.querySelectorAll(".lang-btn").forEach(function(btn) {
@@ -1016,10 +1069,10 @@ You can ask me about:
       }, 300);
     }
 
-    function helpContact() {
+    function fallbackReply() {
       return currentLang === "az"
-        ? "Bu sual üzrə əlavə məlumat üçün +99 450 275 18 99 nömrəsi ilə əlaqə saxlaya bilərsiniz (WhatsApp available)."
-        : "For further assistance on this вопрос, please contact +99 450 275 18 99 (WhatsApp is available).";
+        ? "Bu sualla bağlı əlavə məlumat üçün +99 450 275 18 99 nömrəsi ilə əlaqə saxlamağınız xahiş olunur (WhatsApp available)."
+        : "For further assistance, please contact +99 450 275 18 99 (WhatsApp is available).";
     }
 
     function getSummitReply(input) {
@@ -1038,6 +1091,17 @@ You can ask me about:
       }
 
       if (
+        q.includes("mədəni proqram nə vaxtdır") ||
+        q.includes("cultural programme date") ||
+        q.includes("cultural program date") ||
+        q.includes("when is the cultural programme")
+      ) {
+        return currentLang === "az"
+          ? "Mədəni proqram 19 iyun 2026-cı il tarixində keçiriləcək."
+          : "The cultural programme will take place on 19 June 2026.";
+      }
+
+      if (
         q.includes("deadline") ||
         q.includes("son tarix") ||
         q.includes("last date") ||
@@ -1049,14 +1113,26 @@ You can ask me about:
       }
 
       if (
+        q.includes("travel expenses") ||
+        q.includes("səfər xərcləri") ||
+        q.includes("xərclər qarşılanır") ||
+        q.includes("qarşılanırmı") ||
+        q.includes("participants expenses")
+      ) {
+        return currentLang === "az"
+          ? "Qeydiyyat vərəqində də göstərildiyi kimi 23 Aprel 2026-cı il tarixinə qədər qeydiyyatdan keçən qurumların rəhbərlərinin avia bilet və qonaqlama xərcləri qarşılanır, həmçinin ölkə daxili nəqliyyat təmin edilir."
+          : "As indicated in the registration form, for heads of institutions registered by 23 April 2026, airfare and accommodation expenses are covered, and domestic transportation is also provided.";
+      }
+
+      if (
         q.includes("registration") ||
         q.includes("register") ||
         q.includes("qeydiyyat") ||
         q.includes("form")
       ) {
         return currentLang === "az"
-          ? "Qeydiyyat linki: https://ombudsman.az/en/summit-form\n\nSon tarix 23 aprel 2026-cı ildir. Bu tarixədək qeydiyyatdan keçən qurumların rəhbərlərinin səyahət xərcləri Sammitin Təşkilat Komitəsi tərəfindən qarşılana bilər. Bunun üçün qeydiyyat vərəqində xərclərin qarşılanması ilə bağlı müvafiq düyməni seçmək lazımdır."
-          : "Registration link: https://ombudsman.az/en/summit-form\n\nThe deadline is 23 April 2026. For heads of institutions registering by this date, travel expenses may be covered by the Summit Organizing Committee. To request this, the relevant option on travel expenses should be selected in the registration form.";
+          ? "Qeydiyyat linki: https://ombudsman.az/en/summit-form\n\nQeydiyyat üçün son tarix 23 aprel 2026-cı ildir. Bu tarixədək qeydiyyatdan keçən qurumların rəhbərlərinin avia bilet və qonaqlama xərcləri qarşılana bilər. Bunun üçün qeydiyyat vərəqində xərclərin qarşılanması ilə bağlı müvafiq düyməni seçmək lazımdır."
+          : "Registration link: https://ombudsman.az/en/summit-form\n\nThe deadline is 23 April 2026. For heads of institutions registering by this date, airfare and accommodation expenses may be covered. To request this, the relevant option on expenses should be selected in the registration form.";
       }
 
       if (
@@ -1067,7 +1143,7 @@ You can ask me about:
       ) {
         return currentLang === "az"
           ? "Əgər qeydiyyat vərəqində rəsmi dəvət məktubu istənilməsi ilə bağlı düymə seçilərsə, 10 gün ərzində qeydiyyatda göstərilən e-mail ünvanına imzalı rəsmi dəvət məktubu göndəriləcək."
-          : "If the relevant option requesting an official invitation letter is selected in the registration form, a signed official invitation letter will be sent to the email address indicated in the form within 10 days.";
+          : "If the option requesting an official invitation letter is selected in the registration form, a signed official invitation letter will be sent to the email address indicated in the form within 10 days.";
       }
 
       if (
@@ -1102,8 +1178,8 @@ You can ask me about:
         q.includes("qobustan")
       ) {
         return currentLang === "az"
-          ? "Mədəni proqram 19 iyun 2026-cı il tarixində keçiriləcək. Proqram Qobustana səfəri əhatə edir: 10:00 oteldən çıxış, 11:00 Qobustan qoruğuna çatma, 11:15 Qobustan Muzeyi, 12:00 açıq hava qoruğuna bələdçili tur, 14:00 nahar, 15:30 otelə qayıdış. Saytda Cultural Programme bölməsinə baxa bilərsiniz."
-          : "The cultural programme will take place on 19 June 2026 and includes a visit to Gobustan: 10:00 departure from the hotel, 11:00 arrival at Gobustan Reserve, 11:15 Gobustan Museum, 12:00 guided tour of the open-air reserve, 14:00 lunch, and 15:30 return to the hotel. Please see the Cultural Programme section on the website.";
+          ? "Mədəni proqram 19 iyun 2026-cı il tarixində keçiriləcək. Proqram Qobustana səfəri əhatə edir: 10:00 oteldən çıxış, 11:00 Qobustan qoruğuna çatma, 11:15 Qobustan Muzeyi, 12:00 açıq hava qoruğuna bələdçili tur, 13:15 Qobustandan çıxış, 14:00 nahar və 15:30 otelə qayıdış. Saytda Cultural Programme bölməsinə baxa bilərsiniz."
+          : "The cultural programme will take place on 19 June 2026 and includes a visit to Gobustan: 10:00 departure from the hotel, 11:00 arrival at Gobustan Reserve, 11:15 Gobustan Museum, 12:00 guided tour of the open-air reserve, 13:15 departure from Gobustan, 14:00 lunch, and 15:30 return to the hotel. Please see the Cultural Programme section on the website.";
       }
 
       if (
@@ -1120,15 +1196,16 @@ You can ask me about:
       }
 
       if (
-        q.includes("where") ||
-        q.includes("location") ||
+        q.includes("event venue") ||
         q.includes("venue") ||
+        q.includes("location") ||
         q.includes("harada") ||
-        q.includes("məkan")
+        q.includes("məkan") ||
+        q.includes("tədbirin yeri")
       ) {
         return currentLang === "az"
-          ? "Tədbirin keçiriləcəyi yer JW Marriott Absheron Baku otelidir. Link istəsəniz göndərə bilərəm."
-          : "The venue is JW Marriott Absheron Baku. If you need the link, I can provide it.";
+          ? "Tədbirin keçiriləcəyi yer JW Marriott Otelidir."
+          : "The event venue is JW Marriott Hotel.";
       }
 
       if (
@@ -1142,6 +1219,17 @@ You can ask me about:
         return currentLang === "az"
           ? "Məkan linki: https://www.google.com/search?gs_ssp=eJwFwbENgCAQBdDYuoEdjTUfMYCM4BZ3SqIYJEGMjO97fS-TxAbYGtH5EW2Ght2JzKICKGiPtls1MXNgvRmnZrcO8ROJSjlzrYL4OULJt2C63h9gPBfr&q=jw+marriott+absheron+baku&rlz=1C1YTUH_ruAZ1188AZ1188&oq=JW+Marr&gs_lcrp=EgZjaHJvbWUqFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBwgAEAAYgAQyFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBggCEEUYOTIWCAMQLhivARjHARiABBiYBRiZBRieBTIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABNIBCTk3NDZqMGoxNagCCLACAQ&sourceid=chrome&ie=UTF-8"
           : "Venue link: https://www.google.com/search?gs_ssp=eJwFwbENgCAQBdDYuoEdjTUfMYCM4BZ3SqIYJEGMjO97fS-TxAbYGtH5EW2Ght2JzKICKGiPtls1MXNgvRmnZrcO8ROJSjlzrYL4OULJt2C63h9gPBfr&q=jw+marriott+absheron+baku&rlz=1C1YTUH_ruAZ1188AZ1188&oq=JW+Marr&gs_lcrp=EgZjaHJvbWUqFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBwgAEAAYgAQyFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBggCEEUYOTIWCAMQLhivARjHARiABBiYBRiZBRieBTIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABNIBCTk3NDZqMGoxNagCCLACAQ&sourceid=chrome&ie=UTF-8";
+      }
+
+      if (
+        q.includes("hotel") ||
+        q.includes("accommodation hotel") ||
+        q.includes("qonaqlayacağı otel") ||
+        q.includes("qonaqlama oteli")
+      ) {
+        return currentLang === "az"
+          ? "Qonaqların qonaqlayacağı otellə bağlı məlumat 23 Aprel 2026-cı il tarixindən sonra bildiriləcək."
+          : "Information about the hotel where guests will be accommodated will be provided after 23 April 2026.";
       }
 
       if (
@@ -1177,8 +1265,8 @@ You can ask me about:
       }
 
       if (
-        q.includes("ombudsman of azerbaijan") ||
         q.includes("azerbaijan ombudsman") ||
+        q.includes("ombudsman of azerbaijan") ||
         q.includes("ombudsman institution") ||
         q.includes("azərbaycan ombudsmanı") ||
         q.includes("azərbaycan ombudsman təsisatı")
@@ -1199,9 +1287,7 @@ You can ask me about:
           : "The Baku Ombudsmen Summit is an international platform bringing together Ombudsman institutions, National Human Rights Institutions, experts and other stakeholders to discuss artificial intelligence and human rights.";
       }
 
-      return currentLang === "az"
-        ? "Bu sualla bağlı əlavə məlumat üçün +99 450 275 18 99 nömrəsi ilə əlaqə saxlamağınız xahiş olunur (WhatsApp available)."
-        : "For further assistance, please contact +99 450 275 18 99 (WhatsApp is available).";
+      return fallbackReply();
     }
 
     setLanguage("en", document.querySelector(".lang-btn.active"));
