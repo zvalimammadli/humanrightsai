@@ -396,6 +396,9 @@
     }
 
     .chat-ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: #ffffff;
       color: #0b1d33;
       font-weight: 700;
@@ -404,6 +407,11 @@
       border-radius: 999px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.25);
       letter-spacing: 0.4px;
+    }
+
+    .chat-ai-badge .robot-mark {
+      font-size: 16px;
+      line-height: 1;
     }
 
     .chat-toggle {
@@ -843,10 +851,7 @@
         </p>
 
         <div class="cultural-box">
-          <p
-            data-en="Gobustan: A Journey to the Origins of Humanity"
-            data-az="Qobustan: İnsanlığın başlanğıcına səyahət"
-          >
+          <p data-en="Gobustan: A Journey to the Origins of Humanity" data-az="Qobustan: İnsanlığın başlanğıcına səyahət">
             Gobustan: A Journey to the Origins of Humanity
           </p>
 
@@ -890,7 +895,7 @@
   </div>
 
   <div class="chat-launcher">
-    <div class="chat-ai-badge" id="chatAiBadge">AI</div>
+    <div class="chat-ai-badge" id="chatAiBadge"><span class="robot-mark">🤖</span><span>AI</span></div>
     <button class="chat-toggle" id="chatToggle" title="AI Summit Assistant">💬</button>
   </div>
 
@@ -905,8 +910,7 @@
 
     <div class="chat-body" id="chatBody">
       <div class="chat-message bot">
-        <div class="chat-bubble" id="initialBotMessage">
-Hello! I am the AI Summit Assistant.
+        <div class="chat-bubble" id="initialBotMessage">Hello! I am the AI Summit Assistant.
 
 You can ask me about:
 - date
@@ -918,7 +922,7 @@ You can ask me about:
 - programme
 - cultural programme
 - airport transfer
-        </div>
+- working languages</div>
       </div>
     </div>
 
@@ -927,9 +931,7 @@ You can ask me about:
         <input type="text" id="chatInput" class="chat-input" placeholder="Ask about the Summit..." />
         <button id="chatSend" class="chat-send">Send</button>
       </div>
-      <div class="chat-hints" id="chatHints">
-        Examples: travel expenses, registration, cultural programme, venue, hotel
-      </div>
+      <div class="chat-hints" id="chatHints">Examples: travel expenses, registration, cultural programme, venue, hotel, working languages</div>
     </div>
   </div>
 
@@ -951,7 +953,6 @@ You can ask me about:
       const sendBtn = document.getElementById("chatSend");
       const title = document.getElementById("chatTitle");
       const subtitle = document.getElementById("chatSubtitle");
-      const badge = document.getElementById("chatAiBadge");
       const initial = document.getElementById("initialBotMessage");
       const hints = document.getElementById("chatHints");
 
@@ -973,20 +974,16 @@ You can ask me about:
           : "Baku Ombudsmen Summit information";
       }
 
-      if (badge) {
-        badge.textContent = "AI";
-      }
-
-      if (initial && chatBody && chatBody.children.length === 1) {
+      if (initial && chatBody.children.length === 1) {
         initial.textContent = lang === "az"
-          ? "Salam! Mən AI Sammit Köməkçisiyəm.\n\nMəndən bunları soruşa bilərsiniz:\n- tarix\n- qeydiyyat\n- son tarix\n- səfər xərcləri\n- məkan\n- otel\n- proqram\n- mədəni proqram\n- hava limanı transferi"
-          : "Hello! I am the AI Summit Assistant.\n\nYou can ask me about:\n- date\n- registration\n- deadline\n- travel expenses\n- venue\n- hotel\n- programme\n- cultural programme\n- airport transfer";
+          ? "Salam! Mən AI Sammit Köməkçisiyəm.\n\nMəndən bunları soruşa bilərsiniz:\n- tarix\n- qeydiyyat\n- son tarix\n- səfər xərcləri\n- məkan\n- otel\n- proqram\n- mədəni proqram\n- hava limanı transferi\n- işçi dillər"
+          : "Hello! I am the AI Summit Assistant.\n\nYou can ask me about:\n- date\n- registration\n- deadline\n- travel expenses\n- venue\n- hotel\n- programme\n- cultural programme\n- airport transfer\n- working languages";
       }
 
       if (hints) {
         hints.textContent = lang === "az"
-          ? "Nümunələr: səfər xərcləri, qeydiyyat, mədəni proqram, məkan, otel"
-          : "Examples: travel expenses, registration, cultural programme, venue, hotel";
+          ? "Nümunələr: səfər xərcləri, qeydiyyat, mədəni proqram, məkan, otel, işçi dillər"
+          : "Examples: travel expenses, registration, cultural programme, venue, hotel, working languages";
       }
 
       document.querySelectorAll(".lang-btn").forEach(function(btn) {
@@ -1056,6 +1053,14 @@ You can ask me about:
       chatBody.scrollTop = chatBody.scrollHeight;
     }
 
+    function addBotMessages(messages) {
+      messages.forEach(function(message, index) {
+        setTimeout(function() {
+          addMessage(message, "bot");
+        }, index * 260);
+      });
+    }
+
     function sendMessage() {
       const text = chatInput.value.trim();
       if (!text) return;
@@ -1065,8 +1070,13 @@ You can ask me about:
 
       setTimeout(function () {
         const reply = getSummitReply(text);
-        addMessage(reply, "bot");
-      }, 300);
+
+        if (Array.isArray(reply)) {
+          addBotMessages(reply);
+        } else {
+          addMessage(reply, "bot");
+        }
+      }, 250);
     }
 
     function fallbackReply() {
@@ -1076,7 +1086,27 @@ You can ask me about:
     }
 
     function getSummitReply(input) {
-      const q = input.toLowerCase();
+      const q = input.toLowerCase().trim();
+
+      if (q === "hi" || q === "hello" || q === "hey" || q === "salam") {
+        return currentLang === "az"
+          ? ["Salam", "Sizə necə kömək edə bilərəm?"]
+          : ["Hi", "How can I help you?"];
+      }
+
+      if (
+        q.includes("working language") ||
+        q.includes("working languages") ||
+        q.includes("language") ||
+        q.includes("languages") ||
+        q.includes("işçi dil") ||
+        q.includes("işçi dillər") ||
+        q.includes("dillər")
+      ) {
+        return currentLang === "az"
+          ? "Sammitin işçi dilləri Azərbaycan və ingilis dilləridir."
+          : "The working languages of the Summit are Azerbaijani and English.";
+      }
 
       if (
         q.includes("date") ||
