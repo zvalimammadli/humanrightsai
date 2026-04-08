@@ -16,48 +16,7 @@
     html {
       scroll-behavior: smooth;
     }
-<button class="chat-toggle" id="chatToggle" title="Summit Assistant">💬</button>
 
-<div class="chat-widget" id="chatWidget">
-  <div class="chat-header">
-    <div>
-      <div class="chat-title">Summit Assistant</div>
-      <div class="chat-subtitle">Baku Ombudsmen Summit information</div>
-    </div>
-    <button class="chat-close" id="chatClose">&times;</button>
-  </div>
-
-  <div class="chat-body" id="chatBody">
-    <div class="chat-message bot">
-      <div class="chat-bubble">
-Hello! I can help you with information about the Baku Ombudsmen Summit.
-
-You can ask me about:
-- date
-- registration
-- programme
-- documents
-- video
-- summit topic
-      </div>
-    </div>
-  </div>
-
-  <div class="chat-footer">
-    <div class="chat-input-row">
-      <input
-        type="text"
-        id="chatInput"
-        class="chat-input"
-        placeholder="Ask about the Summit..."
-      />
-      <button id="chatSend" class="chat-send">Send</button>
-    </div>
-    <div class="chat-hints">
-      Examples: “When is the summit?”, “Registration”, “Programme”, “Documents”
-    </div>
-  </div>
-</div>
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #0b1d33;
@@ -70,7 +29,8 @@ You can ask me about:
       color: inherit;
     }
 
-    button {
+    button,
+    input {
       font-family: inherit;
     }
 
@@ -409,6 +369,152 @@ You can ask me about:
       font-size: 14px;
     }
 
+    /* CHATBOT */
+    .chat-toggle {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 64px;
+      height: 64px;
+      border: none;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0b1d33;
+      font-size: 26px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      z-index: 4000;
+    }
+
+    .chat-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 100px;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      height: 520px;
+      background: #102742;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      display: none;
+      z-index: 4000;
+    }
+
+    .chat-widget.show {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header {
+      padding: 16px 18px;
+      background: #0d223a;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .chat-subtitle {
+      font-size: 12px;
+      color: #cbd6e3;
+      margin-top: 2px;
+    }
+
+    .chat-close {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background: #102742;
+    }
+
+    .chat-message {
+      margin-bottom: 12px;
+      display: flex;
+    }
+
+    .chat-message.user {
+      justify-content: flex-end;
+    }
+
+    .chat-bubble {
+      max-width: 85%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .chat-message.bot .chat-bubble {
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      border-top-left-radius: 6px;
+    }
+
+    .chat-message.user .chat-bubble {
+      background: #ffffff;
+      color: #0b1d33;
+      border-top-right-radius: 6px;
+    }
+
+    .chat-footer {
+      padding: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: #0d223a;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: #ffffff;
+      outline: none;
+    }
+
+    .chat-input::placeholder {
+      color: #c3cfdd;
+    }
+
+    .chat-send {
+      padding: 0 16px;
+      border: none;
+      border-radius: 14px;
+      background: #ffffff;
+      color: #0b1d33;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chat-hints {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #c5d0dc;
+      line-height: 1.5;
+    }
+
     @media (max-width: 980px) {
       .header-inner {
         justify-content: center;
@@ -479,165 +585,19 @@ You can ask me about:
       .nav {
         gap: 14px;
       }
+
+      .chat-widget {
+        right: 12px;
+        bottom: 84px;
+        width: calc(100vw - 24px);
+        height: 70vh;
+      }
+
+      .chat-toggle {
+        right: 12px;
+        bottom: 12px;
+      }
     }
-    .chat-toggle {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 64px;
-  height: 64px;
-  border: none;
-  border-radius: 50%;
-  background: #ffffff;
-  color: #0b1d33;
-  font-size: 26px;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-  z-index: 4000;
-}
-
-.chat-widget {
-  position: fixed;
-  right: 24px;
-  bottom: 100px;
-  width: 360px;
-  max-width: calc(100vw - 32px);
-  height: 520px;
-  background: #102742;
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  display: none;
-  z-index: 4000;
-}
-
-.chat-widget.show {
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-header {
-  padding: 16px 18px;
-  background: #0d223a;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.chat-title {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.chat-subtitle {
-  font-size: 12px;
-  color: #cbd6e3;
-  margin-top: 2px;
-}
-
-.chat-close {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.chat-body {
-  flex: 1;
-  padding: 16px;
-  overflow-y: auto;
-  background: #102742;
-}
-
-.chat-message {
-  margin-bottom: 12px;
-  display: flex;
-}
-
-.chat-message.user {
-  justify-content: flex-end;
-}
-
-.chat-bubble {
-  max-width: 85%;
-  padding: 12px 14px;
-  border-radius: 16px;
-  font-size: 14px;
-  line-height: 1.5;
-  white-space: pre-wrap;
-}
-
-.chat-message.bot .chat-bubble {
-  background: rgba(255,255,255,0.08);
-  color: #ffffff;
-  border-top-left-radius: 6px;
-}
-
-.chat-message.user .chat-bubble {
-  background: #ffffff;
-  color: #0b1d33;
-  border-top-right-radius: 6px;
-}
-
-.chat-footer {
-  padding: 14px;
-  border-top: 1px solid rgba(255,255,255,0.10);
-  background: #0d223a;
-}
-
-.chat-input-row {
-  display: flex;
-  gap: 10px;
-}
-
-.chat-input {
-  flex: 1;
-  min-width: 0;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.06);
-  color: #ffffff;
-  outline: none;
-}
-
-.chat-input::placeholder {
-  color: #c3cfdd;
-}
-
-.chat-send {
-  padding: 0 16px;
-  border: none;
-  border-radius: 14px;
-  background: #ffffff;
-  color: #0b1d33;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.chat-hints {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #c5d0dc;
-  line-height: 1.5;
-}
-
-@media (max-width: 640px) {
-  .chat-widget {
-    right: 12px;
-    bottom: 84px;
-    width: calc(100vw - 24px);
-    height: 70vh;
-  }
-
-  .chat-toggle {
-    right: 12px;
-    bottom: 12px;
-  }
-}
   </style>
 </head>
 <body>
@@ -848,8 +808,63 @@ You can ask me about:
     </div>
   </div>
 
+  <button class="chat-toggle" id="chatToggle" title="Summit Assistant">💬</button>
+
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title" data-en="Summit Assistant" data-az="Sammit köməkçisi">Summit Assistant</div>
+        <div class="chat-subtitle" data-en="Baku Ombudsmen Summit information" data-az="Bakı Ombudsmanlar Sammiti haqqında məlumat">Baku Ombudsmen Summit information</div>
+      </div>
+      <button class="chat-close" id="chatClose">&times;</button>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+      <div class="chat-message bot">
+        <div class="chat-bubble" data-en="Hello! I can help you with information about the Baku Ombudsmen Summit.
+
+You can ask me about:
+- date
+- registration
+- programme
+- documents
+- video
+- summit topic" data-az="Salam! Mən Bakı Ombudsmanlar Sammiti haqqında məlumat verməyə kömək edə bilərəm.
+
+Məndən bunları soruşa bilərsiniz:
+- tarix
+- qeydiyyat
+- proqram
+- sənədlər
+- video
+- sammitin mövzusu">Hello! I can help you with information about the Baku Ombudsmen Summit.
+
+You can ask me about:
+- date
+- registration
+- programme
+- documents
+- video
+- summit topic</div>
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Ask about the Summit..." />
+        <button id="chatSend" class="chat-send">Send</button>
+      </div>
+      <div class="chat-hints" data-en="Examples: When is the summit? Registration. Programme. Documents." data-az="Nümunələr: Sammit nə vaxtdır? Qeydiyyat. Proqram. Sənədlər.">
+        Examples: When is the summit? Registration. Programme. Documents.
+      </div>
+    </div>
+  </div>
+
   <script>
+    let currentLang = "en";
+
     function setLanguage(lang, button) {
+      currentLang = lang;
       document.documentElement.lang = lang;
 
       document.querySelectorAll("[data-en]").forEach(function(el) {
@@ -858,6 +873,16 @@ You can ask me about:
           el.textContent = text;
         }
       });
+
+      const input = document.getElementById("chatInput");
+      if (input) {
+        input.placeholder = lang === "az" ? "Sammit haqqında sual verin..." : "Ask about the Summit...";
+      }
+
+      const sendBtn = document.getElementById("chatSend");
+      if (sendBtn) {
+        sendBtn.textContent = lang === "az" ? "Göndər" : "Send";
+      }
 
       document.querySelectorAll(".lang-btn").forEach(function(btn) {
         btn.classList.remove("active");
@@ -889,129 +914,149 @@ You can ask me about:
         closeDocumentsModal();
       }
     });
+
     const chatToggle = document.getElementById("chatToggle");
-const chatWidget = document.getElementById("chatWidget");
-const chatClose = document.getElementById("chatClose");
-const chatBody = document.getElementById("chatBody");
-const chatInput = document.getElementById("chatInput");
-const chatSend = document.getElementById("chatSend");
+    const chatWidget = document.getElementById("chatWidget");
+    const chatClose = document.getElementById("chatClose");
+    const chatBody = document.getElementById("chatBody");
+    const chatInput = document.getElementById("chatInput");
+    const chatSend = document.getElementById("chatSend");
 
-chatToggle.addEventListener("click", function () {
-  chatWidget.classList.toggle("show");
-});
+    chatToggle.addEventListener("click", function () {
+      chatWidget.classList.toggle("show");
+    });
 
-chatClose.addEventListener("click", function () {
-  chatWidget.classList.remove("show");
-});
+    chatClose.addEventListener("click", function () {
+      chatWidget.classList.remove("show");
+    });
 
-chatSend.addEventListener("click", sendMessage);
-chatInput.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    sendMessage();
-  }
-});
+    chatSend.addEventListener("click", sendMessage);
 
-function addMessage(text, sender) {
-  const message = document.createElement("div");
-  message.className = "chat-message " + sender;
+    chatInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
 
-  const bubble = document.createElement("div");
-  bubble.className = "chat-bubble";
-  bubble.textContent = text;
+    function addMessage(text, sender) {
+      const message = document.createElement("div");
+      message.className = "chat-message " + sender;
 
-  message.appendChild(bubble);
-  chatBody.appendChild(message);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
+      const bubble = document.createElement("div");
+      bubble.className = "chat-bubble";
+      bubble.textContent = text;
 
-function sendMessage() {
-  const text = chatInput.value.trim();
-  if (!text) return;
+      message.appendChild(bubble);
+      chatBody.appendChild(message);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
 
-  addMessage(text, "user");
-  chatInput.value = "";
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
 
-  setTimeout(function () {
-    const reply = getSummitReply(text);
-    addMessage(reply, "bot");
-  }, 350);
-}
+      addMessage(text, "user");
+      chatInput.value = "";
 
-function getSummitReply(input) {
-  const q = input.toLowerCase();
+      setTimeout(function () {
+        const reply = getSummitReply(text);
+        addMessage(reply, "bot");
+      }, 350);
+    }
 
-  if (
-    q.includes("date") ||
-    q.includes("when") ||
-    q.includes("tarix") ||
-    q.includes("nə vaxt") ||
-    q.includes("ne vaxt")
-  ) {
-    return "The Baku Ombudsmen Summit will take place on 18–19 June 2026.";
-  }
+    function getSummitReply(input) {
+      const q = input.toLowerCase();
 
-  if (
-    q.includes("registration") ||
-    q.includes("register") ||
-    q.includes("qeydiyyat")
-  ) {
-    return "You can register for the Summit here: https://ombudsman.az/en/summit-form";
-  }
+      if (
+        q.includes("date") ||
+        q.includes("when") ||
+        q.includes("tarix") ||
+        q.includes("nə vaxt") ||
+        q.includes("ne vaxt")
+      ) {
+        return currentLang === "az"
+          ? "Bakı Ombudsmanlar Sammiti 18–19 iyun 2026-cı il tarixlərində keçiriləcək."
+          : "The Baku Ombudsmen Summit will take place on 18–19 June 2026.";
+      }
 
-  if (
-    q.includes("programme") ||
-    q.includes("program") ||
-    q.includes("agenda") ||
-    q.includes("proqram")
-  ) {
-    return "The main programme is available in PDF format on the website under the Programme section.";
-  }
+      if (
+        q.includes("registration") ||
+        q.includes("register") ||
+        q.includes("qeydiyyat")
+      ) {
+        return currentLang === "az"
+          ? "Sammit üçün qeydiyyat linki: https://ombudsman.az/en/summit-form"
+          : "You can register for the Summit here: https://ombudsman.az/en/summit-form";
+      }
 
-  if (
-    q.includes("document") ||
-    q.includes("documents") ||
-    q.includes("sənəd") ||
-    q.includes("sənədlər")
-  ) {
-    return "The Documents section includes the 'Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028': https://e-qanun.az/framework/59218";
-  }
+      if (
+        q.includes("programme") ||
+        q.includes("program") ||
+        q.includes("agenda") ||
+        q.includes("proqram")
+      ) {
+        return currentLang === "az"
+          ? "Əsas proqram saytda Programme bölməsində PDF formatında yerləşdirilib."
+          : "The main programme is available in PDF format on the website under the Programme section.";
+      }
 
-  if (
-    q.includes("video") ||
-    q.includes("stone to code") ||
-    q.includes("from stone to code")
-  ) {
-    return "The promotional video 'From Stone to Code' is available in the Summit section of the website.";
-  }
+      if (
+        q.includes("document") ||
+        q.includes("documents") ||
+        q.includes("sənəd") ||
+        q.includes("sənədlər")
+      ) {
+        return currentLang === "az"
+          ? "Sənədlər bölməsində 'Azərbaycan Respublikasının 2025–2028-ci illər üçün süni intellekt Strategiyası' yerləşdirilib: https://e-qanun.az/framework/59218"
+          : "The Documents section includes the 'Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028': https://e-qanun.az/framework/59218";
+      }
 
-  if (
-    q.includes("topic") ||
-    q.includes("theme") ||
-    q.includes("mövzu")
-  ) {
-    return "The Summit focuses on human rights in the age of artificial intelligence and promotes dialogue on opportunities, risks and responsibilities arising from AI development.";
-  }
+      if (
+        q.includes("video") ||
+        q.includes("stone to code") ||
+        q.includes("from stone to code")
+      ) {
+        return currentLang === "az"
+          ? "“From Stone to Code” tanıtım videosu saytın Summit bölməsində yerləşdirilib."
+          : "The promotional video 'From Stone to Code' is available in the Summit section of the website.";
+      }
 
-  if (
-    q.includes("about") ||
-    q.includes("what is the summit") ||
-    q.includes("summit nədir") ||
-    q.includes("summit haqqında")
-  ) {
-    return "The Baku Ombudsmen Summit is an international platform bringing together Ombudsman institutions, National Human Rights Institutions, experts and other stakeholders to discuss artificial intelligence and human rights.";
-  }
+      if (
+        q.includes("topic") ||
+        q.includes("theme") ||
+        q.includes("mövzu")
+      ) {
+        return currentLang === "az"
+          ? "Sammitin əsas mövzusu süni intellekt dövründə insan hüquqları, bu sahədə yaranan imkanlar, risklər və məsuliyyətlərdir."
+          : "The Summit focuses on human rights in the age of artificial intelligence and promotes dialogue on opportunities, risks and responsibilities arising from AI development.";
+      }
 
-  if (
-    q.includes("where") ||
-    q.includes("location") ||
-    q.includes("venue") ||
-    q.includes("harada")
-  ) {
-    return "The website currently provides core Summit information. If you would like, the venue information can also be added to the assistant.";
-  }
+      if (
+        q.includes("about") ||
+        q.includes("what is the summit") ||
+        q.includes("summit nədir") ||
+        q.includes("summit haqqında")
+      ) {
+        return currentLang === "az"
+          ? "Bakı Ombudsmanlar Sammiti süni intellekt və insan hüquqları mövzusunda Ombudsman təsisatlarını, milli insan hüquqları institutlarını, ekspertləri və digər tərəfdaşları bir araya gətirən beynəlxalq platformadır."
+          : "The Baku Ombudsmen Summit is an international platform bringing together Ombudsman institutions, National Human Rights Institutions, experts and other stakeholders to discuss artificial intelligence and human rights.";
+      }
 
-  return "I can currently help with information about the Summit date, registration, programme, documents, video and topic.";
-}
+      if (
+        q.includes("where") ||
+        q.includes("location") ||
+        q.includes("venue") ||
+        q.includes("harada")
+      ) {
+        return currentLang === "az"
+          ? "Məkan məlumatı ayrıca əlavə edilə bilər. Hazırda saytda əsas sammit məlumatları yerləşdirilib."
+          : "Venue information can also be added separately. The website currently provides the main Summit information.";
+      }
+
+      return currentLang === "az"
+        ? "Hazırda mən sammitin tarixi, qeydiyyat, proqram, sənədlər, video və mövzusu haqqında məlumat verə bilirəm."
+        : "I can currently help with information about the Summit date, registration, programme, documents, video and topic.";
+    }
   </script>
 </body>
 </html>
