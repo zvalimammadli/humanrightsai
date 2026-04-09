@@ -300,7 +300,7 @@
       text-align: center;
       position: relative;
       z-index: 2;
-      backdrop-filter: blur(3px);
+      backdrop-filter: blur(2px);
     }
 
     .programme-box p,
@@ -315,7 +315,7 @@
       text-align: left;
       max-width: 720px;
       margin: 22px auto 0;
-      color: #e2ebf5;
+      color: #f0f5fb;
       position: relative;
       z-index: 2;
     }
@@ -323,27 +323,14 @@
     .cultural-list div {
       margin-bottom: 10px;
       padding-left: 10px;
-      border-left: 2px solid rgba(255,255,255,0.28);
+      border-left: 2px solid rgba(255,255,255,0.32);
     }
 
-    /* Cultural section video background */
     .cultural-section {
       position: relative;
-      background: #08182b;
-    }
-
-    .cultural-video-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .cultural-video-bg video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.32;
+      background:
+        linear-gradient(rgba(8, 24, 43, 0.45), rgba(8, 24, 43, 0.58)),
+        url("./Gobustant.jpg") center center / cover no-repeat;
     }
 
     .cultural-section::before {
@@ -351,13 +338,18 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(
-        to bottom,
-        rgba(8, 24, 43, 0.82),
-        rgba(8, 24, 43, 0.55),
-        rgba(8, 24, 43, 0.82)
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 190, 90, 0.12),
+        rgba(8, 24, 43, 0.35) 45%,
+        rgba(8, 24, 43, 0.72) 100%
       );
       pointer-events: none;
+    }
+
+    .cultural-box {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(8,24,43,0.44), rgba(8,24,43,0.58));
     }
 
     .modal {
@@ -559,6 +551,11 @@
       border-top-right-radius: 6px;
     }
 
+    .typing {
+      opacity: 0.8;
+      font-style: italic;
+    }
+
     .chat-footer {
       padding: 14px;
       border-top: 1px solid rgba(255,255,255,0.10);
@@ -593,6 +590,11 @@
       color: #0b1d33;
       font-weight: 700;
       cursor: pointer;
+    }
+
+    .chat-send:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
     }
 
     .chat-hints {
@@ -768,6 +770,7 @@
               <iframe
                 src="https://www.youtube.com/embed/A-O5gbooyAQ"
                 title="Baku Ombudsmen Summit Video"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
               </iframe>
@@ -790,12 +793,6 @@
     </section>
 
     <section class="section cultural-section" id="cultural">
-      <div class="cultural-video-bg">
-        <video autoplay muted loop playsinline>
-          <source src="./video.mp4" type="video/mp4">
-        </video>
-      </div>
-
       <div class="container">
         <h2 class="section-title" data-en="Cultural Programme" data-az="Mədəni proqram">Cultural Programme</h2>
         <p class="section-lead" data-en="On the second day of the Summit, participants will visit Gobustan, linking humanity’s earliest forms of communication with today’s discussions on artificial intelligence and human rights." data-az="Sammitin ikinci günündə iştirakçılar Qobustana səfər edəcək, bu proqram insanlığın ən qədim ünsiyyət formaları ilə bugünkü süni intellekt və insan hüquqları müzakirələri arasında mənalı bir bağ yaradacaq.">On the second day of the Summit, participants will visit Gobustan, linking humanity’s earliest forms of communication with today’s discussions on artificial intelligence and human rights.</p>
@@ -869,19 +866,7 @@
 
     <div class="chat-body" id="chatBody">
       <div class="chat-message bot">
-        <div class="chat-bubble" id="initialBotMessage">Hello! I am the AI Summit Assistant.
-
-You can ask me about:
-- date
-- venue
-- address
-- hotel
-- registration
-- deadline
-- travel expenses
-- programme
-- cultural programme
-- working languages</div>
+        <div class="chat-bubble" id="initialBotMessage">Hello! I am the AI Summit Assistant. You can ask me questions about the Summit.</div>
       </div>
     </div>
 
@@ -890,11 +875,12 @@ You can ask me about:
         <input type="text" id="chatInput" class="chat-input" placeholder="Ask about the Summit..." />
         <button id="chatSend" class="chat-send">Send</button>
       </div>
-      <div class="chat-hints" id="chatHints">Examples: venue, address, hotel, travel expenses, deadline, working languages</div>
+      <div class="chat-hints" id="chatHints">Examples: venue, address, registration, travel expenses, cultural programme</div>
     </div>
   </div>
 
   <script>
+    const WORKER_URL = "YOUR_WORKER_URL_HERE";
     let currentLang = "en";
 
     function setLanguage(lang, button) {
@@ -933,16 +919,16 @@ You can ask me about:
           : "Baku Ombudsmen Summit information";
       }
 
-      if (initial && chatBody.children.length === 1) {
+      if (initial && document.getElementById("chatBody").children.length === 1) {
         initial.textContent = lang === "az"
-          ? "Salam! Mən AI Sammit Köməkçisiyəm.\n\nMəndən bunları soruşa bilərsiniz:\n- tarix\n- məkan\n- ünvan\n- otel\n- qeydiyyat\n- son tarix\n- səfər xərcləri\n- proqram\n- mədəni proqram\n- işçi dillər"
-          : "Hello! I am the AI Summit Assistant.\n\nYou can ask me about:\n- date\n- venue\n- address\n- hotel\n- registration\n- deadline\n- travel expenses\n- programme\n- cultural programme\n- working languages";
+          ? "Salam! Mən AI Sammit Köməkçisiyəm. Sammit barədə suallarınızı verə bilərsiniz."
+          : "Hello! I am the AI Summit Assistant. You can ask me questions about the Summit.";
       }
 
       if (hints) {
         hints.textContent = lang === "az"
-          ? "Nümunələr: məkan, ünvan, otel, səfər xərcləri, son tarix, işçi dillər"
-          : "Examples: venue, address, hotel, travel expenses, deadline, working languages";
+          ? "Nümunələr: məkan, ünvan, qeydiyyat, səfər xərcləri, mədəni proqram"
+          : "Examples: venue, address, registration, travel expenses, cultural programme";
       }
 
       document.querySelectorAll(".lang-btn").forEach(function(btn) {
@@ -970,317 +956,113 @@ You can ask me about:
       }
     }
 
+    function addMessage(text, sender, isTyping = false) {
+      const chatBody = document.getElementById("chatBody");
+      const message = document.createElement("div");
+      message.className = "chat-message " + sender;
+
+      const bubble = document.createElement("div");
+      bubble.className = "chat-bubble" + (isTyping ? " typing" : "");
+      bubble.textContent = text;
+
+      message.appendChild(bubble);
+      chatBody.appendChild(message);
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      return message;
+    }
+
+    async function sendMessage() {
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+      const text = chatInput.value.trim();
+
+      if (!text) return;
+
+      if (WORKER_URL === "YOUR_WORKER_URL_HERE") {
+        addMessage(
+          currentLang === "az"
+            ? "Zəhmət olmasa əvvəlcə kodda WORKER_URL hissəsinə öz Cloudflare Worker linkinizi əlavə edin."
+            : "Please first add your Cloudflare Worker URL in the WORKER_URL field in the code.",
+          "bot"
+        );
+        return;
+      }
+
+      addMessage(text, "user");
+      chatInput.value = "";
+      chatSend.disabled = true;
+
+      const typingMsg = addMessage(
+        currentLang === "az" ? "Yazılır..." : "Typing...",
+        "bot",
+        true
+      );
+
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: text,
+            lang: currentLang
+          })
+        });
+
+        const data = await res.json();
+        typingMsg.remove();
+
+        addMessage(
+          data.answer || (
+            currentLang === "az" ? "Cavab alınmadı." : "No response received."
+          ),
+          "bot"
+        );
+      } catch (err) {
+        typingMsg.remove();
+        addMessage(
+          currentLang === "az"
+            ? "Xəta baş verdi. Zəhmət olmasa bir daha cəhd edin."
+            : "An error occurred. Please try again.",
+          "bot"
+        );
+      } finally {
+        chatSend.disabled = false;
+      }
+    }
+
     document.addEventListener("keydown", function(event) {
       if (event.key === "Escape") {
         closeDocumentsModal();
       }
     });
 
-    const chatToggle = document.getElementById("chatToggle");
-    const chatWidget = document.getElementById("chatWidget");
-    const chatClose = document.getElementById("chatClose");
-    const chatBody = document.getElementById("chatBody");
-    const chatInput = document.getElementById("chatInput");
-    const chatSend = document.getElementById("chatSend");
+    document.addEventListener("DOMContentLoaded", function () {
+      const chatToggle = document.getElementById("chatToggle");
+      const chatWidget = document.getElementById("chatWidget");
+      const chatClose = document.getElementById("chatClose");
+      const chatSend = document.getElementById("chatSend");
+      const chatInput = document.getElementById("chatInput");
 
-    chatToggle.addEventListener("click", function () {
-      chatWidget.classList.toggle("show");
-    });
-
-    chatClose.addEventListener("click", function () {
-      chatWidget.classList.remove("show");
-    });
-
-    chatSend.addEventListener("click", sendMessage);
-
-    chatInput.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        sendMessage();
-      }
-    });
-
-    function addMessage(text, sender) {
-      const message = document.createElement("div");
-      message.className = "chat-message " + sender;
-
-      const bubble = document.createElement("div");
-      bubble.className = "chat-bubble";
-      bubble.textContent = text;
-
-      message.appendChild(bubble);
-      chatBody.appendChild(message);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function addBotMessages(messages) {
-      messages.forEach(function(message, index) {
-        setTimeout(function() {
-          addMessage(message, "bot");
-        }, index * 240);
+      chatToggle.addEventListener("click", function () {
+        chatWidget.classList.toggle("show");
       });
-    }
 
-    function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text) return;
+      chatClose.addEventListener("click", function () {
+        chatWidget.classList.remove("show");
+      });
 
-      addMessage(text, "user");
-      chatInput.value = "";
+      chatSend.addEventListener("click", sendMessage);
 
-      setTimeout(function () {
-        const reply = getSummitReply(text);
-        if (Array.isArray(reply)) {
-          addBotMessages(reply);
-        } else {
-          addMessage(reply, "bot");
-        }
-      }, 220);
-    }
+      chatInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") sendMessage();
+      });
 
-    function fallbackReply() {
-      return currentLang === "az"
-        ? "Bu sualla bağlı əlavə məlumat üçün +99 450 275 18 99 nömrəsi ilə əlaqə saxlamağınız xahiş olunur (WhatsApp available)."
-        : "For further assistance, please contact +99 450 275 18 99 (WhatsApp is available).";
-    }
-
-    function hasAny(q, phrases) {
-      return phrases.some(function(p) { return q.includes(p); });
-    }
-
-    function getSummitReply(input) {
-      const q = input.toLowerCase().trim();
-
-      if (["hi", "hello", "hey", "salam"].includes(q)) {
-        return currentLang === "az"
-          ? ["Salam", "Sizə necə kömək edə bilərəm?"]
-          : ["Hi", "How can I help you?"];
-      }
-
-      if (hasAny(q, ["working language","working languages","language of the summit","languages of the summit","işçi dil","işçi dillər","dillər"])) {
-        return currentLang === "az"
-          ? "Sammitin işçi dilləri Azərbaycan və ingilis dilləridir."
-          : "The working languages of the Summit are Azerbaijani and English.";
-      }
-
-      if (hasAny(q, ["what is the summit","summit nədir","summit haqqında","about the summit"])) {
-        return currentLang === "az"
-          ? "Bu, Ombudsman təsisatları və milli insan hüquqları institutlarının iştirakı ilə keçirilən beynəlxalq tədbirdir."
-          : "It is an international event held with the participation of Ombudsman institutions and National Human Rights Institutions.";
-      }
-
-      if (hasAny(q, ["date of the summit","summit date","what is the date","when is the summit","date","tarix","nə vaxt","ne vaxt"])) {
-        return currentLang === "az"
-          ? "Sammit 18–19 iyun 2026-cı il tarixlərində keçiriləcək."
-          : "The Summit will take place on 18–19 June 2026.";
-      }
-
-      if (hasAny(q, ["where is the summit","where will it be held","harada keçiriləcək","venue","location","tədbirin yeri","məkan"])) {
-        return currentLang === "az"
-          ? "Tədbirin keçiriləcəyi yer Azərbaycan, Bakı şəhəri, JW Marriott Absheron Baku otelidir."
-          : "The Summit venue is JW Marriott Absheron Baku, Baku, Azerbaijan.";
-      }
-
-      if (hasAny(q, ["address","ünvan","venue address","location address"])) {
-        return currentLang === "az"
-          ? "Ünvan: 674 Azadliq Square, Baku 1010. Telefon: (012) 499 88 88."
-          : "Address: 674 Azadliq Square, Baku 1010. Phone: (012) 499 88 88.";
-      }
-
-      if (hasAny(q, ["hotel","where will foreign guests stay","foreign participants hotel","foreign guests hotel","qonaqlayacağı yer","xarici iştirakçıların qonaqlayacağı yer","accommodation hotel"])) {
-        return currentLang === "az"
-          ? "Xarici iştirakçıların qonaqlayacağı yer JW Marriott Absheron Baku olacaq."
-          : "Foreign participants will stay at JW Marriott Absheron Baku.";
-      }
-
-      if (hasAny(q, ["main topic","theme","mövzu","what is the main theme","what is the topic"])) {
-        return currentLang === "az"
-          ? "Sammitin əsas mövzusu “İnsan hüquqları süni intellekt dövründə: imkanlar, risklər və məsuliyyətlər”dir."
-          : "The main theme of the Summit is “Human Rights in the Age of Artificial Intelligence: Opportunities, Risks and Responsibilities”.";
-      }
-
-      if (hasAny(q, ["who organizes","organized by","təşkil edən","kim tərəfindən təşkil olunur"])) {
-        return currentLang === "az"
-          ? "Sammit Azərbaycan Respublikasının İnsan Hüquqları üzrə Müvəkkili (Ombudsman) tərəfindən təşkil olunur."
-          : "The Summit is organized by the Commissioner for Human Rights (Ombudsman) of the Republic of Azerbaijan.";
-      }
-
-      if (hasAny(q, ["who can participate","who may participate","kimlər iştirak edə bilər","participants"])) {
-        return currentLang === "az"
-          ? "Ombudsmanlar, milli insan hüquqları institutları, beynəlxalq təşkilatlar və ekspertlər iştirak edə bilər."
-          : "Ombudsmen, National Human Rights Institutions, international organizations and experts may participate.";
-      }
-
-      if (hasAny(q, ["registration","register","qeydiyyat","how to register","how can i register","form"])) {
-        return currentLang === "az"
-          ? "İştirak üçün qeydiyyat rəsmi sayt üzərindən onlayn qaydada aparılır: https://ombudsman.az/en/summit-form"
-          : "Registration is available online through the official website: https://ombudsman.az/en/summit-form";
-      }
-
-      if (hasAny(q, ["deadline","registration deadline","last date","son tarix"])) {
-        return currentLang === "az"
-          ? "Qeydiyyat üçün son tarix 23 aprel 2026-cı ildir."
-          : "The registration deadline is 23 April 2026.";
-      }
-
-      if (hasAny(q, ["participation fee","paid","ödənişlidir","ödənişsiz"])) {
-        return currentLang === "az"
-          ? "Xeyr, iştirak ödənişsizdir."
-          : "No, participation is free of charge.";
-      }
-
-      if (hasAny(q, [
-        "travel expenses","travel expense","travel costs","travel cost",
-        "cover the travel costs","cover travel costs","institution cover",
-        "expenses covered","costs covered","səfər xərcləri","xərclər qarşılanır",
-        "qarşılanırmı","avia bilet","qonaqlama xərcləri"
-      ])) {
-        return currentLang === "az"
-          ? "Qeydiyyat vərəqində də göstərildiyi kimi 23 Aprel 2026-cı il tarixinə qədər qeydiyyatdan keçən qurumların rəhbərlərinin avia bilet və qonaqlama xərcləri qarşılanır, həmçinin ölkə daxili nəqliyyat təmin edilir."
-          : "As indicated in the registration form, for heads of institutions registered by 23 April 2026, airfare and accommodation expenses are covered, and domestic transportation is also provided.";
-      }
-
-      if (hasAny(q, ["what topics","which topics","mövzular müzakirə","discussed topics"])) {
-        return currentLang === "az"
-          ? "Sammitdə süni intellekt və insan hüquqları, rəqəmsal etik məsuliyyət, məlumatların qorunması və digər mövzular müzakirə olunacaq."
-          : "The Summit will discuss artificial intelligence and human rights, digital ethical responsibility, data protection and related topics.";
-      }
-
-      if (hasAny(q, ["panel discussions","panels","panel müzakirələri"])) {
-        return currentLang === "az"
-          ? "Bəli, müxtəlif tematik panel müzakirələri keçiriləcək."
-          : "Yes, thematic panel discussions will be held.";
-      }
-
-      if (hasAny(q, ["can i speak","is it possible to speak","çıxış etmək mümkündürmü","speak at the summit"])) {
-        return currentLang === "az"
-          ? "Bəli, seçilmiş iştirakçılar çıxış edə bilər."
-          : "Yes, selected participants may speak.";
-      }
-
-      if (hasAny(q, ["programme","program","agenda","proqram","will the programme be shared"])) {
-        return currentLang === "az"
-          ? "Bəli, rəsmi proqram əvvəlcədən paylaşılacaq və saytda Programme bölməsində yerləşdirilib."
-          : "Yes, the official programme will be shared in advance and is available in the Programme section of the website.";
-      }
-
-      if (hasAny(q, ["parallel sessions","paralel sessiyalar"])) {
-        return currentLang === "az"
-          ? "Bəli, eyni vaxtda bir neçə sessiya keçirilə bilər."
-          : "Yes, several sessions may be held in parallel.";
-      }
-
-      if (hasAny(q, ["ai role","how is ai included","süni intellekt necə yer alır"])) {
-        return currentLang === "az"
-          ? "Süni intellekt Sammitdə əsas müzakirə mövzusu kimi çıxış edir."
-          : "Artificial intelligence is one of the central discussion topics of the Summit.";
-      }
-
-      if (hasAny(q, ["impact of ai","ai impact","ai-nin təsiri","human rights impact"])) {
-        return currentLang === "az"
-          ? "AI-nin insan hüquqlarına təsiri həm imkanlar, həm də risklər kontekstində qiymətləndirilir."
-          : "The impact of AI on human rights is assessed in terms of both opportunities and risks.";
-      }
-
-      if (hasAny(q, ["digital rights","rəqəmsal hüquqlar"])) {
-        return currentLang === "az"
-          ? "Bəli, rəqəmsal hüquqlar əsas müzakirə istiqamətlərindən biridir."
-          : "Yes, digital rights are one of the key discussion areas.";
-      }
-
-      if (hasAny(q, ["child rights","uşaq hüquqları"])) {
-        return currentLang === "az"
-          ? "Bəli, xüsusilə rəqəmsal mühitdə uşaq hüquqları mövzusu da daxil ediləcək."
-          : "Yes, child rights, especially in the digital environment, will also be addressed.";
-      }
-
-      if (hasAny(q, ["practical examples","case studies","praktik nümunələr","case-lər"])) {
-        return currentLang === "az"
-          ? "Bəli, real təcrübələr və case-lər təqdim olunacaq."
-          : "Yes, practical examples and real cases will be presented.";
-      }
-
-      if (hasAny(q, ["international cooperation","əməkdaşlıq","how does it contribute"])) {
-        return currentLang === "az"
-          ? "Sammit beynəlxalq əməkdaşlığa təcrübə mübadiləsi və yeni tərəfdaşlıqlar yaratmaqla töhfə verir."
-          : "The Summit contributes to international cooperation by enabling exchange of experience and creating new partnerships.";
-      }
-
-      if (hasAny(q, ["final document","declaration","yekun sənəd","bəyanat"])) {
-        return currentLang === "az"
-          ? "Bəli, yekun bəyanatın qəbul olunması nəzərdə tutula bilər."
-          : "Yes, a final declaration may be adopted.";
-      }
-
-      if (hasAny(q, ["other organizations","cooperation with organizations","digər təşkilatlarla əməkdaşlıq"])) {
-        return currentLang === "az"
-          ? "Bəli, beynəlxalq qurumlarla əməkdaşlıq nəzərdə tutulur."
-          : "Yes, cooperation with international organizations is envisaged.";
-      }
-
-      if (hasAny(q, ["media","press","media iştirak edəcəkmi"])) {
-        return currentLang === "az"
-          ? "Bəli, tədbir mediaya açıq olacaq."
-          : "Yes, the event will be open to the media.";
-      }
-
-      if (hasAny(q, ["networking","şəbəkələşmə"])) {
-        return currentLang === "az"
-          ? "Bəli, iştirakçılar üçün xüsusi networking imkanları nəzərdə tutulur."
-          : "Yes, networking opportunities will be available for participants.";
-      }
-
-      if (hasAny(q, ["translation","interpretation","tərcümə xidməti","sinxron tərcümə"])) {
-        return currentLang === "az"
-          ? "Bəli, sinxron tərcümə təmin olunacaq."
-          : "Yes, simultaneous interpretation will be provided.";
-      }
-
-      if (hasAny(q, ["accommodation","yerləşmə","stay arrangement"])) {
-        return currentLang === "az"
-          ? "Bəzi hallarda yerləşmə ilə bağlı tövsiyələr və dəstək göstərilə bilər."
-          : "In some cases, recommendations and support regarding accommodation may be provided.";
-      }
-
-      if (hasAny(q, ["cultural programme date","when is the cultural programme","mədəni proqram nə vaxtdır"])) {
-        return currentLang === "az"
-          ? "Mədəni proqram 19 iyun 2026-cı il tarixində keçiriləcək."
-          : "The cultural programme will take place on 19 June 2026.";
-      }
-
-      if (hasAny(q, ["cultural programme","cultural program","mədəni proqram","gobustan","qobustan"])) {
-        return currentLang === "az"
-          ? "Mədəni proqram 19 iyun 2026-cı il tarixində keçiriləcək. Proqram Qobustana səfəri əhatə edir: 10:00 oteldən çıxış, 11:00 Qobustan qoruğuna çatma, 11:15 Qobustan Muzeyi, 12:00 açıq hava qoruğuna bələdçili tur, 13:15 Qobustandan çıxış, 14:00 nahar və 15:30 otelə qayıdış."
-          : "The cultural programme will take place on 19 June 2026 and includes a visit to Gobustan: 10:00 departure from the hotel, 11:00 arrival at Gobustan Reserve, 11:15 Gobustan Museum, 12:00 guided tour of the open-air reserve, 13:15 departure from Gobustan, 14:00 lunch, and 15:30 return to the hotel.";
-      }
-
-      if (hasAny(q, ["airport","transfer","pickup","qarşılanma","otelə","hava limanı"])) {
-        return currentLang === "az"
-          ? "Bütün xarici qonaqlar hava limanından təyyarə reyslərinə uyğun qaydada qarşılanacaq, otelə yerləşdiriləcək və eyni qaydada oteldən hava limanına yola salınacaqlar."
-          : "All foreign guests will be met at the airport in accordance with their flight schedules, transferred to the hotel, and later transferred from the hotel to the airport accordingly.";
-      }
-
-      if (hasAny(q, ["document","documents","sənəd","sənədlər","strategy"])) {
-        return currentLang === "az"
-          ? "Sənədlər bölməsində 'Azərbaycan Respublikasının 2025–2028-ci illər üçün süni intellekt Strategiyası' yerləşdirilib: https://e-qanun.az/framework/59218"
-          : "The Documents section includes the 'Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028': https://e-qanun.az/framework/59218";
-      }
-
-      if (hasAny(q, ["video","stone to code","from stone to code"])) {
-        return currentLang === "az"
-          ? "“From Stone to Code” tanıtım videosu saytın Summit bölməsində yerləşdirilib."
-          : "The promotional video 'From Stone to Code' is available in the Summit section of the website.";
-      }
-
-      if (hasAny(q, ["azerbaijan ombudsman","ombudsman of azerbaijan","ombudsman institution","azərbaycan ombudsmanı","azərbaycan ombudsman təsisatı"])) {
-        return currentLang === "az"
-          ? "Azərbaycan Ombudsmanı və Ombudsman təsisatı haqqında məlumat üçün baxın: www.ombudsman.az"
-          : "For information about the Ombudsman of Azerbaijan and the Ombudsman Institution, please visit: www.ombudsman.az";
-      }
-
-      return fallbackReply();
-    }
-
-    setLanguage("en", document.querySelector(".lang-btn.active"));
+      const activeLangBtn = document.querySelector(".lang-btn.active");
+      setLanguage("en", activeLangBtn);
+    });
   </script>
 </body>
 </html>
