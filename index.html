@@ -285,7 +285,8 @@
     }
 
     .programme-box,
-    .cultural-box {
+    .cultural-box,
+    .venue-box {
       max-width: 860px;
       margin: 36px auto 0;
       padding: 30px;
@@ -296,9 +297,10 @@
     }
 
     .programme-box p,
-    .cultural-box p {
+    .cultural-box p,
+    .venue-box p {
       color: #d5deeb;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       font-size: 16px;
     }
 
@@ -432,9 +434,9 @@
       position: fixed;
       right: 24px;
       bottom: 110px;
-      width: 410px;
+      width: 430px;
       max-width: calc(100vw - 32px);
-      height: 580px;
+      height: 590px;
       background: #102742;
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 22px;
@@ -494,7 +496,7 @@
     }
 
     .chat-bubble {
-      max-width: 87%;
+      max-width: 88%;
       padding: 12px 14px;
       border-radius: 16px;
       font-size: 14px;
@@ -606,6 +608,7 @@
       .card p,
       .programme-box p,
       .cultural-box p,
+      .venue-box p,
       .document-link {
         font-size: 15px;
       }
@@ -622,6 +625,7 @@
       .card,
       .programme-box,
       .cultural-box,
+      .venue-box,
       .modal-content {
         padding: 22px;
       }
@@ -662,6 +666,7 @@
         <a href="#summit" data-en="Summit" data-az="Sammit">Summit</a>
         <a href="#programme" data-en="Programme" data-az="Proqram">Programme</a>
         <a href="#cultural" data-en="Cultural Programme" data-az="Mədəni proqram">Cultural Programme</a>
+        <a href="#venue" data-en="Venue" data-az="Məkan">Venue</a>
         <button type="button" onclick="openDocumentsModal()" data-en="Documents" data-az="Sənədlər">Documents</button>
       </nav>
 
@@ -762,6 +767,19 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="venue">
+      <div class="container">
+        <h2 class="section-title" data-en="Venue" data-az="Məkan">Venue</h2>
+        <p class="section-lead" data-en="The Summit venue is JW Marriott Absheron Baku in Baku, Azerbaijan." data-az="Sammitin keçiriləcəyi məkan Azərbaycan Respublikasının Bakı şəhərində yerləşən JW Marriott Absheron Baku otelidir.">The Summit venue is JW Marriott Absheron Baku in Baku, Azerbaijan.</p>
+
+        <div class="venue-box">
+          <p data-en="Venue: JW Marriott Absheron Baku" data-az="Məkan: JW Marriott Absheron Baku">Venue: JW Marriott Absheron Baku</p>
+          <p data-en="Address: 674 Azadliq Square, Baku 1010" data-az="Ünvan: 674 Azadliq Square, Baku 1010">Address: 674 Azadliq Square, Baku 1010</p>
+          <p data-en="Phone: (012) 499 88 88" data-az="Telefon: (012) 499 88 88">Phone: (012) 499 88 88</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -787,7 +805,7 @@
   </div>
 
   <div class="chat-launcher">
-    <div class="chat-ai-badge" id="chatAiBadge"><span class="robot-mark">🤖</span><span>AI</span></div>
+    <div class="chat-ai-badge"><span class="robot-mark">🤖</span><span>AI</span></div>
     <button class="chat-toggle" id="chatToggle" title="AI Summit Assistant">💬</button>
   </div>
 
@@ -806,14 +824,14 @@
 
 You can ask me about:
 - date
+- venue
+- address
+- hotel
 - registration
 - deadline
 - travel expenses
-- venue
-- hotel
 - programme
 - cultural programme
-- airport transfer
 - working languages</div>
       </div>
     </div>
@@ -823,7 +841,7 @@ You can ask me about:
         <input type="text" id="chatInput" class="chat-input" placeholder="Ask about the Summit..." />
         <button id="chatSend" class="chat-send">Send</button>
       </div>
-      <div class="chat-hints" id="chatHints">Examples: travel expenses, registration, cultural programme, venue, hotel, working languages</div>
+      <div class="chat-hints" id="chatHints">Examples: venue, address, hotel, travel expenses, deadline, working languages</div>
     </div>
   </div>
 
@@ -868,14 +886,14 @@ You can ask me about:
 
       if (initial && chatBody.children.length === 1) {
         initial.textContent = lang === "az"
-          ? "Salam! Mən AI Sammit Köməkçisiyəm.\n\nMəndən bunları soruşa bilərsiniz:\n- tarix\n- qeydiyyat\n- son tarix\n- səfər xərcləri\n- məkan\n- otel\n- proqram\n- mədəni proqram\n- hava limanı transferi\n- işçi dillər"
-          : "Hello! I am the AI Summit Assistant.\n\nYou can ask me about:\n- date\n- registration\n- deadline\n- travel expenses\n- venue\n- hotel\n- programme\n- cultural programme\n- airport transfer\n- working languages";
+          ? "Salam! Mən AI Sammit Köməkçisiyəm.\n\nMəndən bunları soruşa bilərsiniz:\n- tarix\n- məkan\n- ünvan\n- otel\n- qeydiyyat\n- son tarix\n- səfər xərcləri\n- proqram\n- mədəni proqram\n- işçi dillər"
+          : "Hello! I am the AI Summit Assistant.\n\nYou can ask me about:\n- date\n- venue\n- address\n- hotel\n- registration\n- deadline\n- travel expenses\n- programme\n- cultural programme\n- working languages";
       }
 
       if (hints) {
         hints.textContent = lang === "az"
-          ? "Nümunələr: səfər xərcləri, qeydiyyat, mədəni proqram, məkan, otel, işçi dillər"
-          : "Examples: travel expenses, registration, cultural programme, venue, hotel, working languages";
+          ? "Nümunələr: məkan, ünvan, otel, səfər xərcləri, son tarix, işçi dillər"
+          : "Examples: venue, address, hotel, travel expenses, deadline, working languages";
       }
 
       document.querySelectorAll(".lang-btn").forEach(function(btn) {
@@ -949,7 +967,7 @@ You can ask me about:
       messages.forEach(function(message, index) {
         setTimeout(function() {
           addMessage(message, "bot");
-        }, index * 260);
+        }, index * 240);
       });
     }
 
@@ -962,13 +980,12 @@ You can ask me about:
 
       setTimeout(function () {
         const reply = getSummitReply(text);
-
         if (Array.isArray(reply)) {
           addBotMessages(reply);
         } else {
           addMessage(reply, "bot");
         }
-      }, 250);
+      }, 220);
     }
 
     function fallbackReply() {
@@ -1008,10 +1025,22 @@ You can ask me about:
           : "The Summit will take place on 18–19 June 2026.";
       }
 
-      if (hasAny(q, ["where is the summit","where will it be held","harada keçiriləcək","where held","baku city"])) {
+      if (hasAny(q, ["where is the summit","where will it be held","harada keçiriləcək","where held","venue","location","tədbirin yeri","məkan"])) {
         return currentLang === "az"
-          ? "Sammit Bakı şəhərində keçiriləcək."
-          : "The Summit will be held in Baku.";
+          ? "Tədbirin keçiriləcəyi yer Azərbaycan, Bakı şəhəri, JW Marriott Absheron Baku otelidir."
+          : "The Summit venue is JW Marriott Absheron Baku, Baku, Azerbaijan.";
+      }
+
+      if (hasAny(q, ["address","ünvan","venue address","location address"])) {
+        return currentLang === "az"
+          ? "Ünvan: 674 Azadliq Square, Baku 1010. Telefon: (012) 499 88 88."
+          : "Address: 674 Azadliq Square, Baku 1010. Phone: (012) 499 88 88.";
+      }
+
+      if (hasAny(q, ["hotel","where will foreign guests stay","foreign participants hotel","foreign guests hotel","qonaqlayacağı yer","xarici iştirakçıların qonaqlayacağı yer","accommodation hotel"])) {
+        return currentLang === "az"
+          ? "Xarici iştirakçıların qonaqlayacağı yer JW Marriott Absheron Baku olacaq."
+          : "Foreign participants will stay at JW Marriott Absheron Baku.";
       }
 
       if (hasAny(q, ["main topic","theme","mövzu","what is the main theme","what is the topic"])) {
@@ -1179,24 +1208,6 @@ You can ask me about:
         return currentLang === "az"
           ? "Bütün xarici qonaqlar hava limanından təyyarə reyslərinə uyğun qaydada qarşılanacaq, otelə yerləşdiriləcək və eyni qaydada oteldən hava limanına yola salınacaqlar."
           : "All foreign guests will be met at the airport in accordance with their flight schedules, transferred to the hotel, and later transferred from the hotel to the airport accordingly.";
-      }
-
-      if (hasAny(q, ["event venue","venue","location","harada","məkan","tədbirin yeri","jw marriott oteli"])) {
-        return currentLang === "az"
-          ? "Tədbirin keçiriləcəyi yer JW Marriott Otelidir."
-          : "The event venue is JW Marriott Hotel.";
-      }
-
-      if (hasAny(q, ["jw marriott","hotel link","venue link","location link","məkan linki","otel linki"])) {
-        return currentLang === "az"
-          ? "Məkan linki: https://www.google.com/search?gs_ssp=eJwFwbENgCAQBdDYuoEdjTUfMYCM4BZ3SqIYJEGMjO97fS-TxAbYGtH5EW2Ght2JzKICKGiPtls1MXNgvRmnZrcO8ROJSjlzrYL4OULJt2C63h9gPBfr&q=jw+marriott+absheron+baku&rlz=1C1YTUH_ruAZ1188AZ1188&oq=JW+Marr&gs_lcrp=EgZjaHJvbWUqFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBwgAEAAYgAQyFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBggCEEUYOTIWCAMQLhivARjHARiABBiYBRiZBRieBTIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABNIBCTk3NDZqMGoxNagCCLACAQ&sourceid=chrome&ie=UTF-8"
-          : "Venue link: https://www.google.com/search?gs_ssp=eJwFwbENgCAQBdDYuoEdjTUfMYCM4BZ3SqIYJEGMjO97fS-TxAbYGtH5EW2Ght2JzKICKGiPtls1MXNgvRmnZrcO8ROJSjlzrYL4OULJt2C63h9gPBfr&q=jw+marriott+absheron+baku&rlz=1C1YTUH_ruAZ1188AZ1188&oq=JW+Marr&gs_lcrp=EgZjaHJvbWUqFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBwgAEAAYgAQyFggBEC4YrwEYxwEYgAQYmAUYmQUYngUyBggCEEUYOTIWCAMQLhivARjHARiABBiYBRiZBRieBTIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABNIBCTk3NDZqMGoxNagCCLACAQ&sourceid=chrome&ie=UTF-8";
-      }
-
-      if (hasAny(q, ["hotel","accommodation hotel","qonaqlayacağı otel","qonaqlama oteli"])) {
-        return currentLang === "az"
-          ? "Qonaqların qonaqlayacağı otellə bağlı məlumat 23 Aprel 2026-cı il tarixindən sonra bildiriləcək."
-          : "Information about the hotel where guests will be accommodated will be provided after 23 April 2026.";
       }
 
       if (hasAny(q, ["document","documents","sənəd","sənədlər","strategy"])) {
