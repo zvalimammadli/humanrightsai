@@ -926,8 +926,8 @@
 
       if (hints) {
         hints.textContent = lang === "az"
-          ? "Nümunələr: məkan, ünvan, qeydiyyat, proqram, mədəni proqram"
-          : "Examples: venue, address, registration, programme, cultural programme";
+          ? "Nümunələr: otel, ünvan, qeydiyyat, spiker, hava limanı"
+          : "Examples: hotel, address, registration, speaker, airport";
       }
 
       document.querySelectorAll(".lang-btn").forEach(function(btn) {
@@ -988,17 +988,18 @@
 
     function getFaqReply(message, lang) {
       const q = normalizeText(message);
-
       const isAz = lang === "az";
 
       if (!q) {
-        return isAz ? "Zəhmət olmasa sualınızı yazın." : "Please type your question.";
+        return isAz
+          ? "Zəhmət olmasa sualınızı yazın."
+          : "Please type your question.";
       }
 
       if (q.includes("hello") || q.includes("hi") || q.includes("salam")) {
         return isAz
-          ? "Salam! Mən AI Sammit Köməkçisiyəm. Sizə sammitin tarixi, məkanı, qeydiyyat, proqramı və mədəni proqramı barədə məlumat verə bilərəm."
-          : "Hello! I am the AI Summit Assistant. I can provide information about the Summit date, venue, registration, programme and cultural programme.";
+          ? "Salam! Mən AI Sammit Köməkçisiyəm. Sizə sammitin tarixi, məkanı, qeydiyyat, proqramı, otel, spiker məsələləri və mədəni proqram barədə məlumat verə bilərəm."
+          : "Hello! I am the AI Summit Assistant. I can provide information about the Summit date, venue, registration, hotel, speaker issues and cultural programme.";
       }
 
       if (
@@ -1016,8 +1017,7 @@
         q.includes("venue") ||
         q.includes("where") ||
         q.includes("mekan") ||
-        q.includes("harada") ||
-        q.includes("location")
+        q.includes("harada")
       ) {
         return isAz
           ? "Sammit Azərbaycan, Bakı şəhərində yerləşən JW Marriott Absheron Baku otelində keçiriləcək."
@@ -1026,20 +1026,115 @@
 
       if (
         q.includes("address") ||
+        q.includes("location") ||
         q.includes("unvan")
       ) {
         return isAz
-          ? "Ünvan: 674 Azadliq Square, Baku 1010."
-          : "Address: 674 Azadliq Square, Baku 1010.";
+          ? "Ətraflı ünvan və location məlumatı üçün: www.marriott.com  Tel: +99412 499 88 88"
+          : "For address and location details: www.marriott.com  Tel: +99412 499 88 88";
       }
 
       if (
-        q.includes("phone") ||
-        q.includes("telefon")
+        q.includes("foreign guest") ||
+        q.includes("registered guest") ||
+        q.includes("organization committee") ||
+        q.includes("xarici qonaq") ||
+        q.includes("qeydiyyatdan kecen") ||
+        q.includes("qeydiyyatdan keçən") ||
+        q.includes("xercleri teskilat komitesi") ||
+        q.includes("xərcləri təşkilat komitəsi")
       ) {
         return isAz
-          ? "Əlaqə telefonu: (012) 499 88 88."
-          : "Phone: (012) 499 88 88.";
+          ? "Qeydiyyatdan keçən və xərcləri təşkilat komitəsi tərəfindən qarşılanan xarici qonaqlar JW Marriott Absheron Baku otelində qalacaqlar."
+          : "Foreign guests who are registered and whose expenses are covered by the Organizing Committee will stay at JW Marriott Absheron Baku.";
+      }
+
+      if (
+        q.includes("own expense") ||
+        q.includes("self funded") ||
+        q.includes("accompanying person") ||
+        q.includes("musayiet") ||
+        q.includes("müşaiyət") ||
+        q.includes("oz hesabina") ||
+        q.includes("öz hesabına")
+      ) {
+        return isAz
+          ? "Öz hesabına gələn xarici qonaqlar və ya müşaiyət edən şəxslər istəsələr JW Marriott Absheron Baku otelində və ya həmin ərazidə yerləşən otellərin birində otaq rezervasiya edə bilərlər."
+          : "Foreign guests coming at their own expense or accompanying persons may reserve a room at JW Marriott Absheron Baku or at one of the hotels located in that area.";
+      }
+
+      if (
+        q.includes("hotel") ||
+        q.includes("accommodation") ||
+        q.includes("qalacaq") ||
+        q.includes("qalacag") ||
+        q.includes("otelde qalacaq") ||
+        q.includes("oteldə qalacaq")
+      ) {
+        return isAz
+          ? "Xarici qonaqların yerləşdirilməsi ilə bağlı əsas otel JW Marriott Absheron Baku-dur."
+          : "The main hotel for accommodating foreign guests is JW Marriott Absheron Baku.";
+      }
+
+      if (
+        q.includes("reserve hotel") ||
+        q.includes("book hotel") ||
+        q.includes("hotel room") ||
+        q.includes("otaq") ||
+        q.includes("rezervasiya") ||
+        q.includes("bron")
+      ) {
+        return isAz
+          ? "Otel otağı rezervasiya etmək üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
+          : "To reserve a hotel room, you may contact +99 450 275 18 99 (Whatsapp).";
+      }
+
+      if (
+        q.includes("speaker") ||
+        q.includes("spiker") ||
+        q.includes("cixis") ||
+        q.includes("çıxış")
+      ) {
+        return isAz
+          ? "Speaker olaraq proqrama daxil olmaq üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
+          : "To be included in the programme as a speaker, you may contact +99 450 275 18 99 (Whatsapp).";
+      }
+
+      if (
+        q.includes("airport") ||
+        q.includes("pickup") ||
+        q.includes("qarsilama") ||
+        q.includes("qarşılama") ||
+        q.includes("hava limani") ||
+        q.includes("hava limanı")
+      ) {
+        return isAz
+          ? "Bəli. Qeydiyyatdan keçən iştirakçılar uçuş qrafiklərinə uyğun olaraq Heydər Əliyev adına Beynəlxalq Hava Limanında qarşılanıb qaldıqları otelə gətiriləcək və gediş zamanı oteldən hava limanına yola salınacaqlar."
+          : "Yes. Registered participants will be met at Heydar Aliyev International Airport according to their flight schedules, transferred to their hotel, and on departure they will be accompanied from the hotel to the airport.";
+      }
+
+      if (
+        q.includes("organizer") ||
+        q.includes("organiser") ||
+        q.includes("teskilatci") ||
+        q.includes("təşkilatçı") ||
+        q.includes("kim teskil edir") ||
+        q.includes("kim təşkil edir")
+      ) {
+        return isAz
+          ? "Tədbirin təşkilatçısı Azərbaycan Ombudsman İnstitutudur."
+          : "The organizer of the Summit is the Ombudsman Institution of Azerbaijan.";
+      }
+
+      if (
+        q.includes("ombudsman institution") ||
+        q.includes("azerbaijan ombudsman") ||
+        q.includes("ombudsman haqqinda") ||
+        q.includes("ombudsman haqqında")
+      ) {
+        return isAz
+          ? "Azərbaycan Ombudsman İnstitutu haqqında məlumat üçün: www.ombudsman.az"
+          : "For information about the Ombudsman Institution of Azerbaijan: www.ombudsman.az";
       }
 
       if (
@@ -1072,10 +1167,7 @@
           : "The cultural programme is planned for the second day of the Summit. Participants will visit Gobustan on 19 June 2026.";
       }
 
-      if (
-        q.includes("gobustan") ||
-        q.includes("qobustan")
-      ) {
+      if (q.includes("gobustan") || q.includes("qobustan")) {
         return isAz
           ? "Qobustan üzrə mədəni proqram belədir: 10:00 oteldən çıxış, 11:00 qoruğa çatış, 11:15 muzeyə səfər, 12:00 açıq hava qoruğuna tur, sonra nahar və otelə qayıdış."
           : "The Gobustan cultural programme includes departure from the hotel at 10:00, arrival at the reserve at 11:00, museum visit at 11:15, open-air reserve tour at 12:00, followed by lunch and return to the hotel.";
@@ -1102,29 +1194,22 @@
       }
 
       if (
-        q.includes("ombudsman") ||
-        q.includes("institution")
-      ) {
-        return isAz
-          ? "Azərbaycan Ombudsmanı və Ombudsman təsisatı haqqında rəsmi məlumat üçün www.ombudsman.az saytına daxil olun."
-          : "For official information about the Ombudsman Institution of Azerbaijan, please visit www.ombudsman.az.";
-      }
-
-      if (
         q.includes("travel expenses") ||
         q.includes("travel") ||
         q.includes("expense") ||
         q.includes("xercler") ||
         q.includes("xerc") ||
+        q.includes("sefer") ||
         q.includes("səfər")
       ) {
         return isAz
-          ? "Səfər xərcləri ilə bağlı dəqiq məlumat saytda göstərilməyib. Zəhmət olmasa təşkilatçılarla əlaqə saxlayın."
-          : "Specific information on travel expenses is not provided on the website. Please contact the organisers for details.";
+          ? "Səfər xərcləri ilə bağlı dəqiq məlumat üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
+          : "For detailed information on travel expenses, you may contact +99 450 275 18 99 (Whatsapp).";
       }
 
       if (
         q.includes("video") ||
+        q.includes("tanitim") ||
         q.includes("tanitim videosu")
       ) {
         return isAz
@@ -1133,8 +1218,8 @@
       }
 
       return isAz
-        ? "Bu sual üzrə dəqiq məlumat tapılmadı. Zəhmət olmasa sammitin tarixi, məkanı, qeydiyyat, proqramı, mədəni proqramı və ya Ombudsman təsisatı barədə sual verin."
-        : "I could not find precise information on that question. Please ask about the Summit date, venue, registration, programme, cultural programme or the Ombudsman institution.";
+        ? "Bu sual üzrə hazırda sistemdə dəqiq məlumat yoxdur. Ətraflı məlumat üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
+        : "There is currently no precise information in the system on this question. For further information, you may contact +99 450 275 18 99 (Whatsapp).";
     }
 
     function sendMessage() {
