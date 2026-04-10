@@ -875,12 +875,11 @@
         <input type="text" id="chatInput" class="chat-input" placeholder="Ask about the Summit..." />
         <button id="chatSend" class="chat-send">Send</button>
       </div>
-      <div class="chat-hints" id="chatHints">Examples: venue, address, registration, travel expenses, cultural programme</div>
+      <div class="chat-hints" id="chatHints">Examples: venue, address, registration, programme, cultural programme</div>
     </div>
   </div>
 
   <script>
-    const WORKER_URL = "YOUR_WORKER_URL_HERE";
     let currentLang = "en";
 
     function setLanguage(lang, button) {
@@ -927,8 +926,8 @@
 
       if (hints) {
         hints.textContent = lang === "az"
-          ? "Nümunələr: məkan, ünvan, qeydiyyat, səfər xərcləri, mədəni proqram"
-          : "Examples: venue, address, registration, travel expenses, cultural programme";
+          ? "Nümunələr: məkan, ünvan, qeydiyyat, proqram, mədəni proqram"
+          : "Examples: venue, address, registration, programme, cultural programme";
       }
 
       document.querySelectorAll(".lang-btn").forEach(function(btn) {
@@ -972,22 +971,178 @@
       return message;
     }
 
-    async function sendMessage() {
+    function normalizeText(text) {
+      return text
+        .toLowerCase()
+        .replace(/ə/g, "e")
+        .replace(/ı/g, "i")
+        .replace(/ö/g, "o")
+        .replace(/ü/g, "u")
+        .replace(/ğ/g, "g")
+        .replace(/ş/g, "s")
+        .replace(/ç/g, "c")
+        .replace(/[^\w\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function getFaqReply(message, lang) {
+      const q = normalizeText(message);
+
+      const isAz = lang === "az";
+
+      if (!q) {
+        return isAz ? "Zəhmət olmasa sualınızı yazın." : "Please type your question.";
+      }
+
+      if (q.includes("hello") || q.includes("hi") || q.includes("salam")) {
+        return isAz
+          ? "Salam! Mən AI Sammit Köməkçisiyəm. Sizə sammitin tarixi, məkanı, qeydiyyat, proqramı və mədəni proqramı barədə məlumat verə bilərəm."
+          : "Hello! I am the AI Summit Assistant. I can provide information about the Summit date, venue, registration, programme and cultural programme.";
+      }
+
+      if (
+        q.includes("date") ||
+        q.includes("when") ||
+        q.includes("tarix") ||
+        q.includes("ne vaxt")
+      ) {
+        return isAz
+          ? "Bakı Ombudsmanlar Sammiti 18–19 iyun 2026-cı il tarixlərində keçiriləcək."
+          : "The Baku Ombudsmen Summit will take place on 18–19 June 2026.";
+      }
+
+      if (
+        q.includes("venue") ||
+        q.includes("where") ||
+        q.includes("mekan") ||
+        q.includes("harada") ||
+        q.includes("location")
+      ) {
+        return isAz
+          ? "Sammit Azərbaycan, Bakı şəhərində yerləşən JW Marriott Absheron Baku otelində keçiriləcək."
+          : "The Summit will be held at JW Marriott Absheron Baku in Baku, Azerbaijan.";
+      }
+
+      if (
+        q.includes("address") ||
+        q.includes("unvan")
+      ) {
+        return isAz
+          ? "Ünvan: 674 Azadliq Square, Baku 1010."
+          : "Address: 674 Azadliq Square, Baku 1010.";
+      }
+
+      if (
+        q.includes("phone") ||
+        q.includes("telefon")
+      ) {
+        return isAz
+          ? "Əlaqə telefonu: (012) 499 88 88."
+          : "Phone: (012) 499 88 88.";
+      }
+
+      if (
+        q.includes("registration") ||
+        q.includes("register") ||
+        q.includes("qeydiyyat")
+      ) {
+        return isAz
+          ? "Qeydiyyat üçün bu keçiddən istifadə edə bilərsiniz: https://ombudsman.az/en/summit-form"
+          : "You can register through this link: https://ombudsman.az/en/summit-form";
+      }
+
+      if (
+        q.includes("programme") ||
+        q.includes("program") ||
+        q.includes("proqram")
+      ) {
+        return isAz
+          ? "Sammitin əsas proqramı saytın Programme bölməsində PDF formatında yerləşdirilib."
+          : "The main programme of the Summit is available in PDF format in the Programme section of the website.";
+      }
+
+      if (
+        q.includes("cultural") ||
+        q.includes("meden") ||
+        q.includes("mədəni")
+      ) {
+        return isAz
+          ? "Mədəni proqram sammitin ikinci gününə aiddir. İştirakçılar 19 iyun 2026-cı ildə Qobustana səfər edəcəklər."
+          : "The cultural programme is planned for the second day of the Summit. Participants will visit Gobustan on 19 June 2026.";
+      }
+
+      if (
+        q.includes("gobustan") ||
+        q.includes("qobustan")
+      ) {
+        return isAz
+          ? "Qobustan üzrə mədəni proqram belədir: 10:00 oteldən çıxış, 11:00 qoruğa çatış, 11:15 muzeyə səfər, 12:00 açıq hava qoruğuna tur, sonra nahar və otelə qayıdış."
+          : "The Gobustan cultural programme includes departure from the hotel at 10:00, arrival at the reserve at 11:00, museum visit at 11:15, open-air reserve tour at 12:00, followed by lunch and return to the hotel.";
+      }
+
+      if (
+        q.includes("document") ||
+        q.includes("sened") ||
+        q.includes("sənəd")
+      ) {
+        return isAz
+          ? "Sənədlər bölməsində Azərbaycan Respublikasının 2025–2028-ci illər üçün Süni İntellekt Strategiyası yerləşdirilib."
+          : "The Documents section includes the Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028.";
+      }
+
+      if (
+        q.includes("ai") ||
+        q.includes("artificial intelligence") ||
+        q.includes("suni intellekt")
+      ) {
+        return isAz
+          ? "Sammitin mövzusu Süni İntellekt Dövründə İnsan Hüquqlarıdır. Burada süni intellektin imkanları, riskləri və məsuliyyətləri müzakirə olunur."
+          : "The theme of the Summit is Human Rights in the Age of Artificial Intelligence. It addresses the opportunities, risks and responsibilities related to AI.";
+      }
+
+      if (
+        q.includes("ombudsman") ||
+        q.includes("institution")
+      ) {
+        return isAz
+          ? "Azərbaycan Ombudsmanı və Ombudsman təsisatı haqqında rəsmi məlumat üçün www.ombudsman.az saytına daxil olun."
+          : "For official information about the Ombudsman Institution of Azerbaijan, please visit www.ombudsman.az.";
+      }
+
+      if (
+        q.includes("travel expenses") ||
+        q.includes("travel") ||
+        q.includes("expense") ||
+        q.includes("xercler") ||
+        q.includes("xerc") ||
+        q.includes("səfər")
+      ) {
+        return isAz
+          ? "Səfər xərcləri ilə bağlı dəqiq məlumat saytda göstərilməyib. Zəhmət olmasa təşkilatçılarla əlaqə saxlayın."
+          : "Specific information on travel expenses is not provided on the website. Please contact the organisers for details.";
+      }
+
+      if (
+        q.includes("video") ||
+        q.includes("tanitim videosu")
+      ) {
+        return isAz
+          ? "Saytda “From Stone to Code” konsepsiyası əsasında hazırlanmış tanıtım videosu yerləşdirilib."
+          : "The website includes a promotional video prepared under the concept “From Stone to Code”.";
+      }
+
+      return isAz
+        ? "Bu sual üzrə dəqiq məlumat tapılmadı. Zəhmət olmasa sammitin tarixi, məkanı, qeydiyyat, proqramı, mədəni proqramı və ya Ombudsman təsisatı barədə sual verin."
+        : "I could not find precise information on that question. Please ask about the Summit date, venue, registration, programme, cultural programme or the Ombudsman institution.";
+    }
+
+    function sendMessage() {
       const chatInput = document.getElementById("chatInput");
       const chatSend = document.getElementById("chatSend");
       const text = chatInput.value.trim();
 
       if (!text) return;
-
-      if (WORKER_URL === "YOUR_WORKER_URL_HERE") {
-        addMessage(
-          currentLang === "az"
-            ? "Zəhmət olmasa əvvəlcə kodda WORKER_URL hissəsinə öz Cloudflare Worker linkinizi əlavə edin."
-            : "Please first add your Cloudflare Worker URL in the WORKER_URL field in the code.",
-          "bot"
-        );
-        return;
-      }
 
       addMessage(text, "user");
       chatInput.value = "";
@@ -999,38 +1154,12 @@
         true
       );
 
-      try {
-        const res = await fetch(WORKER_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            message: text,
-            lang: currentLang
-          })
-        });
-
-        const data = await res.json();
+      setTimeout(function () {
+        const answer = getFaqReply(text, currentLang);
         typingMsg.remove();
-
-        addMessage(
-          data.answer || (
-            currentLang === "az" ? "Cavab alınmadı." : "No response received."
-          ),
-          "bot"
-        );
-      } catch (err) {
-        typingMsg.remove();
-        addMessage(
-          currentLang === "az"
-            ? "Xəta baş verdi. Zəhmət olmasa bir daha cəhd edin."
-            : "An error occurred. Please try again.",
-          "bot"
-        );
-      } finally {
+        addMessage(answer, "bot");
         chatSend.disabled = false;
-      }
+      }, 450);
     }
 
     document.addEventListener("keydown", function(event) {
