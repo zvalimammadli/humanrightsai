@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baku Ombudsmen Summit 2026</title>
-  <meta name="description" content="Baku Ombudsmen Summit 2026 - Human Rights in the Age of Artificial Intelligence" />
+
+  <title>Baku Ombudsmen Summit 2026 | Human Rights in the Age of AI</title>
 
   <style>
     * {
@@ -19,1264 +19,834 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #0b1d33;
+      background: #06162f;
       color: #ffffff;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    button,
-    input {
-      font-family: inherit;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(11, 29, 51, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-    }
-
-    .header-inner {
-      min-height: 76px;
+    header {
+      min-height: 100vh;
+      padding: 30px 8%;
+      background:
+        linear-gradient(rgba(6, 22, 47, 0.90), rgba(6, 22, 47, 0.96)),
+        url("Summit 1.png") center/cover no-repeat;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-between;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       gap: 20px;
       flex-wrap: wrap;
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      flex-wrap: wrap;
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
     }
 
-    .nav a,
-    .nav button {
-      background: transparent;
-      border: none;
-      color: #d9e3ef;
-      font-size: 14px;
-      cursor: pointer;
-      transition: color 0.25s ease;
-      padding: 0;
+    .nav-links a {
+      margin-left: 22px;
+      font-size: 15px;
+      color: #dbeafe;
+      opacity: 0.9;
     }
 
-    .nav a:hover,
-    .nav button:hover {
-      color: #ffffff;
-    }
-
-    .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .lang-btn {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.45);
-      background: transparent;
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 13px;
-      transition: all 0.25s ease;
-    }
-
-    .lang-btn:hover,
-    .lang-btn.active {
-      background: #ffffff;
-      color: #0b1d33;
+    .nav-links a:hover {
+      color: #7dd3fc;
+      opacity: 1;
     }
 
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      background:
-        linear-gradient(rgba(11, 29, 51, 0.40), rgba(11, 29, 51, 0.78)),
-        url("./Summit 1.png") center center / cover no-repeat;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(11,29,51,0.14), rgba(11,29,51,0.58));
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
       max-width: 980px;
-      padding-top: 90px;
+      padding: 90px 0;
     }
 
-    .hero-title {
-      font-size: 70px;
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      color: #bae6fd;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 78px);
       line-height: 1.05;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-      font-weight: 700;
+      margin-bottom: 24px;
     }
 
-    .hero-date {
-      font-size: 24px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #dbe7f3;
-      margin-bottom: 22px;
+    .hero p {
+      max-width: 790px;
+      font-size: 20px;
+      color: #dbeafe;
+      margin-bottom: 34px;
     }
 
-    .hero-subtitle {
-      max-width: 820px;
-      margin: 0 auto 34px;
-      color: #d8e1ec;
-      font-size: 18px;
-    }
-
-    .hero-actions {
+    .btns {
       display: flex;
-      justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: #38bdf8;
+      color: #06162f;
+    }
+
+    .secondary {
       border: 1px solid rgba(255,255,255,0.35);
-      font-size: 15px;
-      transition: all 0.25s ease;
-    }
-
-    .btn-primary {
-      background: #ffffff;
-      color: #0b1d33;
-      border-color: #ffffff;
-    }
-
-    .btn-primary:hover {
-      background: #dfe7f1;
-    }
-
-    .btn-secondary {
-      background: transparent;
       color: #ffffff;
     }
 
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .section {
-      padding: 95px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      background: #0b1d33;
-      position: relative;
-      overflow: hidden;
+    section {
+      padding: 85px 8%;
     }
 
     .section-title {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .section-lead {
-      max-width: 920px;
-      margin: 0 auto;
-      text-align: center;
-      color: #d4deeb;
-      font-size: 17px;
-    }
-
-    .content-box {
-      max-width: 980px;
-      margin: 36px auto 0;
-      padding: 34px;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-    }
-
-    .content-box p {
-      color: #d5deeb;
-      font-size: 16px;
-      text-align: center;
-    }
-
-    .content-box p + p {
-      margin-top: 16px;
-    }
-
-    .summit-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 30px;
-      margin-top: 38px;
-      align-items: start;
-    }
-
-    .card {
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-    }
-
-    .card h3 {
-      font-size: 24px;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .card p {
-      color: #d5deeb;
-      text-align: center;
-      font-size: 16px;
-    }
-
-    .card p + p {
-      margin-top: 14px;
-    }
-
-    .video-wrap {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      margin-top: 20px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .video-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .programme-box,
-    .cultural-box,
-    .venue-box {
-      max-width: 860px;
-      margin: 36px auto 0;
-      padding: 30px;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      text-align: center;
-      position: relative;
-      z-index: 2;
-      backdrop-filter: blur(2px);
-    }
-
-    .programme-box p,
-    .cultural-box p,
-    .venue-box p {
-      color: #e2ebf5;
-      margin-bottom: 16px;
-      font-size: 16px;
-    }
-
-    .cultural-list {
-      text-align: left;
-      max-width: 720px;
-      margin: 22px auto 0;
-      color: #f0f5fb;
-      position: relative;
-      z-index: 2;
-    }
-
-    .cultural-list div {
-      margin-bottom: 10px;
-      padding-left: 10px;
-      border-left: 2px solid rgba(255,255,255,0.32);
-    }
-
-    .cultural-section {
-      position: relative;
-      background:
-        linear-gradient(rgba(8, 24, 43, 0.45), rgba(8, 24, 43, 0.58)),
-        url("./Gobustant.jpg") center center / cover no-repeat;
-    }
-
-    .cultural-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: radial-gradient(
-        circle at center,
-        rgba(255, 190, 90, 0.12),
-        rgba(8, 24, 43, 0.35) 45%,
-        rgba(8, 24, 43, 0.72) 100%
-      );
-      pointer-events: none;
-    }
-
-    .cultural-box {
-      border: 1px solid rgba(255,255,255,0.14);
-      background: linear-gradient(180deg, rgba(8,24,43,0.44), rgba(8,24,43,0.58));
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 3000;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      padding: 20px;
-    }
-
-    .modal.show {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      width: 100%;
-      max-width: 620px;
-      background: #102742;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 22px;
-      padding: 28px 26px;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      background: transparent;
-      border: none;
-      color: #ffffff;
-      font-size: 26px;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .modal-title {
-      font-size: 26px;
+      font-size: 38px;
+      line-height: 1.2;
       margin-bottom: 18px;
-      text-align: center;
     }
 
-    .document-link {
-      display: block;
-      padding: 16px 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      color: #ffffff;
-      text-align: center;
-      transition: all 0.25s ease;
-      font-size: 16px;
-    }
-
-    .document-link:hover {
-      background: rgba(255,255,255,0.10);
-    }
-
-    .site-footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      background: #08182b;
-      padding: 28px 0;
-      text-align: center;
-      color: #aeb9c8;
+    .section-subtitle {
+      color: #7dd3fc;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
       font-size: 14px;
     }
 
-    .chat-launcher {
+    .muted {
+      color: #cbd5e1;
+      max-width: 950px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .info-box {
+      background: #0f2a4d;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 30px;
+    }
+
+    .info-box h3 {
+      color: #7dd3fc;
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 16px;
+    }
+
+    li {
+      color: #dbeafe;
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.065);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+      color: #7dd3fc;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #dbeafe;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #0f2a4d, #08203f);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .quote-box {
+      margin-top: 34px;
+      padding: 32px;
+      border-left: 4px solid #38bdf8;
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px;
+      color: #dbeafe;
+      font-size: 20px;
+      max-width: 900px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+    .faq-item h3 {
+      color: #7dd3fc;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    footer {
+      background: #020617;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 42px 8%;
+    }
+
+    .chatbot {
       position: fixed;
       right: 20px;
       bottom: 20px;
-      z-index: 4000;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .chat-ai-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffffff;
-      color: #0b1d33;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-      letter-spacing: 0.4px;
-    }
-
-    .chat-ai-badge .robot-mark {
-      font-size: 16px;
-      line-height: 1;
-    }
-
-    .chat-toggle {
-      width: 78px;
-      height: 78px;
-      border: none;
-      border-radius: 50%;
-      background: #ffffff;
-      color: #0b1d33;
-      font-size: 32px;
-      cursor: pointer;
-      box-shadow: 0 14px 34px rgba(0,0,0,0.30);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .chat-widget {
-      position: fixed;
-      right: 24px;
-      bottom: 110px;
-      width: 430px;
-      max-width: calc(100vw - 32px);
-      height: 590px;
-      background: #102742;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 22px;
+      width: 350px;
+      max-width: calc(100% - 40px);
+      background: #0f172a;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      display: none;
-      z-index: 4000;
-    }
-
-    .chat-widget.show {
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.38);
+      z-index: 999;
     }
 
     .chat-header {
-      padding: 16px 18px;
-      background: #0d223a;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .chat-title {
-      font-size: 16px;
+      background: #38bdf8;
+      color: #06162f;
+      padding: 15px;
       font-weight: 700;
-    }
-
-    .chat-subtitle {
-      font-size: 12px;
-      color: #cbd6e3;
-      margin-top: 2px;
-    }
-
-    .chat-close {
-      background: transparent;
-      border: none;
-      color: #ffffff;
-      font-size: 22px;
       cursor: pointer;
     }
 
     .chat-body {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
-      background: #102742;
+      display: none;
+      padding: 14px;
     }
 
-    .chat-message {
-      margin-bottom: 12px;
-      display: flex;
+    .chat-body.active {
+      display: block;
     }
 
-    .chat-message.user {
-      justify-content: flex-end;
-    }
-
-    .chat-bubble {
-      max-width: 88%;
-      padding: 12px 14px;
-      border-radius: 16px;
-      font-size: 14px;
-      line-height: 1.5;
-      white-space: pre-wrap;
-    }
-
-    .chat-message.bot .chat-bubble {
+    .chat-body button {
+      width: 100%;
+      text-align: left;
       background: rgba(255,255,255,0.08);
       color: #ffffff;
-      border-top-left-radius: 6px;
-    }
-
-    .chat-message.user .chat-bubble {
-      background: #ffffff;
-      color: #0b1d33;
-      border-top-right-radius: 6px;
-    }
-
-    .typing {
-      opacity: 0.8;
-      font-style: italic;
-    }
-
-    .chat-footer {
-      padding: 14px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      background: #0d223a;
-    }
-
-    .chat-input-row {
-      display: flex;
-      gap: 10px;
-    }
-
-    .chat-input {
-      flex: 1;
-      min-width: 0;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
-      color: #ffffff;
-      outline: none;
-    }
-
-    .chat-input::placeholder {
-      color: #c3cfdd;
-    }
-
-    .chat-send {
-      padding: 0 16px;
       border: none;
-      border-radius: 14px;
-      background: #ffffff;
-      color: #0b1d33;
-      font-weight: 700;
+      padding: 11px;
+      border-radius: 10px;
+      margin-bottom: 8px;
       cursor: pointer;
+      font-size: 14px;
     }
 
-    .chat-send:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
+    .chat-body button:hover {
+      background: rgba(255,255,255,0.14);
     }
 
-    .chat-hints {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #c5d0dc;
-      line-height: 1.5;
+    .answer {
+      margin-top: 12px;
+      background: rgba(255,255,255,0.06);
+      padding: 13px;
+      border-radius: 10px;
+      color: #dbeafe;
+      font-size: 14px;
     }
 
-    @media (max-width: 980px) {
-      .header-inner {
-        justify-content: center;
-        padding: 14px 0;
-      }
-
-      .hero-title {
-        font-size: 52px;
-      }
-
-      .hero-date {
-        font-size: 20px;
-      }
-
-      .summit-grid {
+    @media (max-width: 850px) {
+      .split {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 640px) {
-      .site-header {
-        position: static;
+      .nav-links a {
+        margin-left: 10px;
       }
 
-      .hero {
-        min-height: auto;
-        padding: 90px 0 70px;
-      }
-
-      .hero-content {
-        padding-top: 10px;
-      }
-
-      .hero-title {
-        font-size: 34px;
-        letter-spacing: 1.5px;
-      }
-
-      .hero-date {
+      .hero p {
         font-size: 18px;
-        letter-spacing: 2px;
       }
 
-      .hero-subtitle,
-      .section-lead,
-      .content-box p,
-      .card p,
-      .programme-box p,
-      .cultural-box p,
-      .venue-box p,
-      .document-link {
-        font-size: 15px;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-
-      .section-title {
-        font-size: 28px;
-      }
-
-      .content-box,
-      .card,
-      .programme-box,
-      .cultural-box,
-      .venue-box,
-      .modal-content {
-        padding: 22px;
-      }
-
-      .nav {
-        gap: 14px;
-      }
-
-      .chat-widget {
-        right: 12px;
-        bottom: 98px;
-        width: calc(100vw - 24px);
-        height: 72vh;
-      }
-
-      .chat-launcher {
-        right: 12px;
-        bottom: 12px;
-      }
-
-      .chat-ai-badge {
-        font-size: 12px;
-        padding: 9px 12px;
-      }
-
-      .chat-toggle {
-        width: 74px;
-        height: 74px;
+      section {
+        padding: 70px 7%;
       }
     }
   </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <nav class="nav">
-        <a href="#about" data-en="About" data-az="Haqqında">About</a>
-        <a href="#summit" data-en="Summit" data-az="Sammit">Summit</a>
-        <a href="#programme" data-en="Programme" data-az="Proqram">Programme</a>
-        <a href="#cultural" data-en="Cultural Programme" data-az="Mədəni proqram">Cultural Programme</a>
-        <a href="#venue" data-en="Venue" data-az="Məkan">Venue</a>
-        <button type="button" onclick="openDocumentsModal()" data-en="Documents" data-az="Sənədlər">Documents</button>
-      </nav>
 
-      <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLanguage('en', this)">ENG</button>
-        <button class="lang-btn" onclick="setLanguage('az', this)">AZ</button>
-      </div>
+<header>
+  <nav>
+    <div class="logo">Baku Ombudsmen Summit 2026</div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#why">Why AI?</a>
+      <a href="#objectives">Objectives</a>
+      <a href="#themes">Themes</a>
+      <a href="#documents">Documents</a>
+      <a href="#registration">Registration</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-content">
-        <h1 class="hero-title" data-en="Baku Ombudsmen Summit" data-az="Bakı Ombudsmanlar Sammiti">Baku Ombudsmen Summit</h1>
-        <div class="hero-date" data-en="18–19 June 2026" data-az="18–19 iyun 2026">18–19 June 2026</div>
-        <p class="hero-subtitle" data-en="Human Rights in the Age of Artificial Intelligence" data-az="Süni İntellekt Dövründə İnsan Hüquqları">Human Rights in the Age of Artificial Intelligence</p>
+  <div class="hero">
+    <span class="tag">18–19 June 2026 · Baku, Azerbaijan</span>
 
-        <div class="hero-actions">
-          <a href="https://ombudsman.az/en/summit-form" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-en="Registration" data-az="Qeydiyyat">Registration</a>
-          <a href="#programme" class="btn btn-secondary" data-en="View Programme" data-az="Proqrama bax">View Programme</a>
-        </div>
-      </div>
-    </section>
+    <h1>Human Rights in the Age of Artificial Intelligence</h1>
 
-    <section class="section" id="about">
-      <div class="container">
-        <h2 class="section-title" data-en="About the Platform" data-az="Platforma haqqında">About the Platform</h2>
-        <p class="section-lead" data-en="This platform has been created to promote a human-rights-based approach to the rapidly evolving development of artificial intelligence in the context of contemporary global challenges." data-az="Bu platforma müasir qlobal çağırışlar fonunda sürətlə inkişaf edən süni intellektə insan hüquqlarına əsaslanan yanaşmanın təşviqi məqsədilə yaradılmışdır.">This platform has been created to promote a human-rights-based approach to the rapidly evolving development of artificial intelligence in the context of contemporary global challenges.</p>
+    <p>
+      Opportunities, risks and responsibilities in a rapidly digitalizing world.
+      The Baku Ombudsmen Summit 2026 will bring together Ombudsmen, National Human
+      Rights Institutions, international organizations, scholars and experts for a
+      global dialogue on human rights and artificial intelligence.
+    </p>
 
-        <div class="content-box">
-          <p data-en="As artificial intelligence increasingly influences public administration, justice, education, communication and everyday life, the protection of human dignity, equality, privacy, accountability and fairness becomes ever more important. In this regard, the platform seeks to encourage dialogue on ensuring that technological progress serves the protection and promotion of fundamental rights and freedoms." data-az="Süni intellekt dövlət idarəçiliyi, ədalət mühakiməsi, təhsil, kommunikasiya və gündəlik həyat üzərində getdikcə daha çox təsir göstərdikcə, insan ləyaqətinin, bərabərliyin, məxfiliyin, hesabatlılığın və ədalətliliyin qorunması daha da vacib olur. Bu baxımdan, platforma texnoloji tərəqqinin fundamental hüquq və azadlıqların qorunmasına və təşviqinə xidmət etməsini təmin etmək məqsədilə dialoqu təşviq edir.">As artificial intelligence increasingly influences public administration, justice, education, communication and everyday life, the protection of human dignity, equality, privacy, accountability and fairness becomes ever more important. In this regard, the platform seeks to encourage dialogue on ensuring that technological progress serves the protection and promotion of fundamental rights and freedoms.</p>
-
-          <p data-en="The main objective of the initiative is to help direct the development and use of artificial intelligence towards strengthening human rights protection, advancing ethical governance and supporting inclusive digital transformation." data-az="Təşəbbüsün əsas məqsədi süni intellektin inkişaf və tətbiqinin insan hüquqlarının müdafiəsinin gücləndirilməsinə, etik idarəçiliyin təşviqinə və inklüziv rəqəmsal transformasiyanın dəstəklənməsinə istiqamətləndirilməsinə töhfə verməkdir.">The main objective of the initiative is to help direct the development and use of artificial intelligence towards strengthening human rights protection, advancing ethical governance and supporting inclusive digital transformation.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="summit">
-      <div class="container">
-        <h2 class="section-title" data-en="Baku Ombudsmen Summit" data-az="Bakı Ombudsmanlar Sammiti">Baku Ombudsmen Summit</h2>
-        <p class="section-lead" data-en="The Summit brings together Ombudsman institutions, National Human Rights Institutions, international experts and other stakeholders to exchange views on artificial intelligence and human rights." data-az="Sammit süni intellekt və insan hüquqları mövzusunda fikir mübadiləsi aparmaq üçün Ombudsman təsisatlarını, milli insan hüquqları institutlarını, beynəlxalq ekspertləri və digər tərəfdaşları bir araya gətirir.">The Summit brings together Ombudsman institutions, National Human Rights Institutions, international experts and other stakeholders to exchange views on artificial intelligence and human rights.</p>
-
-        <div class="summit-grid">
-          <div class="card">
-            <h3 data-en="About the Summit" data-az="Sammit haqqında">About the Summit</h3>
-            <p data-en="The Summit serves as an international platform for discussing the opportunities, risks and responsibilities arising from the development of artificial intelligence, while promoting approaches grounded in human rights principles." data-az="Sammit süni intellektin inkişafı ilə bağlı yaranan imkanların, risklərin və məsuliyyətlərin müzakirəsi, eyni zamanda insan hüquqları prinsiplərinə əsaslanan yanaşmaların təşviqi üçün beynəlxalq platforma rolunu oynayır.">The Summit serves as an international platform for discussing the opportunities, risks and responsibilities arising from the development of artificial intelligence, while promoting approaches grounded in human rights principles.</p>
-
-            <p data-en="It aims to foster cooperation, exchange of good practices and coordinated dialogue on ensuring that emerging technologies remain aligned with the protection of fundamental rights and human dignity." data-az="Sammitin məqsədi yeni texnologiyaların fundamental hüquqların və insan ləyaqətinin qorunması ilə uzlaşmasını təmin etmək istiqamətində əməkdaşlığı, qabaqcıl təcrübə mübadiləsini və əlaqələndirilmiş dialoqu təşviq etməkdir.">It aims to foster cooperation, exchange of good practices and coordinated dialogue on ensuring that emerging technologies remain aligned with the protection of fundamental rights and human dignity.</p>
-          </div>
-
-          <div class="card">
-            <h3 data-en="Promotional Video" data-az="Tanıtım videosu">Promotional Video</h3>
-            <p data-en="Promotional video prepared under the concept “From Stone to Code”." data-az="“From Stone to Code” konsepsiyası əsasında hazırlanmış tanıtım videosu.">Promotional video prepared under the concept “From Stone to Code”.</p>
-
-            <div class="video-wrap">
-              <iframe
-                src="https://www.youtube.com/embed/A-O5gbooyAQ"
-                title="Baku Ombudsmen Summit Video"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="programme">
-      <div class="container">
-        <h2 class="section-title" data-en="Main Programme" data-az="Əsas proqram">Main Programme</h2>
-        <p class="section-lead" data-en="The Summit programme is available below in PDF format." data-az="Sammitin proqramı aşağıda PDF formatında təqdim olunur.">The Summit programme is available below in PDF format.</p>
-
-        <div class="programme-box">
-          <p data-en="Click the button below to open the main programme of the Baku Ombudsmen Summit." data-az="Bakı Ombudsmanlar Sammitinin əsas proqramını açmaq üçün aşağıdakı düymədən istifadə edin.">Click the button below to open the main programme of the Baku Ombudsmen Summit.</p>
-          <a href="./summit-main-programme.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-en="Open Programme PDF" data-az="Proqram PDF-ni aç">Open Programme PDF</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section cultural-section" id="cultural">
-      <div class="container">
-        <h2 class="section-title" data-en="Cultural Programme" data-az="Mədəni proqram">Cultural Programme</h2>
-        <p class="section-lead" data-en="On the second day of the Summit, participants will visit Gobustan, linking humanity’s earliest forms of communication with today’s discussions on artificial intelligence and human rights." data-az="Sammitin ikinci günündə iştirakçılar Qobustana səfər edəcək, bu proqram insanlığın ən qədim ünsiyyət formaları ilə bugünkü süni intellekt və insan hüquqları müzakirələri arasında mənalı bir bağ yaradacaq.">On the second day of the Summit, participants will visit Gobustan, linking humanity’s earliest forms of communication with today’s discussions on artificial intelligence and human rights.</p>
-
-        <div class="cultural-box">
-          <p data-en="Gobustan: A Journey to the Origins of Humanity" data-az="Qobustan: İnsanlığın başlanğıcına səyahət">Gobustan: A Journey to the Origins of Humanity</p>
-
-          <div class="cultural-list">
-            <div data-en="19 June 2026 – Cultural programme date" data-az="19 iyun 2026 – Mədəni proqramın tarixi">19 June 2026 – Cultural programme date</div>
-            <div data-en="10:00 – Departure from the hotel" data-az="10:00 – Oteldən yola düşmə">10:00 – Departure from the hotel</div>
-            <div data-en="11:00 – Arrival at Gobustan Reserve" data-az="11:00 – Qobustan qoruğuna çatma">11:00 – Arrival at Gobustan Reserve</div>
-            <div data-en="11:15 – Visit to Gobustan Museum" data-az="11:15 – Qobustan Muzeyinə səfər">11:15 – Visit to Gobustan Museum</div>
-            <div data-en="12:00 – Guided tour of the open-air rock art reserve" data-az="12:00 – Açıq hava qayaüstü abidələr qoruğuna bələdçili tur">12:00 – Guided tour of the open-air rock art reserve</div>
-            <div data-en="13:15 – Departure from Gobustan" data-az="13:15 – Qobustandan yola düşmə">13:15 – Departure from Gobustan</div>
-            <div data-en="14:00 – Lunch at restaurant" data-az="14:00 – Restoranda nahar">14:00 – Lunch at restaurant</div>
-            <div data-en="15:30 – Return to the hotel" data-az="15:30 – Otelə qayıdış">15:30 – Return to the hotel</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="venue">
-      <div class="container">
-        <h2 class="section-title" data-en="Venue" data-az="Məkan">Venue</h2>
-        <p class="section-lead" data-en="The Summit venue is JW Marriott Absheron Baku in Baku, Azerbaijan." data-az="Sammitin keçiriləcəyi məkan Azərbaycan Respublikasının Bakı şəhərində yerləşən JW Marriott Absheron Baku otelidir.">The Summit venue is JW Marriott Absheron Baku in Baku, Azerbaijan.</p>
-
-        <div class="venue-box">
-          <p data-en="Venue: JW Marriott Absheron Baku" data-az="Məkan: JW Marriott Absheron Baku">Venue: JW Marriott Absheron Baku</p>
-          <p data-en="Address: 674 Azadliq Square, Baku 1010" data-az="Ünvan: 674 Azadliq Square, Baku 1010">Address: 674 Azadliq Square, Baku 1010</p>
-          <p data-en="Phone: (012) 499 88 88" data-az="Telefon: (012) 499 88 88">Phone: (012) 499 88 88</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div data-en="© 2026 Baku Ombudsmen Summit. All rights reserved." data-az="© 2026 Bakı Ombudsmanlar Sammiti. Bütün hüquqlar qorunur.">© 2026 Baku Ombudsmen Summit. All rights reserved.</div>
-  </footer>
-
-  <div id="documentsModal" class="modal" onclick="handleModalBackground(event)">
-    <div class="modal-content">
-      <button class="modal-close" type="button" onclick="closeDocumentsModal()">&times;</button>
-      <h3 class="modal-title" data-en="Documents" data-az="Sənədlər">Documents</h3>
-
-      <a
-        class="document-link"
-        href="https://e-qanun.az/framework/59218"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-en="Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028"
-        data-az="Azərbaycan Respublikasının 2025–2028-ci illər üçün süni intellekt Strategiyası"
-      >
-        Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028
+    <div class="btns">
+      <a class="btn primary" href="https://ombudsman.az/en/summit-form" target="_blank">
+        Register Now
+      </a>
+      <a class="btn secondary" href="#about">
+        Learn More
       </a>
     </div>
   </div>
+</header>
 
-  <div class="chat-launcher">
-    <div class="chat-ai-badge"><span class="robot-mark">🤖</span><span>AI</span></div>
-    <button class="chat-toggle" id="chatToggle" title="AI Summit Assistant">💬</button>
+<section id="about">
+  <div class="split">
+    <div>
+      <div class="section-subtitle">About the Summit</div>
+      <h2 class="section-title">A global dialogue on technology and human dignity</h2>
+
+      <p class="muted">
+        The Baku Ombudsmen Summit 2026 is dedicated to one of the most important
+        questions of our time: how can artificial intelligence serve human beings
+        while fully respecting human rights, dignity, equality and the rule of law?
+      </p>
+
+      <br />
+
+      <p class="muted">
+        Artificial intelligence is already transforming public administration,
+        education, healthcare, employment, security, communication, justice and urban
+        development. These changes create new opportunities, but they also raise
+        serious questions about privacy, discrimination, transparency, access to
+        remedies and accountability.
+      </p>
+
+      <br />
+
+      <p class="muted">
+        In this context, Ombudsmen and National Human Rights Institutions have a
+        special role. They can monitor the human rights impact of new technologies,
+        advise public authorities, engage with civil society, receive complaints,
+        promote awareness and contribute to responsible governance of AI systems.
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h3>Key Information</h3>
+      <ul>
+        <li><strong>Dates:</strong> 18–19 June 2026</li>
+        <li><strong>Venue:</strong> JW Marriott Absheron Baku</li>
+        <li><strong>Host city:</strong> Baku, Azerbaijan</li>
+        <li><strong>Working languages:</strong> Azerbaijani and English</li>
+        <li><strong>Registration deadline:</strong> 23 April 2026</li>
+        <li><strong>Cultural programme:</strong> Visit to Gobustan Rock Art Cultural Landscape</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="highlight">
+  <div class="section-subtitle">Why AI and Human Rights?</div>
+  <h2 class="section-title">Technology must remain human-centred</h2>
+
+  <p class="muted">
+    Artificial intelligence can improve access to services, support decision-making,
+    strengthen education, assist persons with disabilities, improve public management
+    and help societies respond to complex challenges. At the same time, if AI systems
+    are designed or used without safeguards, they may deepen inequality, limit privacy,
+    reproduce discrimination, reduce transparency and affect access to justice.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Opportunity</h3>
+      <p>
+        AI can help institutions provide faster, more inclusive and more accessible
+        services for people.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Risk</h3>
+      <p>
+        AI can create risks for privacy, equality, non-discrimination, freedom of
+        expression and due process.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Responsibility</h3>
+      <p>
+        Public authorities, companies and institutions must ensure that AI is used
+        in a transparent, accountable and rights-based manner.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="role">
+  <div class="section-subtitle">Role of Ombudsmen and NHRIs</div>
+  <h2 class="section-title">Human rights institutions in the digital age</h2>
+
+  <p class="muted">
+    Ombudsmen and National Human Rights Institutions are bridges between people,
+    public authorities and international human rights standards. In the age of AI,
+    this role becomes even more important. They can help ensure that digital
+    transformation does not leave anyone behind.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Monitoring</h3>
+      <p>
+        Assessing the impact of AI systems on human rights, especially where public
+        services and vulnerable groups are concerned.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Advising</h3>
+      <p>
+        Providing recommendations to state bodies on laws, policies and safeguards
+        related to artificial intelligence.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Complaints and Remedies</h3>
+      <p>
+        Supporting access to effective remedies where people are affected by
+        automated or technology-assisted decisions.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Awareness</h3>
+      <p>
+        Promoting digital literacy, human rights education and public understanding
+        of AI-related risks and opportunities.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="objectives" class="highlight">
+  <div class="section-subtitle">Summit Objectives</div>
+  <h2 class="section-title">What the Summit aims to achieve</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Exchange of Experience</h3>
+      <p>
+        Share national, regional and international practices on AI, digitalization
+        and human rights protection.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Practical Cooperation</h3>
+      <p>
+        Strengthen cooperation among Ombudsmen, NHRIs, international organizations,
+        experts and civil society.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Human Rights Safeguards</h3>
+      <p>
+        Discuss safeguards for privacy, equality, transparency, accountability and
+        access to remedies in the use of AI.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Inclusive Digital Future</h3>
+      <p>
+        Promote a digital future where innovation supports human dignity and leaves
+        no one behind.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="themes">
+  <div class="section-subtitle">Main Themes</div>
+  <h2 class="section-title">Key topics for discussion</h2>
+
+  <p class="muted">
+    The Summit will focus on the practical human rights implications of artificial
+    intelligence and digital transformation.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Human-Centred AI</h3>
+      <p>
+        Ensuring that AI systems are designed and used in a way that protects human
+        dignity, autonomy and fundamental rights.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Privacy and Personal Data</h3>
+      <p>
+        Addressing the protection of personal data, responsible data governance and
+        the prevention of intrusive surveillance.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Equality and Non-Discrimination</h3>
+      <p>
+        Preventing algorithmic bias and ensuring that AI systems do not reproduce
+        or deepen existing inequalities.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Children in the Digital Era</h3>
+      <p>
+        Protecting children’s rights, safety, privacy and development in online and
+        AI-powered environments.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Transparency and Accountability</h3>
+      <p>
+        Promoting explainable, accountable and reviewable AI systems, especially in
+        public decision-making.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Access to Justice</h3>
+      <p>
+        Ensuring effective remedies when people are affected by automated or
+        technology-assisted decisions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="questions" class="highlight">
+  <div class="section-subtitle">Key Questions</div>
+  <h2 class="section-title">Questions that define our time</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>How can AI serve people?</h3>
+      <p>
+        How can artificial intelligence improve public services, accessibility and
+        inclusion without weakening human rights protections?
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Who is accountable?</h3>
+      <p>
+        When an AI-assisted decision affects a person’s rights, who is responsible
+        and how can that decision be challenged?
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How can discrimination be prevented?</h3>
+      <p>
+        What safeguards are needed to prevent bias and unequal treatment in automated
+        systems?
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>What is the role of NHRIs?</h3>
+      <p>
+        How can Ombudsmen and National Human Rights Institutions monitor, advise and
+        respond to AI-related human rights risks?
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="baku">
+  <div class="section-subtitle">Baku as a Dialogue Platform</div>
+  <h2 class="section-title">A meeting point for international cooperation</h2>
+
+  <p class="muted">
+    Baku has increasingly become a platform for international dialogue on human
+    rights, cooperation and global challenges. The Baku Ombudsmen Summit continues
+    this tradition by bringing together institutions and experts to discuss one of
+    the most urgent issues of the digital era.
+  </p>
+
+  <br />
+
+  <p class="muted">
+    The Summit will also highlight the importance of knowledge, culture and human
+    creativity. The planned cultural programme to Gobustan Rock Art Cultural Landscape
+    symbolically connects the earliest forms of human expression with the digital
+    code shaping our future.
+  </p>
+</section>
+
+<section id="stone" class="highlight">
+  <div class="section-subtitle">From Stone to Code</div>
+  <h2 class="section-title">The story of human progress continues</h2>
+
+  <p class="muted">
+    From the first human marks on stone to the digital code shaping our modern world,
+    humanity’s journey has always been a journey of knowledge, creativity and
+    responsibility.
+  </p>
+
+  <div class="quote-box">
+    From stone to science. From symbols to technology. From human expression to
+    artificial intelligence. The question remains the same: will technology shape
+    humanity, or will humanity shape technology?
   </div>
 
-  <div class="chat-widget" id="chatWidget">
-    <div class="chat-header">
-      <div>
-        <div class="chat-title" id="chatTitle">Summit AI Assistant</div>
-        <div class="chat-subtitle" id="chatSubtitle">Baku Ombudsmen Summit information</div>
-      </div>
-      <button class="chat-close" id="chatClose">&times;</button>
+  <br />
+
+  <p class="muted">
+    The answer requires cooperation, knowledge, responsibility and a strong commitment
+    to human rights.
+  </p>
+</section>
+
+<section id="documents">
+  <div class="section-subtitle">Documents</div>
+  <h2 class="section-title">Relevant documents and references</h2>
+
+  <p class="muted">
+    This section includes key strategic and legal documents related to artificial
+    intelligence, digital transformation and human rights.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Azerbaijan AI Strategy 2025–2028</h3>
+      <p>
+        National strategic framework on the development and application of artificial
+        intelligence in Azerbaijan.
+      </p>
+
+      <br />
+
+      <a class="btn primary" href="https://e-qanun.az/framework/59218" target="_blank">
+        Open Document
+      </a>
     </div>
 
-    <div class="chat-body" id="chatBody">
-      <div class="chat-message bot">
-        <div class="chat-bubble" id="initialBotMessage">Hello! I am the AI Summit Assistant. You can ask me questions about the Summit.</div>
-      </div>
-    </div>
-
-    <div class="chat-footer">
-      <div class="chat-input-row">
-        <input type="text" id="chatInput" class="chat-input" placeholder="Ask about the Summit..." />
-        <button id="chatSend" class="chat-send">Send</button>
-      </div>
-      <div class="chat-hints" id="chatHints">Examples: venue, address, registration, programme, cultural programme</div>
+    <div class="card">
+      <h3>Human Rights and AI</h3>
+      <p>
+        A developing area of international discussion focusing on dignity, equality,
+        privacy, transparency, accountability and access to justice.
+      </p>
     </div>
   </div>
+</section>
 
-  <script>
-    let currentLang = "en";
+<section id="registration" class="highlight">
+  <div class="section-subtitle">Registration</div>
+  <h2 class="section-title">Join the Summit in Baku</h2>
 
-    function setLanguage(lang, button) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
+  <p class="muted">
+    Participants are kindly invited to complete the registration form by
+    <strong>23 April 2026</strong>. For registrations completed by the deadline,
+    the Summit Organizing Committee may cover travel and accommodation expenses of
+    heads of institutions and provide local transport arrangements.
+  </p>
 
-      document.querySelectorAll("[data-en]").forEach(function(el) {
-        const text = el.getAttribute("data-" + lang);
-        if (text !== null) {
-          el.textContent = text;
-        }
-      });
+  <br />
 
-      const input = document.getElementById("chatInput");
-      const sendBtn = document.getElementById("chatSend");
-      const title = document.getElementById("chatTitle");
-      const subtitle = document.getElementById("chatSubtitle");
-      const initial = document.getElementById("initialBotMessage");
-      const hints = document.getElementById("chatHints");
+  <p class="muted">
+    Foreign participants will be met at the airport and transferred to the hotel and
+    airport according to their flight schedules.
+  </p>
 
-      if (input) {
-        input.placeholder = lang === "az" ? "Sammit haqqında sual verin..." : "Ask about the Summit...";
-      }
+  <br />
 
-      if (sendBtn) {
-        sendBtn.textContent = lang === "az" ? "Göndər" : "Send";
-      }
+  <a class="btn primary" href="https://ombudsman.az/en/summit-form" target="_blank">
+    Complete Registration
+  </a>
+</section>
 
-      if (title) {
-        title.textContent = lang === "az" ? "AI Sammit Köməkçisi" : "Summit AI Assistant";
-      }
+<section id="faq">
+  <div class="section-subtitle">FAQ</div>
+  <h2 class="section-title">Frequently asked questions</h2>
 
-      if (subtitle) {
-        subtitle.textContent = lang === "az"
-          ? "Bakı Ombudsmanlar Sammiti haqqında məlumat"
-          : "Baku Ombudsmen Summit information";
-      }
+  <div class="faq-item">
+    <h3>When will the Summit take place?</h3>
+    <p class="muted">The Baku Ombudsmen Summit will take place on 18–19 June 2026.</p>
+  </div>
 
-      if (initial && document.getElementById("chatBody").children.length === 1) {
-        initial.textContent = lang === "az"
-          ? "Salam! Mən AI Sammit Köməkçisiyəm. Sammit barədə suallarınızı verə bilərsiniz."
-          : "Hello! I am the AI Summit Assistant. You can ask me questions about the Summit.";
-      }
+  <div class="faq-item">
+    <h3>Where will the Summit be held?</h3>
+    <p class="muted">The Summit will be held at JW Marriott Absheron Baku.</p>
+  </div>
 
-      if (hints) {
-        hints.textContent = lang === "az"
-          ? "Nümunələr: otel, ünvan, qeydiyyat, spiker, hava limanı"
-          : "Examples: hotel, address, registration, speaker, airport";
-      }
+  <div class="faq-item">
+    <h3>What are the working languages?</h3>
+    <p class="muted">The working languages of the Summit are Azerbaijani and English.</p>
+  </div>
 
-      document.querySelectorAll(".lang-btn").forEach(function(btn) {
-        btn.classList.remove("active");
-      });
+  <div class="faq-item">
+    <h3>How can participants register?</h3>
+    <p class="muted">
+      Participants can register through the official registration form available on
+      the Ombudsman’s website.
+    </p>
+  </div>
 
-      if (button) {
-        button.classList.add("active");
-      }
-    }
+  <div class="faq-item">
+    <h3>Is there a registration deadline?</h3>
+    <p class="muted">Yes. The registration deadline is 23 April 2026.</p>
+  </div>
 
-    function openDocumentsModal() {
-      document.getElementById("documentsModal").classList.add("show");
-      document.body.style.overflow = "hidden";
-    }
+  <div class="faq-item">
+    <h3>Will there be a cultural programme?</h3>
+    <p class="muted">
+      Yes. The cultural programme includes a visit to Gobustan Rock Art Cultural
+      Landscape and its museum.
+    </p>
+  </div>
+</section>
 
-    function closeDocumentsModal() {
-      document.getElementById("documentsModal").classList.remove("show");
-      document.body.style.overflow = "";
-    }
+<section id="contact">
+  <div class="section-subtitle">Contact</div>
+  <h2 class="section-title">Contact the Organizing Committee</h2>
 
-    function handleModalBackground(event) {
-      if (event.target.id === "documentsModal") {
-        closeDocumentsModal();
-      }
-    }
+  <p class="muted">
+    For further information, please contact the Summit Organizing Committee of the
+    Commissioner for Human Rights of the Republic of Azerbaijan.
+  </p>
 
-    function addMessage(text, sender, isTyping = false) {
-      const chatBody = document.getElementById("chatBody");
-      const message = document.createElement("div");
-      message.className = "chat-message " + sender;
+  <br />
 
-      const bubble = document.createElement("div");
-      bubble.className = "chat-bubble" + (isTyping ? " typing" : "");
-      bubble.textContent = text;
+  <p class="muted">
+    Official website: www.ombudsman.az
+  </p>
+</section>
 
-      message.appendChild(bubble);
-      chatBody.appendChild(message);
-      chatBody.scrollTop = chatBody.scrollHeight;
+<footer>
+  <p>© 2026 Baku Ombudsmen Summit. All rights reserved.</p>
+</footer>
 
-      return message;
-    }
+<div class="chatbot">
+  <div class="chat-header" onclick="toggleChat()">
+    AI Summit Assistant
+  </div>
 
-    function normalizeText(text) {
-      return text
-        .toLowerCase()
-        .replace(/ə/g, "e")
-        .replace(/ı/g, "i")
-        .replace(/ö/g, "o")
-        .replace(/ü/g, "u")
-        .replace(/ğ/g, "g")
-        .replace(/ş/g, "s")
-        .replace(/ç/g, "c")
-        .replace(/[^\w\s]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-    }
+  <div class="chat-body" id="chatBody">
+    <button onclick="answer('date')">When will the Summit take place?</button>
+    <button onclick="answer('venue')">Where is the venue?</button>
+    <button onclick="answer('topic')">What is the main theme?</button>
+    <button onclick="answer('register')">How can I register?</button>
+    <button onclick="answer('deadline')">What is the registration deadline?</button>
+    <button onclick="answer('languages')">What are the working languages?</button>
+    <button onclick="answer('travel')">Will travel and accommodation be covered?</button>
+    <button onclick="answer('culture')">Is there a cultural programme?</button>
 
-    function getFaqReply(message, lang) {
-      const q = normalizeText(message);
-      const isAz = lang === "az";
+    <div class="answer" id="answerBox">
+      Please select a question. Answers are AI-generated based on official Summit information.
+    </div>
+  </div>
+</div>
 
-      if (!q) {
-        return isAz
-          ? "Zəhmət olmasa sualınızı yazın."
-          : "Please type your question.";
-      }
+<script>
+  function toggleChat() {
+    document.getElementById("chatBody").classList.toggle("active");
+  }
 
-      if (q.includes("hello") || q.includes("hi") || q.includes("salam")) {
-        return isAz
-          ? "Salam! Mən AI Sammit Köməkçisiyəm. Sizə sammitin tarixi, məkanı, qeydiyyat, proqramı, otel, spiker məsələləri və mədəni proqram barədə məlumat verə bilərəm."
-          : "Hello! I am the AI Summit Assistant. I can provide information about the Summit date, venue, registration, hotel, speaker issues and cultural programme.";
-      }
+  function answer(type) {
+    const answers = {
+      date:
+        "The Baku Ombudsmen Summit will take place on 18–19 June 2026.",
 
-      if (
-        q.includes("date") ||
-        q.includes("when") ||
-        q.includes("tarix") ||
-        q.includes("ne vaxt")
-      ) {
-        return isAz
-          ? "Bakı Ombudsmanlar Sammiti 18–19 iyun 2026-cı il tarixlərində keçiriləcək."
-          : "The Baku Ombudsmen Summit will take place on 18–19 June 2026.";
-      }
+      venue:
+        "The Summit venue is JW Marriott Absheron Baku, Azerbaijan.",
 
-      if (
-        q.includes("venue") ||
-        q.includes("where") ||
-        q.includes("mekan") ||
-        q.includes("harada")
-      ) {
-        return isAz
-          ? "Sammit Azərbaycan, Bakı şəhərində yerləşən JW Marriott Absheron Baku otelində keçiriləcək."
-          : "The Summit will be held at JW Marriott Absheron Baku in Baku, Azerbaijan.";
-      }
+      topic:
+        "The main theme of the Summit is human rights in the age of artificial intelligence, with a focus on opportunities, risks and responsibilities.",
 
-      if (
-        q.includes("address") ||
-        q.includes("location") ||
-        q.includes("unvan")
-      ) {
-        return isAz
-          ? "Ətraflı ünvan və location məlumatı üçün: www.marriott.com  Tel: +99412 499 88 88"
-          : "For address and location details: www.marriott.com  Tel: +99412 499 88 88";
-      }
+      register:
+        "Participants can register through the official form available at https://ombudsman.az/en/summit-form.",
 
-      if (
-        q.includes("foreign guest") ||
-        q.includes("registered guest") ||
-        q.includes("organization committee") ||
-        q.includes("xarici qonaq") ||
-        q.includes("qeydiyyatdan kecen") ||
-        q.includes("qeydiyyatdan keçən") ||
-        q.includes("xercleri teskilat komitesi") ||
-        q.includes("xərcləri təşkilat komitəsi")
-      ) {
-        return isAz
-          ? "Qeydiyyatdan keçən və xərcləri təşkilat komitəsi tərəfindən qarşılanan xarici qonaqlar JW Marriott Absheron Baku otelində qalacaqlar."
-          : "Foreign guests who are registered and whose expenses are covered by the Organizing Committee will stay at JW Marriott Absheron Baku.";
-      }
+      deadline:
+        "The registration deadline is 23 April 2026.",
 
-      if (
-        q.includes("own expense") ||
-        q.includes("self funded") ||
-        q.includes("accompanying person") ||
-        q.includes("musayiet") ||
-        q.includes("müşaiyət") ||
-        q.includes("oz hesabina") ||
-        q.includes("öz hesabına")
-      ) {
-        return isAz
-          ? "Öz hesabına gələn xarici qonaqlar və ya müşaiyət edən şəxslər istəsələr JW Marriott Absheron Baku otelində və ya həmin ərazidə yerləşən otellərin birində otaq rezervasiya edə bilərlər."
-          : "Foreign guests coming at their own expense or accompanying persons may reserve a room at JW Marriott Absheron Baku or at one of the hotels located in that area.";
-      }
+      languages:
+        "The working languages of the Summit are Azerbaijani and English.",
 
-      if (
-        q.includes("hotel") ||
-        q.includes("accommodation") ||
-        q.includes("qalacaq") ||
-        q.includes("qalacag") ||
-        q.includes("otelde qalacaq") ||
-        q.includes("oteldə qalacaq")
-      ) {
-        return isAz
-          ? "Xarici qonaqların yerləşdirilməsi ilə bağlı əsas otel JW Marriott Absheron Baku-dur."
-          : "The main hotel for accommodating foreign guests is JW Marriott Absheron Baku.";
-      }
+      travel:
+        "For registrations completed by the deadline, the Summit Organizing Committee may cover travel and accommodation expenses of heads of institutions and provide local transport arrangements.",
 
-      if (
-        q.includes("reserve hotel") ||
-        q.includes("book hotel") ||
-        q.includes("hotel room") ||
-        q.includes("otaq") ||
-        q.includes("rezervasiya") ||
-        q.includes("bron")
-      ) {
-        return isAz
-          ? "Otel otağı rezervasiya etmək üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
-          : "To reserve a hotel room, you may contact +99 450 275 18 99 (Whatsapp).";
-      }
+      culture:
+        "The cultural programme includes a visit to Gobustan Rock Art Cultural Landscape and its museum."
+    };
 
-      if (
-        q.includes("speaker") ||
-        q.includes("spiker") ||
-        q.includes("cixis") ||
-        q.includes("çıxış")
-      ) {
-        return isAz
-          ? "Speaker olaraq proqrama daxil olmaq üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
-          : "To be included in the programme as a speaker, you may contact +99 450 275 18 99 (Whatsapp).";
-      }
+    document.getElementById("answerBox").innerText = answers[type];
+  }
+</script>
 
-      if (
-        q.includes("airport") ||
-        q.includes("pickup") ||
-        q.includes("qarsilama") ||
-        q.includes("qarşılama") ||
-        q.includes("hava limani") ||
-        q.includes("hava limanı")
-      ) {
-        return isAz
-          ? "Bəli. Qeydiyyatdan keçən iştirakçılar uçuş qrafiklərinə uyğun olaraq Heydər Əliyev adına Beynəlxalq Hava Limanında qarşılanıb qaldıqları otelə gətiriləcək və gediş zamanı oteldən hava limanına yola salınacaqlar."
-          : "Yes. Registered participants will be met at Heydar Aliyev International Airport according to their flight schedules, transferred to their hotel, and on departure they will be accompanied from the hotel to the airport.";
-      }
-
-      if (
-        q.includes("organizer") ||
-        q.includes("organiser") ||
-        q.includes("teskilatci") ||
-        q.includes("təşkilatçı") ||
-        q.includes("kim teskil edir") ||
-        q.includes("kim təşkil edir")
-      ) {
-        return isAz
-          ? "Tədbirin təşkilatçısı Azərbaycan Ombudsman İnstitutudur."
-          : "The organizer of the Summit is the Ombudsman Institution of Azerbaijan.";
-      }
-
-      if (
-        q.includes("ombudsman institution") ||
-        q.includes("azerbaijan ombudsman") ||
-        q.includes("ombudsman haqqinda") ||
-        q.includes("ombudsman haqqında")
-      ) {
-        return isAz
-          ? "Azərbaycan Ombudsman İnstitutu haqqında məlumat üçün: www.ombudsman.az"
-          : "For information about the Ombudsman Institution of Azerbaijan: www.ombudsman.az";
-      }
-
-      if (
-        q.includes("registration") ||
-        q.includes("register") ||
-        q.includes("qeydiyyat")
-      ) {
-        return isAz
-          ? "Qeydiyyat üçün bu keçiddən istifadə edə bilərsiniz: https://ombudsman.az/en/summit-form"
-          : "You can register through this link: https://ombudsman.az/en/summit-form";
-      }
-
-      if (
-        q.includes("programme") ||
-        q.includes("program") ||
-        q.includes("proqram")
-      ) {
-        return isAz
-          ? "Sammitin əsas proqramı saytın Programme bölməsində PDF formatında yerləşdirilib."
-          : "The main programme of the Summit is available in PDF format in the Programme section of the website.";
-      }
-
-      if (
-        q.includes("cultural") ||
-        q.includes("meden") ||
-        q.includes("mədəni")
-      ) {
-        return isAz
-          ? "Mədəni proqram sammitin ikinci gününə aiddir. İştirakçılar 19 iyun 2026-cı ildə Qobustana səfər edəcəklər."
-          : "The cultural programme is planned for the second day of the Summit. Participants will visit Gobustan on 19 June 2026.";
-      }
-
-      if (q.includes("gobustan") || q.includes("qobustan")) {
-        return isAz
-          ? "Qobustan üzrə mədəni proqram belədir: 10:00 oteldən çıxış, 11:00 qoruğa çatış, 11:15 muzeyə səfər, 12:00 açıq hava qoruğuna tur, sonra nahar və otelə qayıdış."
-          : "The Gobustan cultural programme includes departure from the hotel at 10:00, arrival at the reserve at 11:00, museum visit at 11:15, open-air reserve tour at 12:00, followed by lunch and return to the hotel.";
-      }
-
-      if (
-        q.includes("document") ||
-        q.includes("sened") ||
-        q.includes("sənəd")
-      ) {
-        return isAz
-          ? "Sənədlər bölməsində Azərbaycan Respublikasının 2025–2028-ci illər üçün Süni İntellekt Strategiyası yerləşdirilib."
-          : "The Documents section includes the Artificial Intelligence Strategy of the Republic of Azerbaijan for 2025–2028.";
-      }
-
-      if (
-        q.includes("ai") ||
-        q.includes("artificial intelligence") ||
-        q.includes("suni intellekt")
-      ) {
-        return isAz
-          ? "Sammitin mövzusu Süni İntellekt Dövründə İnsan Hüquqlarıdır. Burada süni intellektin imkanları, riskləri və məsuliyyətləri müzakirə olunur."
-          : "The theme of the Summit is Human Rights in the Age of Artificial Intelligence. It addresses the opportunities, risks and responsibilities related to AI.";
-      }
-
-      if (
-        q.includes("travel expenses") ||
-        q.includes("travel") ||
-        q.includes("expense") ||
-        q.includes("xercler") ||
-        q.includes("xerc") ||
-        q.includes("sefer") ||
-        q.includes("səfər")
-      ) {
-        return isAz
-          ? "Səfər xərcləri ilə bağlı dəqiq məlumat üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
-          : "For detailed information on travel expenses, you may contact +99 450 275 18 99 (Whatsapp).";
-      }
-
-      if (
-        q.includes("video") ||
-        q.includes("tanitim") ||
-        q.includes("tanitim videosu")
-      ) {
-        return isAz
-          ? "Saytda “From Stone to Code” konsepsiyası əsasında hazırlanmış tanıtım videosu yerləşdirilib."
-          : "The website includes a promotional video prepared under the concept “From Stone to Code”.";
-      }
-
-      return isAz
-        ? "Bu sual üzrə hazırda sistemdə dəqiq məlumat yoxdur. Ətraflı məlumat üçün +99 450 275 18 99 (Whatsapp) nömrəsi ilə əlaqə saxlaya bilərsiniz."
-        : "There is currently no precise information in the system on this question. For further information, you may contact +99 450 275 18 99 (Whatsapp).";
-    }
-
-    function sendMessage() {
-      const chatInput = document.getElementById("chatInput");
-      const chatSend = document.getElementById("chatSend");
-      const text = chatInput.value.trim();
-
-      if (!text) return;
-
-      addMessage(text, "user");
-      chatInput.value = "";
-      chatSend.disabled = true;
-
-      const typingMsg = addMessage(
-        currentLang === "az" ? "Yazılır..." : "Typing...",
-        "bot",
-        true
-      );
-
-      setTimeout(function () {
-        const answer = getFaqReply(text, currentLang);
-        typingMsg.remove();
-        addMessage(answer, "bot");
-        chatSend.disabled = false;
-      }, 450);
-    }
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        closeDocumentsModal();
-      }
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const chatToggle = document.getElementById("chatToggle");
-      const chatWidget = document.getElementById("chatWidget");
-      const chatClose = document.getElementById("chatClose");
-      const chatSend = document.getElementById("chatSend");
-      const chatInput = document.getElementById("chatInput");
-
-      chatToggle.addEventListener("click", function () {
-        chatWidget.classList.toggle("show");
-      });
-
-      chatClose.addEventListener("click", function () {
-        chatWidget.classList.remove("show");
-      });
-
-      chatSend.addEventListener("click", sendMessage);
-
-      chatInput.addEventListener("keypress", function (e) {
-        if (e.key === "Enter") sendMessage();
-      });
-
-      const activeLangBtn = document.querySelector(".lang-btn.active");
-      setLanguage("en", activeLangBtn);
-    });
-  </script>
 </body>
 </html>
