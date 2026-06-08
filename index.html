@@ -25,7 +25,8 @@ header {
   background: linear-gradient(135deg, #002b5c, #0077b6);
   color: white;
   text-align: center;
-  padding: 90px 20px;
+  padding: 90px 20px 45px;
+  overflow: hidden;
 }
 
 header h1 {
@@ -36,6 +37,59 @@ header h1 {
 header p {
   font-size: 22px;
   margin-bottom: 8px;
+}
+
+.button {
+  display: inline-block;
+  background: #ffffff;
+  color: #002b5c;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 22px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #e6f3ff;
+}
+
+.flags-marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
+  padding: 16px 0;
+}
+
+.flags-track {
+  display: flex;
+  width: max-content;
+  animation: flagsScroll 45s linear infinite;
+}
+
+.flag-item {
+  display: flex;
+  align-items: center;
+  margin-right: 45px;
+  font-size: 34px;
+  white-space: nowrap;
+}
+
+.flag-item span {
+  margin-left: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@keyframes flagsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 nav {
@@ -166,17 +220,6 @@ footer {
   margin-top: 50px;
 }
 
-.button {
-  display: inline-block;
-  background: #0077b6;
-  color: white;
-  padding: 14px 30px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
 @media (max-width: 768px) {
   header h1 {
     font-size: 32px;
@@ -198,6 +241,15 @@ footer {
   .section-title {
     font-size: 28px;
   }
+
+  .flag-item {
+    font-size: 26px;
+    margin-right: 28px;
+  }
+
+  .flag-item span {
+    font-size: 13px;
+  }
 }
 </style>
 </head>
@@ -208,7 +260,58 @@ footer {
   <h1>International Baku Ombudsmen Summit</h1>
   <p>Human Rights in the Age of Artificial Intelligence</p>
   <p>Opportunities, Risks and Responsibilities</p>
+
   <a href="#programme" class="button">View Programme</a>
+
+  <div class="flags-marquee">
+    <div class="flags-track">
+
+      <div class="flag-item">🇦🇿 <span>Azerbaijan</span></div>
+      <div class="flag-item">🇷🇸 <span>Serbia</span></div>
+      <div class="flag-item">🇮🇹 <span>Italy</span></div>
+      <div class="flag-item">🇿🇲 <span>Zambia</span></div>
+      <div class="flag-item">🇹🇷 <span>Türkiye</span></div>
+      <div class="flag-item">🇺🇿 <span>Uzbekistan</span></div>
+      <div class="flag-item">🇧🇬 <span>Bulgaria</span></div>
+      <div class="flag-item">🇬🇪 <span>Georgia</span></div>
+      <div class="flag-item">🇰🇬 <span>Kyrgyzstan</span></div>
+      <div class="flag-item">🇨🇾 <span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item">🇰🇪 <span>Kenya</span></div>
+      <div class="flag-item">🇭🇺 <span>Hungary</span></div>
+      <div class="flag-item">🇪🇬 <span>Egypt</span></div>
+      <div class="flag-item">🇵🇰 <span>Pakistan</span></div>
+      <div class="flag-item">🇴🇲 <span>Oman</span></div>
+      <div class="flag-item">🇧🇦 <span>Bosnia and Herzegovina</span></div>
+      <div class="flag-item">🇷🇴 <span>Romania</span></div>
+      <div class="flag-item">🇹🇲 <span>Turkmenistan</span></div>
+      <div class="flag-item">🇲🇪 <span>Montenegro</span></div>
+      <div class="flag-item">🇸🇦 <span>Saudi Arabia</span></div>
+      <div class="flag-item">🇲🇩 <span>Moldova</span></div>
+
+      <div class="flag-item">🇦🇿 <span>Azerbaijan</span></div>
+      <div class="flag-item">🇷🇸 <span>Serbia</span></div>
+      <div class="flag-item">🇮🇹 <span>Italy</span></div>
+      <div class="flag-item">🇿🇲 <span>Zambia</span></div>
+      <div class="flag-item">🇹🇷 <span>Türkiye</span></div>
+      <div class="flag-item">🇺🇿 <span>Uzbekistan</span></div>
+      <div class="flag-item">🇧🇬 <span>Bulgaria</span></div>
+      <div class="flag-item">🇬🇪 <span>Georgia</span></div>
+      <div class="flag-item">🇰🇬 <span>Kyrgyzstan</span></div>
+      <div class="flag-item">🇨🇾 <span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item">🇰🇪 <span>Kenya</span></div>
+      <div class="flag-item">🇭🇺 <span>Hungary</span></div>
+      <div class="flag-item">🇪🇬 <span>Egypt</span></div>
+      <div class="flag-item">🇵🇰 <span>Pakistan</span></div>
+      <div class="flag-item">🇴🇲 <span>Oman</span></div>
+      <div class="flag-item">🇧🇦 <span>Bosnia and Herzegovina</span></div>
+      <div class="flag-item">🇷🇴 <span>Romania</span></div>
+      <div class="flag-item">🇹🇲 <span>Turkmenistan</span></div>
+      <div class="flag-item">🇲🇪 <span>Montenegro</span></div>
+      <div class="flag-item">🇸🇦 <span>Saudi Arabia</span></div>
+      <div class="flag-item">🇲🇩 <span>Moldova</span></div>
+
+    </div>
+  </div>
 </header>
 
 <nav>
