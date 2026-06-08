@@ -48,22 +48,18 @@ header p {
   text-decoration: none;
   font-weight: bold;
   margin-top: 22px;
-  transition: 0.3s;
-}
-
-.button:hover {
-  background: #e6f3ff;
 }
 
 .flags-marquee {
   width: 100%;
   overflow: hidden;
   margin-top: 40px;
-  padding: 16px 0;
+  padding: 18px 0;
 }
 
 .flags-track {
   display: flex;
+  align-items: center;
   width: max-content;
   animation: flagsScroll 45s linear infinite;
 }
@@ -71,13 +67,21 @@ header p {
 .flag-item {
   display: flex;
   align-items: center;
-  margin-right: 45px;
-  font-size: 34px;
+  margin-right: 46px;
   white-space: nowrap;
 }
 
+.flag-item img {
+  width: 42px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  background: white;
+}
+
 .flag-item span {
-  margin-left: 10px;
   color: white;
   font-size: 16px;
   font-weight: 600;
@@ -208,6 +212,15 @@ section {
   transition: 0.3s;
 }
 
+.country img {
+  width: 42px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
 .country:hover {
   transform: translateY(-5px);
 }
@@ -243,8 +256,12 @@ footer {
   }
 
   .flag-item {
-    font-size: 26px;
     margin-right: 28px;
+  }
+
+  .flag-item img {
+    width: 34px;
+    height: 23px;
   }
 
   .flag-item span {
@@ -266,49 +283,49 @@ footer {
   <div class="flags-marquee">
     <div class="flags-track">
 
-      <div class="flag-item">🇦🇿 <span>Azerbaijan</span></div>
-      <div class="flag-item">🇷🇸 <span>Serbia</span></div>
-      <div class="flag-item">🇮🇹 <span>Italy</span></div>
-      <div class="flag-item">🇿🇲 <span>Zambia</span></div>
-      <div class="flag-item">🇹🇷 <span>Türkiye</span></div>
-      <div class="flag-item">🇺🇿 <span>Uzbekistan</span></div>
-      <div class="flag-item">🇧🇬 <span>Bulgaria</span></div>
-      <div class="flag-item">🇬🇪 <span>Georgia</span></div>
-      <div class="flag-item">🇰🇬 <span>Kyrgyzstan</span></div>
-      <div class="flag-item">🇨🇾 <span>Turkish Republic of Northern Cyprus</span></div>
-      <div class="flag-item">🇰🇪 <span>Kenya</span></div>
-      <div class="flag-item">🇭🇺 <span>Hungary</span></div>
-      <div class="flag-item">🇪🇬 <span>Egypt</span></div>
-      <div class="flag-item">🇵🇰 <span>Pakistan</span></div>
-      <div class="flag-item">🇴🇲 <span>Oman</span></div>
-      <div class="flag-item">🇧🇦 <span>Bosnia and Herzegovina</span></div>
-      <div class="flag-item">🇷🇴 <span>Romania</span></div>
-      <div class="flag-item">🇹🇲 <span>Turkmenistan</span></div>
-      <div class="flag-item">🇲🇪 <span>Montenegro</span></div>
-      <div class="flag-item">🇸🇦 <span>Saudi Arabia</span></div>
-      <div class="flag-item">🇲🇩 <span>Moldova</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/az.png" alt="Azerbaijan"><span>Azerbaijan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/rs.png" alt="Serbia"><span>Serbia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/it.png" alt="Italy"><span>Italy</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/zm.png" alt="Zambia"><span>Zambia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png" alt="Türkiye"><span>Türkiye</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/uz.png" alt="Uzbekistan"><span>Uzbekistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria"><span>Bulgaria</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia"><span>Georgia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan"><span>Kyrgyzstan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png" alt="TRNC"><span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya"><span>Kenya</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary"><span>Hungary</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt"><span>Egypt</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan"><span>Pakistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/om.png" alt="Oman"><span>Oman</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ba.png" alt="Bosnia and Herzegovina"><span>Bosnia and Herzegovina</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ro.png" alt="Romania"><span>Romania</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tm.png" alt="Turkmenistan"><span>Turkmenistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/me.png" alt="Montenegro"><span>Montenegro</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia"><span>Saudi Arabia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/md.png" alt="Moldova"><span>Moldova</span></div>
 
-      <div class="flag-item">🇦🇿 <span>Azerbaijan</span></div>
-      <div class="flag-item">🇷🇸 <span>Serbia</span></div>
-      <div class="flag-item">🇮🇹 <span>Italy</span></div>
-      <div class="flag-item">🇿🇲 <span>Zambia</span></div>
-      <div class="flag-item">🇹🇷 <span>Türkiye</span></div>
-      <div class="flag-item">🇺🇿 <span>Uzbekistan</span></div>
-      <div class="flag-item">🇧🇬 <span>Bulgaria</span></div>
-      <div class="flag-item">🇬🇪 <span>Georgia</span></div>
-      <div class="flag-item">🇰🇬 <span>Kyrgyzstan</span></div>
-      <div class="flag-item">🇨🇾 <span>Turkish Republic of Northern Cyprus</span></div>
-      <div class="flag-item">🇰🇪 <span>Kenya</span></div>
-      <div class="flag-item">🇭🇺 <span>Hungary</span></div>
-      <div class="flag-item">🇪🇬 <span>Egypt</span></div>
-      <div class="flag-item">🇵🇰 <span>Pakistan</span></div>
-      <div class="flag-item">🇴🇲 <span>Oman</span></div>
-      <div class="flag-item">🇧🇦 <span>Bosnia and Herzegovina</span></div>
-      <div class="flag-item">🇷🇴 <span>Romania</span></div>
-      <div class="flag-item">🇹🇲 <span>Turkmenistan</span></div>
-      <div class="flag-item">🇲🇪 <span>Montenegro</span></div>
-      <div class="flag-item">🇸🇦 <span>Saudi Arabia</span></div>
-      <div class="flag-item">🇲🇩 <span>Moldova</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/az.png" alt="Azerbaijan"><span>Azerbaijan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/rs.png" alt="Serbia"><span>Serbia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/it.png" alt="Italy"><span>Italy</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/zm.png" alt="Zambia"><span>Zambia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png" alt="Türkiye"><span>Türkiye</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/uz.png" alt="Uzbekistan"><span>Uzbekistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria"><span>Bulgaria</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia"><span>Georgia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan"><span>Kyrgyzstan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png" alt="TRNC"><span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya"><span>Kenya</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary"><span>Hungary</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt"><span>Egypt</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan"><span>Pakistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/om.png" alt="Oman"><span>Oman</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ba.png" alt="Bosnia and Herzegovina"><span>Bosnia and Herzegovina</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ro.png" alt="Romania"><span>Romania</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tm.png" alt="Turkmenistan"><span>Turkmenistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/me.png" alt="Montenegro"><span>Montenegro</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia"><span>Saudi Arabia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/md.png" alt="Moldova"><span>Moldova</span></div>
 
     </div>
   </div>
@@ -413,27 +430,27 @@ footer {
   </p>
 
   <div class="countries-grid">
-    <div class="country">🇦🇿 Azerbaijan</div>
-    <div class="country">🇷🇸 Serbia</div>
-    <div class="country">🇮🇹 Italy</div>
-    <div class="country">🇿🇲 Zambia</div>
-    <div class="country">🇹🇷 Türkiye</div>
-    <div class="country">🇺🇿 Uzbekistan</div>
-    <div class="country">🇧🇬 Bulgaria</div>
-    <div class="country">🇬🇪 Georgia</div>
-    <div class="country">🇰🇬 Kyrgyzstan</div>
-    <div class="country">🇨🇾 Turkish Republic of Northern Cyprus</div>
-    <div class="country">🇰🇪 Kenya</div>
-    <div class="country">🇭🇺 Hungary</div>
-    <div class="country">🇪🇬 Egypt</div>
-    <div class="country">🇵🇰 Pakistan</div>
-    <div class="country">🇴🇲 Oman</div>
-    <div class="country">🇧🇦 Bosnia and Herzegovina</div>
-    <div class="country">🇷🇴 Romania</div>
-    <div class="country">🇹🇲 Turkmenistan</div>
-    <div class="country">🇲🇪 Montenegro</div>
-    <div class="country">🇸🇦 Saudi Arabia</div>
-    <div class="country">🇲🇩 Moldova</div>
+    <div class="country"><img src="https://flagcdn.com/w80/az.png" alt="Azerbaijan"> Azerbaijan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/rs.png" alt="Serbia"> Serbia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/it.png" alt="Italy"> Italy</div>
+    <div class="country"><img src="https://flagcdn.com/w80/zm.png" alt="Zambia"> Zambia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/tr.png" alt="Türkiye"> Türkiye</div>
+    <div class="country"><img src="https://flagcdn.com/w80/uz.png" alt="Uzbekistan"> Uzbekistan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria"> Bulgaria</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia"> Georgia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan"> Kyrgyzstan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/tr.png" alt="TRNC"> Turkish Republic of Northern Cyprus</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya"> Kenya</div>
+    <div class="country"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary"> Hungary</div>
+    <div class="country"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt"> Egypt</div>
+    <div class="country"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan"> Pakistan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/om.png" alt="Oman"> Oman</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ba.png" alt="Bosnia and Herzegovina"> Bosnia and Herzegovina</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ro.png" alt="Romania"> Romania</div>
+    <div class="country"><img src="https://flagcdn.com/w80/tm.png" alt="Turkmenistan"> Turkmenistan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/me.png" alt="Montenegro"> Montenegro</div>
+    <div class="country"><img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia"> Saudi Arabia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/md.png" alt="Moldova"> Moldova</div>
   </div>
 </section>
 
