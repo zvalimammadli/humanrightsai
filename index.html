@@ -4,236 +4,356 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Human Rights in the Age of Artificial Intelligence</title>
+
+<title>Baku Ombudsmen Summit | Human Rights and AI</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f5f7fa;
-    color:#222;
-    line-height:1.6;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+  line-height: 1.6;
 }
 
-header{
-    background:linear-gradient(135deg,#003366,#0077b6);
-    color:white;
-    text-align:center;
-    padding:80px 20px;
+header {
+  background: linear-gradient(135deg, #002b5c, #0077b6);
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
 }
 
-header h1{
-    font-size:48px;
-    margin-bottom:20px;
+header h1 {
+  font-size: 46px;
+  margin-bottom: 18px;
 }
 
-header p{
-    font-size:22px;
+header p {
+  font-size: 22px;
+  margin-bottom: 8px;
 }
 
-nav{
-    background:white;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    padding:15px;
-    text-align:center;
-    position:sticky;
-    top:0;
-    z-index:1000;
+nav {
+  background: white;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav a{
-    color:#003366;
-    text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
+nav a {
+  color: #002b5c;
+  text-decoration: none;
+  margin: 0 14px;
+  font-weight: bold;
 }
 
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:70px 20px;
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 70px 20px;
 }
 
-h2{
-    color:#003366;
-    margin-bottom:25px;
-    text-align:center;
+.section-title {
+  text-align: center;
+  color: #002b5c;
+  font-size: 34px;
+  margin-bottom: 20px;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+.section-lead {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 35px;
+  font-size: 18px;
 }
 
-.card{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+.info-box {
+  background: white;
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-align: center;
+  font-size: 18px;
 }
 
-.card h3{
-    margin-bottom:15px;
-    color:#0077b6;
+.video-container {
+  max-width: 1000px;
+  margin: auto;
 }
 
-.button{
-    display:inline-block;
-    margin-top:20px;
-    background:#0077b6;
-    color:white;
-    text-decoration:none;
-    padding:14px 30px;
-    border-radius:8px;
+.video-container iframe {
+  width: 100%;
+  height: 560px;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.15);
 }
 
-.video-container{
-    width:100%;
-    max-width:1000px;
-    margin:auto;
+.programme-grid {
+  display: grid;
+  gap: 22px;
+  margin-top: 35px;
 }
 
-iframe{
-    width:100%;
-    height:560px;
-    border:none;
-    border-radius:12px;
+.programme-card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  border-left: 7px solid #0077b6;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-footer{
-    background:#003366;
-    color:white;
-    text-align:center;
-    padding:30px;
-    margin-top:50px;
+.programme-card span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #0077b6;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.programme-card h3 {
+  color: #002b5c;
+  font-size: 22px;
+}
+
+.programme-card.plenary {
+  border-left-color: #002b5c;
+}
+
+.programme-card.closing {
+  border-left-color: #1b7f5a;
+}
+
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.country {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #002b5c;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.country:hover {
+  transform: translateY(-5px);
+}
+
+footer {
+  background: #002b5c;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 50px;
+}
+
+.button {
+  display: inline-block;
+  background: #0077b6;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 32px;
+  }
+
+  header p {
+    font-size: 18px;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 8px;
+  }
+
+  .video-container iframe {
+    height: 260px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
 }
 </style>
-
 </head>
+
 <body>
 
 <header>
-    <h1>Human Rights in the Age of Artificial Intelligence</h1>
-    <p>Opportunities, Risks and Responsibilities</p>
-    <p>International Baku Summit of Ombudsmen</p>
+  <h1>International Baku Ombudsmen Summit</h1>
+  <p>Human Rights in the Age of Artificial Intelligence</p>
+  <p>Opportunities, Risks and Responsibilities</p>
+  <a href="#programme" class="button">View Programme</a>
 </header>
 
 <nav>
-    <a href="#about">About</a>
-    <a href="#video">Video</a>
-    <a href="#themes">Themes</a>
-    <a href="#agenda">Agenda</a>
-    <a href="#registration">Registration</a>
-    <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="#video">Video</a>
+  <a href="#programme">Programme</a>
+  <a href="#countries">Countries</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <section id="about">
-    <h2>About the Summit</h2>
-    <p style="text-align:center;">
-        The International Baku Summit of Ombudsmen will bring together
-        Ombudsman institutions, National Human Rights Institutions,
-        international organizations, public authorities, civil society
-        representatives and leading experts to discuss the impact of
-        Artificial Intelligence on human rights and democratic governance.
-    </p>
+  <h2 class="section-title">About the Summit</h2>
+
+  <p class="section-lead">
+    The Baku Ombudsmen Summit serves as an international platform for discussing
+    the opportunities, risks and responsibilities arising from the development of
+    artificial intelligence, while promoting approaches grounded in human rights
+    principles.
+  </p>
+
+  <div class="info-box">
+    <strong>Date:</strong> 18–19 June 2026<br>
+    <strong>Venue:</strong> JW Marriott Absheron Baku<br>
+    <strong>Location:</strong> Baku, Azerbaijan
+  </div>
 </section>
 
 <section id="video">
-    <h2>Summit Introduction Video</h2>
+  <h2 class="section-title">Promotional Video</h2>
 
-    <div class="video-container">
-        <iframe
-            src="https://www.youtube.com/embed/PVKUl7JOn9I"
-            title="Human Rights in the Age of AI"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-    </div>
+  <p class="section-lead">
+    Promotional video prepared under the concept “From Stone to Code”.
+  </p>
+
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/PVKUl7JOn9I"
+      title="Baku Ombudsmen Summit Video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
 </section>
 
-<section id="themes">
-    <h2>Main Themes</h2>
+<section id="programme">
+  <h2 class="section-title">Main Programme</h2>
 
-    <div class="cards">
+  <p class="section-lead">
+    International Baku Ombudsmen Summit on “Human Rights in the Age of Artificial Intelligence:
+    Opportunities, Risks and Responsibilities”
+  </p>
 
-        <div class="card">
-            <h3>AI and Human Rights</h3>
-            <p>
-                Exploring the opportunities and challenges of artificial
-                intelligence for human rights protection.
-            </p>
-        </div>
+  <div class="info-box">
+    <strong>Date:</strong> 18–19 June 2026<br>
+    <strong>Venue:</strong> JW Marriott Absheron Baku<br>
+    <strong>Location:</strong> Baku, Azerbaijan
+  </div>
 
-        <div class="card">
-            <h3>Privacy & Data Protection</h3>
-            <p>
-                Addressing privacy concerns, surveillance technologies and
-                responsible data governance.
-            </p>
-        </div>
+  <div class="programme-grid">
 
-        <div class="card">
-            <h3>Non-Discrimination</h3>
-            <p>
-                Tackling algorithmic bias and promoting equality in the
-                digital environment.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Role of Ombudsmen</h3>
-            <p>
-                Strengthening the role of Ombudsman institutions and NHRIs
-                in monitoring AI systems.
-            </p>
-        </div>
-
+    <div class="programme-card plenary">
+      <span>Plenary Session</span>
+      <h3>Human Rights in the Age of Artificial Intelligence (AI): Opportunities, Risks and Responsibilities</h3>
     </div>
+
+    <div class="programme-card">
+      <span>Parallel Session I</span>
+      <h3>Protection of Rights in Digital Space: Data Protection, Privacy and Combating Discrimination</h3>
+    </div>
+
+    <div class="programme-card">
+      <span>Parallel Session II</span>
+      <h3>The Impact of AI on the Labor Market and Employment</h3>
+    </div>
+
+    <div class="programme-card">
+      <span>Parallel Session III</span>
+      <h3>Transparency, Justice and Equality in AI Systems</h3>
+    </div>
+
+    <div class="programme-card">
+      <span>Parallel Session IV</span>
+      <h3>Digital Literacy and Protection of Human Rights</h3>
+    </div>
+
+    <div class="programme-card closing">
+      <span>Closing Session</span>
+      <h3>Adoption of the Baku Declaration on AI and Human Rights</h3>
+    </div>
+
+  </div>
 </section>
 
-<section id="agenda">
-    <h2>Agenda</h2>
+<section id="countries">
+  <h2 class="section-title">Participating Countries</h2>
 
-    <p style="text-align:center;">
-        The detailed programme and speakers list will be published soon.
-    </p>
-</section>
+  <p class="section-lead">
+    Countries represented at the International Baku Ombudsmen Summit.
+  </p>
 
-<section id="registration">
-    <h2>Registration</h2>
-
-    <p style="text-align:center;">
-        Participants are invited to complete the online registration form.
-    </p>
-
-    <div style="text-align:center;">
-        <a href="#" class="button">Register Now</a>
-    </div>
+  <div class="countries-grid">
+    <div class="country">🇦🇿 Azerbaijan</div>
+    <div class="country">🇷🇸 Serbia</div>
+    <div class="country">🇮🇹 Italy</div>
+    <div class="country">🇿🇲 Zambia</div>
+    <div class="country">🇹🇷 Türkiye</div>
+    <div class="country">🇺🇿 Uzbekistan</div>
+    <div class="country">🇧🇬 Bulgaria</div>
+    <div class="country">🇬🇪 Georgia</div>
+    <div class="country">🇰🇬 Kyrgyzstan</div>
+    <div class="country">🇨🇾 Turkish Republic of Northern Cyprus</div>
+    <div class="country">🇰🇪 Kenya</div>
+    <div class="country">🇭🇺 Hungary</div>
+    <div class="country">🇪🇬 Egypt</div>
+    <div class="country">🇵🇰 Pakistan</div>
+    <div class="country">🇴🇲 Oman</div>
+    <div class="country">🇧🇦 Bosnia and Herzegovina</div>
+    <div class="country">🇷🇴 Romania</div>
+    <div class="country">🇹🇲 Turkmenistan</div>
+    <div class="country">🇲🇪 Montenegro</div>
+    <div class="country">🇸🇦 Saudi Arabia</div>
+    <div class="country">🇲🇩 Moldova</div>
+  </div>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
+  <h2 class="section-title">Contact</h2>
 
-    <p style="text-align:center;">
-        Office of the Commissioner for Human Rights (Ombudsman)
-        of the Republic of Azerbaijan
-    </p>
+  <p class="section-lead">
+    Office of the Commissioner for Human Rights (Ombudsman)
+    of the Republic of Azerbaijan
+  </p>
 
-    <p style="text-align:center;">
-        Email: info@ombudsman.az
-    </p>
+  <div class="info-box">
+    <strong>Email:</strong> info@ombudsman.az<br>
+    <strong>Website:</strong> www.ombudsman.az
+  </div>
 </section>
 
 <footer>
-    © 2026 Human Rights AI Summit. All Rights Reserved.
+  © 2026 Baku Ombudsmen Summit. All rights reserved.
 </footer>
 
 </body>
 </html>
 ```
+
+
