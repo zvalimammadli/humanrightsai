@@ -4,338 +4,401 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>International Baku Summit of Ombudsmen</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fb;
-  color:#1f2937;
-  line-height:1.6;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header{
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
   background:
-    linear-gradient(rgba(0,43,92,0.78),rgba(0,119,182,0.78)),
+    linear-gradient(rgba(0,43,92,0.78), rgba(0,119,182,0.78)),
     url("Summit 1.png");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  color:white;
-  text-align:center;
-  padding:120px 20px 60px;
-  overflow:hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 120px 20px 60px;
+  overflow: hidden;
 }
 
-header h1{
-  font-size:48px;
-  margin-bottom:18px;
-  text-shadow:0 3px 12px rgba(0,0,0,0.4);
+header h1 {
+  font-size: 48px;
+  margin-bottom: 18px;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.45);
 }
 
-header p{
-  font-size:22px;
-  margin-bottom:8px;
-  text-shadow:0 2px 8px rgba(0,0,0,0.35);
+header p {
+  font-size: 22px;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-.button{
-  display:inline-block;
-  background:white;
-  color:#002b5c;
-  padding:14px 32px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
-  margin-top:22px;
-  transition:0.3s;
+.button {
+  display: inline-block;
+  background: white;
+  color: #002b5c;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 22px;
+  transition: 0.3s;
 }
 
-.button:hover{
-  background:#e8f4ff;
-  transform:translateY(-2px);
+.button:hover {
+  background: #e8f4ff;
+  transform: translateY(-2px);
 }
 
-.flags-marquee{
-  width:100%;
-  overflow:hidden;
-  margin-top:40px;
-  padding:18px 0;
+/* MOVING FLAGS */
+
+.flags-marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
+  padding: 18px 0;
 }
 
-.flags-track{
-  display:flex;
-  align-items:center;
-  width:max-content;
-  animation:flagsScroll 45s linear infinite;
+.flags-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: flagsScroll 55s linear infinite;
 }
 
-.flag-item{
-  display:flex;
-  align-items:center;
-  margin-right:46px;
-  white-space:nowrap;
+.flag-item {
+  display: flex;
+  align-items: center;
+  margin-right: 46px;
+  white-space: nowrap;
 }
 
 .flag-item img,
-.trnc-flag{
-  width:42px;
-  height:28px;
-  object-fit:cover;
-  border-radius:4px;
-  margin-right:10px;
-  background:white;
-  box-shadow:0 2px 6px rgba(0,0,0,0.25);
+.trnc-flag {
+  width: 42px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
-.flag-item span{
-  color:white;
-  font-size:16px;
-  font-weight:600;
+.flag-item span {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.trnc-flag{
-  display:inline-block;
-  position:relative;
-  border-top:3px solid #d40000;
-  border-bottom:3px solid #d40000;
+/* TRNC FLAG CREATED WITH CSS */
+
+.trnc-flag {
+  display: inline-block;
+  position: relative;
+  border-top: 3px solid #d40000;
+  border-bottom: 3px solid #d40000;
 }
 
-.trnc-flag::before{
-  content:"";
-  position:absolute;
-  left:10px;
-  top:6px;
-  width:12px;
-  height:12px;
-  border:2px solid #d40000;
-  border-radius:50%;
+.trnc-flag::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #d40000;
+  border-radius: 50%;
 }
 
-.trnc-flag::after{
-  content:"★";
-  position:absolute;
-  left:24px;
-  top:6px;
-  color:#d40000;
-  font-size:10px;
-  line-height:1;
+.trnc-flag::after {
+  content: "★";
+  position: absolute;
+  left: 24px;
+  top: 6px;
+  color: #d40000;
+  font-size: 10px;
+  line-height: 1;
 }
 
-@keyframes flagsScroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+@keyframes flagsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-nav{
-  background:white;
-  padding:16px;
-  text-align:center;
-  box-shadow:0 2px 10px rgba(0,0,0,0.08);
-  position:sticky;
-  top:0;
-  z-index:1000;
+/* NAVIGATION */
+
+nav {
+  background: white;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav a{
-  color:#002b5c;
-  text-decoration:none;
-  margin:0 12px;
-  font-weight:bold;
-  font-size:15px;
+nav a {
+  color: #002b5c;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: bold;
+  font-size: 15px;
 }
 
-nav a:hover{
-  color:#0077b6;
+nav a:hover {
+  color: #0077b6;
 }
 
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:70px 20px;
+/* GENERAL SECTIONS */
+
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 70px 20px;
 }
 
-.section-title{
-  text-align:center;
-  color:#002b5c;
-  font-size:34px;
-  margin-bottom:20px;
+.section-title {
+  text-align: center;
+  color: #002b5c;
+  font-size: 34px;
+  margin-bottom: 20px;
 }
 
-.section-lead{
-  text-align:center;
-  max-width:900px;
-  margin:0 auto 35px;
-  font-size:18px;
+.section-lead {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 35px;
+  font-size: 18px;
 }
 
-.info-box{
-  background:white;
-  max-width:750px;
-  margin:30px auto;
-  padding:28px;
-  border-radius:16px;
-  box-shadow:0 4px 16px rgba(0,0,0,0.08);
-  text-align:center;
-  font-size:18px;
+.info-box {
+  background: white;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-align: center;
+  font-size: 18px;
 }
 
-.video-container{
-  max-width:1000px;
-  margin:auto;
+/* VIDEO */
+
+.video-container {
+  max-width: 1000px;
+  margin: auto;
 }
 
-.video-container iframe{
-  width:100%;
-  height:560px;
-  border:none;
-  border-radius:16px;
-  box-shadow:0 5px 18px rgba(0,0,0,0.15);
+.video-container iframe {
+  width: 100%;
+  height: 560px;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.15);
 }
 
-.programme-grid{
-  display:grid;
-  gap:22px;
-  margin-top:35px;
+/* PROGRAMME */
+
+.programme-grid {
+  display: grid;
+  gap: 22px;
+  margin-top: 35px;
 }
 
-.programme-card{
-  background:white;
-  padding:28px;
-  border-radius:16px;
-  border-left:7px solid #0077b6;
-  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+.programme-card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  border-left: 7px solid #0077b6;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-.programme-card span{
-  display:inline-block;
-  font-size:13px;
-  font-weight:bold;
-  color:#0077b6;
-  text-transform:uppercase;
-  margin-bottom:10px;
+.programme-card span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #0077b6;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
-.programme-card h3{
-  color:#002b5c;
-  font-size:22px;
+.programme-card h3 {
+  color: #002b5c;
+  font-size: 22px;
+  margin-bottom: 12px;
 }
 
-.programme-card.plenary{border-left-color:#002b5c}
-.programme-card.closing{border-left-color:#1b7f5a}
-
-.declaration-box{
-  background:white;
-  max-width:850px;
-  margin:30px auto;
-  padding:35px;
-  border-radius:18px;
-  box-shadow:0 4px 16px rgba(0,0,0,0.08);
-  text-align:center;
+.programme-card ul {
+  padding-left: 20px;
 }
 
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
-  margin-top:35px;
+.programme-card li {
+  margin-bottom: 8px;
 }
 
-.gallery-card{
-  background:white;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+.programme-card.plenary {
+  border-left-color: #002b5c;
 }
 
-.gallery-card img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-  display:block;
+.programme-card.closing {
+  border-left-color: #1b7f5a;
 }
 
-.gallery-card p{
-  padding:14px;
-  text-align:center;
-  font-weight:bold;
-  color:#002b5c;
+/* DECLARATION */
+
+.declaration-box {
+  background: white;
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-align: center;
 }
 
-.countries-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:16px;
-  margin-top:35px;
+.declaration-box p {
+  margin-bottom: 20px;
 }
 
-.country{
-  background:white;
-  padding:18px;
-  border-radius:14px;
-  text-align:center;
-  font-size:18px;
-  font-weight:bold;
-  color:#002b5c;
-  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+/* GALLERY */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.gallery-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-card p {
+  padding: 14px;
+  text-align: center;
+  font-weight: bold;
+  color: #002b5c;
+}
+
+/* COUNTRIES */
+
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.country {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #002b5c;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
 .country img,
-.country .trnc-flag{
-  width:42px;
-  height:28px;
-  margin-right:8px;
-  vertical-align:middle;
+.country .trnc-flag {
+  width: 42px;
+  height: 28px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
-footer{
-  background:#002b5c;
-  color:white;
-  text-align:center;
-  padding:30px 20px;
-  margin-top:50px;
+/* CONTACT */
+
+.contact-link {
+  color: #0077b6;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-@media(max-width:768px){
-  header{
-    padding:90px 15px 45px;
+/* FOOTER */
+
+footer {
+  background: #002b5c;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 50px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px) {
+  header {
+    padding: 90px 15px 45px;
   }
 
-  header h1{
-    font-size:32px;
+  header h1 {
+    font-size: 32px;
   }
 
-  header p{
-    font-size:18px;
+  header p {
+    font-size: 18px;
   }
 
-  nav a{
-    display:inline-block;
-    margin:8px;
+  nav a {
+    display: inline-block;
+    margin: 8px;
   }
 
-  .video-container iframe{
-    height:260px;
+  .video-container iframe {
+    height: 260px;
   }
 
-  .section-title{
-    font-size:28px;
+  .section-title {
+    font-size: 28px;
   }
 
-  .flag-item{
-    margin-right:28px;
+  .flag-item {
+    margin-right: 28px;
   }
 
   .flag-item img,
-  .trnc-flag{
-    width:34px;
-    height:23px;
+  .trnc-flag {
+    width: 34px;
+    height: 23px;
   }
 
-  .flag-item span{
-    font-size:13px;
+  .flag-item span {
+    font-size: 13px;
   }
 }
 </style>
@@ -353,49 +416,53 @@ footer{
   <div class="flags-marquee">
     <div class="flags-track">
 
-      <div class="flag-item"><img src="https://flagcdn.com/w80/az.png"><span>Azerbaijan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/rs.png"><span>Serbia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/it.png"><span>Italy</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/zm.png"><span>Zambia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png"><span>Türkiye</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/uz.png"><span>Uzbekistan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png"><span>Bulgaria</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png"><span>Georgia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png"><span>Kyrgyzstan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/az.png" alt="Azerbaijan"><span>Azerbaijan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/rs.png" alt="Serbia"><span>Serbia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/it.png" alt="Italy"><span>Italy</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/zm.png" alt="Zambia"><span>Zambia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png" alt="Türkiye"><span>Türkiye</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/uz.png" alt="Uzbekistan"><span>Uzbekistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria"><span>Bulgaria</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia"><span>Georgia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan"><span>Kyrgyzstan</span></div>
       <div class="flag-item"><i class="trnc-flag"></i><span>Turkish Republic of Northern Cyprus</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png"><span>Kenya</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png"><span>Hungary</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png"><span>Egypt</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/pk.png"><span>Pakistan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/om.png"><span>Oman</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ba.png"><span>Bosnia and Herzegovina</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ro.png"><span>Romania</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/tm.png"><span>Turkmenistan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/me.png"><span>Montenegro</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/sa.png"><span>Saudi Arabia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/md.png"><span>Moldova</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya"><span>Kenya</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary"><span>Hungary</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt"><span>Egypt</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan"><span>Pakistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/om.png" alt="Oman"><span>Oman</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ba.png" alt="Bosnia and Herzegovina"><span>Bosnia and Herzegovina</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ro.png" alt="Romania"><span>Romania</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tm.png" alt="Turkmenistan"><span>Turkmenistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ua.png" alt="Ukraine"><span>Ukraine</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tj.png" alt="Tajikistan"><span>Tajikistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/me.png" alt="Montenegro"><span>Montenegro</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia"><span>Saudi Arabia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/md.png" alt="Moldova"><span>Moldova</span></div>
 
-      <div class="flag-item"><img src="https://flagcdn.com/w80/az.png"><span>Azerbaijan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/rs.png"><span>Serbia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/it.png"><span>Italy</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/zm.png"><span>Zambia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png"><span>Türkiye</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/uz.png"><span>Uzbekistan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png"><span>Bulgaria</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png"><span>Georgia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png"><span>Kyrgyzstan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/az.png" alt="Azerbaijan"><span>Azerbaijan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/rs.png" alt="Serbia"><span>Serbia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/it.png" alt="Italy"><span>Italy</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/zm.png" alt="Zambia"><span>Zambia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tr.png" alt="Türkiye"><span>Türkiye</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/uz.png" alt="Uzbekistan"><span>Uzbekistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria"><span>Bulgaria</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia"><span>Georgia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan"><span>Kyrgyzstan</span></div>
       <div class="flag-item"><i class="trnc-flag"></i><span>Turkish Republic of Northern Cyprus</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png"><span>Kenya</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png"><span>Hungary</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png"><span>Egypt</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/pk.png"><span>Pakistan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/om.png"><span>Oman</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ba.png"><span>Bosnia and Herzegovina</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/ro.png"><span>Romania</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/tm.png"><span>Turkmenistan</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/me.png"><span>Montenegro</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/sa.png"><span>Saudi Arabia</span></div>
-      <div class="flag-item"><img src="https://flagcdn.com/w80/md.png"><span>Moldova</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya"><span>Kenya</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary"><span>Hungary</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt"><span>Egypt</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan"><span>Pakistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/om.png" alt="Oman"><span>Oman</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ba.png" alt="Bosnia and Herzegovina"><span>Bosnia and Herzegovina</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ro.png" alt="Romania"><span>Romania</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tm.png" alt="Turkmenistan"><span>Turkmenistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/ua.png" alt="Ukraine"><span>Ukraine</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/tj.png" alt="Tajikistan"><span>Tajikistan</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/me.png" alt="Montenegro"><span>Montenegro</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia"><span>Saudi Arabia</span></div>
+      <div class="flag-item"><img src="https://flagcdn.com/w80/md.png" alt="Moldova"><span>Moldova</span></div>
 
     </div>
   </div>
@@ -413,8 +480,20 @@ footer{
 
 <section id="about">
   <h2 class="section-title">About the Summit</h2>
+
   <p class="section-lead">
-    The International Baku Summit of Ombudsmen serves as an international platform for discussing the opportunities, risks and responsibilities arising from the development of artificial intelligence, while promoting approaches grounded in human rights principles.
+    The International Baku Summit of Ombudsmen serves as an international platform
+    for discussing the opportunities, risks and responsibilities arising from the
+    development of artificial intelligence, while promoting approaches grounded in
+    human rights principles.
+  </p>
+
+  <p class="section-lead">
+    The Summit brings together Ombudsman institutions, National Human Rights
+    Institutions, international organizations, public authorities, civil society
+    representatives and experts to exchange views on the impact of artificial
+    intelligence on human rights, democratic governance, equality, privacy and
+    access to justice.
   </p>
 
   <div class="info-box">
@@ -426,7 +505,10 @@ footer{
 
 <section id="video">
   <h2 class="section-title">Promotional Video</h2>
-  <p class="section-lead">Promotional video prepared under the concept “From Stone to Code”.</p>
+
+  <p class="section-lead">
+    Promotional video prepared under the concept “From Stone to Code”.
+  </p>
 
   <div class="video-container">
     <iframe
@@ -440,6 +522,7 @@ footer{
 
 <section id="programme">
   <h2 class="section-title">Main Programme</h2>
+
   <p class="section-lead">
     International Baku Summit of Ombudsmen on “Human Rights in the Age of Artificial Intelligence:
     Opportunities, Risks and Responsibilities”
@@ -452,86 +535,125 @@ footer{
   </div>
 
   <div class="programme-grid">
+
     <div class="programme-card plenary">
       <span>Plenary Session</span>
       <h3>Human Rights in the Age of Artificial Intelligence (AI): Opportunities, Risks and Responsibilities</h3>
+      <ul>
+        <li>The role of artificial intelligence technologies in the promotion and protection of human rights</li>
+        <li>Promotion of a human-centered and rights-based approach to AI</li>
+        <li>Strengthening the monitoring and advisory role of Ombudsman institutions and NHRIs</li>
+        <li>Enhancing international cooperation and developing common standards</li>
+      </ul>
     </div>
 
     <div class="programme-card">
       <span>Parallel Session I</span>
       <h3>Protection of Rights in Digital Space: Data Protection, Privacy and Combating Discrimination</h3>
+      <ul>
+        <li>Protection of personal data and legal safeguards in the era of AI</li>
+        <li>The impact of disinformation on human rights and the administration of justice</li>
+        <li>Balancing digital surveillance mechanisms with fundamental rights and freedoms</li>
+        <li>Protection of human dignity in the digital environment</li>
+      </ul>
     </div>
 
     <div class="programme-card">
       <span>Parallel Session II</span>
       <h3>The Impact of AI on the Labor Market and Employment</h3>
+      <ul>
+        <li>Labor rights and social protection mechanisms in the context of technological advancement</li>
+        <li>Building an inclusive and equitable labor market through a human rights-based approach</li>
+        <li>Changing skills requirements, reskilling and the right to education in the age of AI</li>
+        <li>Legal safeguards in the digital economy and non-standard forms of employment</li>
+      </ul>
     </div>
 
     <div class="programme-card">
       <span>Parallel Session III</span>
       <h3>Transparency, Justice and Equality in AI Systems</h3>
+      <ul>
+        <li>The impact of automated decision-making on human rights</li>
+        <li>Ethical standards and legal frameworks governing AI technologies</li>
+        <li>Data bias and its impact on social equality</li>
+        <li>Prevention of discrimination risks in AI systems</li>
+      </ul>
     </div>
 
     <div class="programme-card">
       <span>Parallel Session IV</span>
       <h3>Digital Literacy and Protection of Human Rights</h3>
+      <ul>
+        <li>Protection of rights and development of safe digital skills</li>
+        <li>Awareness-raising in the context of digital transformation</li>
+        <li>Digital security for vulnerable population groups</li>
+        <li>State policies, programmes and strategies in this field</li>
+      </ul>
     </div>
 
     <div class="programme-card closing">
       <span>Closing Session</span>
       <h3>Adoption of the Baku Declaration on AI and Human Rights</h3>
     </div>
+
   </div>
 </section>
 
 <section id="declaration">
   <h2 class="section-title">Baku Declaration</h2>
+
   <p class="section-lead">
-    The Baku Declaration on Artificial Intelligence and Human Rights will reflect the key outcomes of the International Baku Summit of Ombudsmen.
+    The Baku Declaration on Artificial Intelligence and Human Rights will reflect
+    the key outcomes of the International Baku Summit of Ombudsmen.
   </p>
 
   <div class="declaration-box">
     <p>
-      The document will be made available after its adoption by the participants of the Summit.
+      The document will be made available after its adoption by the participants
+      of the Summit.
     </p>
-    <a href="Baku Declaration.pdf" target="_blank" class="button">View Declaration</a>
+
+    <a href="Baku Declaration.pdf" target="_blank" class="button">
+      View Declaration
+    </a>
   </div>
 </section>
 
 <section id="gallery">
   <h2 class="section-title">Photo Gallery</h2>
+
   <p class="section-lead">
     Highlights from the International Baku Summit of Ombudsmen.
   </p>
 
   <div class="gallery-grid">
     <div class="gallery-card">
-      <img src="gallery1.jpg" alt="Summit photo 1">
+      <img src="gallery1.jpg" alt="Opening Session">
       <p>Opening Session</p>
     </div>
 
     <div class="gallery-card">
-      <img src="gallery2.jpg" alt="Summit photo 2">
+      <img src="gallery2.jpg" alt="Plenary Session">
       <p>Plenary Session</p>
     </div>
 
     <div class="gallery-card">
-      <img src="gallery3.jpg" alt="Summit photo 3">
+      <img src="gallery3.jpg" alt="Parallel Sessions">
       <p>Parallel Sessions</p>
     </div>
 
     <div class="gallery-card">
-      <img src="gallery4.jpg" alt="Summit photo 4">
+      <img src="gallery4.jpg" alt="International Participants">
       <p>International Participants</p>
     </div>
 
     <div class="gallery-card">
-      <img src="gallery5.jpg" alt="Summit photo 5">
+      <img src="gallery5.jpg" alt="Media Interaction">
       <p>Media Interaction</p>
     </div>
 
     <div class="gallery-card">
-      <img src="gallery6.jpg" alt="Summit photo 6">
+      <img src="gallery6.jpg" alt="Cultural Programme">
       <p>Cultural Programme</p>
     </div>
   </div>
@@ -539,41 +661,49 @@ footer{
 
 <section id="countries">
   <h2 class="section-title">Participating Countries</h2>
-  <p class="section-lead">Countries represented at the International Baku Summit of Ombudsmen.</p>
+
+  <p class="section-lead">
+    Countries represented at the International Baku Summit of Ombudsmen.
+  </p>
 
   <div class="countries-grid">
-    <div class="country"><img src="https://flagcdn.com/w80/az.png">Azerbaijan</div>
-    <div class="country"><img src="https://flagcdn.com/w80/rs.png">Serbia</div>
-    <div class="country"><img src="https://flagcdn.com/w80/it.png">Italy</div>
-    <div class="country"><img src="https://flagcdn.com/w80/zm.png">Zambia</div>
-    <div class="country"><img src="https://flagcdn.com/w80/tr.png">Türkiye</div>
-    <div class="country"><img src="https://flagcdn.com/w80/uz.png">Uzbekistan</div>
-    <div class="country"><img src="https://flagcdn.com/w80/bg.png">Bulgaria</div>
-    <div class="country"><img src="https://flagcdn.com/w80/ge.png">Georgia</div>
-    <div class="country"><img src="https://flagcdn.com/w80/kg.png">Kyrgyzstan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/az.png" alt="Azerbaijan">Azerbaijan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/rs.png" alt="Serbia">Serbia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/it.png" alt="Italy">Italy</div>
+    <div class="country"><img src="https://flagcdn.com/w80/zm.png" alt="Zambia">Zambia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/tr.png" alt="Türkiye">Türkiye</div>
+    <div class="country"><img src="https://flagcdn.com/w80/uz.png" alt="Uzbekistan">Uzbekistan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria">Bulgaria</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia">Georgia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan">Kyrgyzstan</div>
     <div class="country"><i class="trnc-flag"></i>Turkish Republic of Northern Cyprus</div>
-    <div class="country"><img src="https://flagcdn.com/w80/ke.png">Kenya</div>
-    <div class="country"><img src="https://flagcdn.com/w80/hu.png">Hungary</div>
-    <div class="country"><img src="https://flagcdn.com/w80/eg.png">Egypt</div>
-    <div class="country"><img src="https://flagcdn.com/w80/pk.png">Pakistan</div>
-    <div class="country"><img src="https://flagcdn.com/w80/om.png">Oman</div>
-    <div class="country"><img src="https://flagcdn.com/w80/ba.png">Bosnia and Herzegovina</div>
-    <div class="country"><img src="https://flagcdn.com/w80/ro.png">Romania</div>
-    <div class="country"><img src="https://flagcdn.com/w80/tm.png">Turkmenistan</div>
-    <div class="country"><img src="https://flagcdn.com/w80/me.png">Montenegro</div>
-    <div class="country"><img src="https://flagcdn.com/w80/sa.png">Saudi Arabia</div>
-    <div class="country"><img src="https://flagcdn.com/w80/md.png">Moldova</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya">Kenya</div>
+    <div class="country"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary">Hungary</div>
+    <div class="country"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt">Egypt</div>
+    <div class="country"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan">Pakistan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/om.png" alt="Oman">Oman</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ba.png" alt="Bosnia and Herzegovina">Bosnia and Herzegovina</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ro.png" alt="Romania">Romania</div>
+    <div class="country"><img src="https://flagcdn.com/w80/tm.png" alt="Turkmenistan">Turkmenistan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/ua.png" alt="Ukraine">Ukraine</div>
+    <div class="country"><img src="https://flagcdn.com/w80/tj.png" alt="Tajikistan">Tajikistan</div>
+    <div class="country"><img src="https://flagcdn.com/w80/me.png" alt="Montenegro">Montenegro</div>
+    <div class="country"><img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia">Saudi Arabia</div>
+    <div class="country"><img src="https://flagcdn.com/w80/md.png" alt="Moldova">Moldova</div>
   </div>
 </section>
 
 <section id="contact">
   <h2 class="section-title">Contact</h2>
+
   <p class="section-lead">
     Office of the Commissioner for Human Rights (Ombudsman) of the Republic of Azerbaijan
   </p>
 
   <div class="info-box">
-    <strong>Email:</strong> summit@ombudsman.az<br>
+    <strong>Email:</strong>
+    <a class="contact-link" href="mailto:summit@ombudsman.az">summit@ombudsman.az</a>
+    <br>
     <strong>Website:</strong> www.ombudsman.az
   </div>
 </section>
