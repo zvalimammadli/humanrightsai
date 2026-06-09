@@ -17,15 +17,29 @@ body{
 }
 
 header{
-  background:linear-gradient(135deg,#002b5c,#0077b6);
+  background:
+    linear-gradient(rgba(0,43,92,0.78),rgba(0,119,182,0.78)),
+    url("Summit 1.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   color:white;
   text-align:center;
-  padding:90px 20px 45px;
+  padding:120px 20px 60px;
   overflow:hidden;
 }
 
-header h1{font-size:46px;margin-bottom:18px}
-header p{font-size:22px;margin-bottom:8px}
+header h1{
+  font-size:48px;
+  margin-bottom:18px;
+  text-shadow:0 3px 12px rgba(0,0,0,0.4);
+}
+
+header p{
+  font-size:22px;
+  margin-bottom:8px;
+  text-shadow:0 2px 8px rgba(0,0,0,0.35);
+}
 
 .button{
   display:inline-block;
@@ -36,6 +50,12 @@ header p{font-size:22px;margin-bottom:8px}
   text-decoration:none;
   font-weight:bold;
   margin-top:22px;
+  transition:0.3s;
+}
+
+.button:hover{
+  background:#e8f4ff;
+  transform:translateY(-2px);
 }
 
 .flags-marquee{
@@ -59,7 +79,8 @@ header p{font-size:22px;margin-bottom:8px}
   white-space:nowrap;
 }
 
-.flag-item img{
+.flag-item img,
+.trnc-flag{
   width:42px;
   height:28px;
   object-fit:cover;
@@ -73,6 +94,34 @@ header p{font-size:22px;margin-bottom:8px}
   color:white;
   font-size:16px;
   font-weight:600;
+}
+
+.trnc-flag{
+  display:inline-block;
+  position:relative;
+  border-top:3px solid #d40000;
+  border-bottom:3px solid #d40000;
+}
+
+.trnc-flag::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:6px;
+  width:12px;
+  height:12px;
+  border:2px solid #d40000;
+  border-radius:50%;
+}
+
+.trnc-flag::after{
+  content:"★";
+  position:absolute;
+  left:24px;
+  top:6px;
+  color:#d40000;
+  font-size:10px;
+  line-height:1;
 }
 
 @keyframes flagsScroll{
@@ -93,8 +142,13 @@ nav{
 nav a{
   color:#002b5c;
   text-decoration:none;
-  margin:0 14px;
+  margin:0 12px;
   font-weight:bold;
+  font-size:15px;
+}
+
+nav a:hover{
+  color:#0077b6;
 }
 
 section{
@@ -172,6 +226,44 @@ section{
 .programme-card.plenary{border-left-color:#002b5c}
 .programme-card.closing{border-left-color:#1b7f5a}
 
+.declaration-box{
+  background:white;
+  max-width:850px;
+  margin:30px auto;
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+  margin-top:35px;
+}
+
+.gallery-card{
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+.gallery-card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  display:block;
+}
+
+.gallery-card p{
+  padding:14px;
+  text-align:center;
+  font-weight:bold;
+  color:#002b5c;
+}
+
 .countries-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
@@ -190,11 +282,10 @@ section{
   box-shadow:0 4px 14px rgba(0,0,0,0.08);
 }
 
-.country img{
+.country img,
+.country .trnc-flag{
   width:42px;
   height:28px;
-  object-fit:cover;
-  border-radius:4px;
   margin-right:8px;
   vertical-align:middle;
 }
@@ -208,14 +299,44 @@ footer{
 }
 
 @media(max-width:768px){
-  header h1{font-size:32px}
-  header p{font-size:18px}
-  nav a{display:inline-block;margin:8px}
-  .video-container iframe{height:260px}
-  .section-title{font-size:28px}
-  .flag-item{margin-right:28px}
-  .flag-item img{width:34px;height:23px}
-  .flag-item span{font-size:13px}
+  header{
+    padding:90px 15px 45px;
+  }
+
+  header h1{
+    font-size:32px;
+  }
+
+  header p{
+    font-size:18px;
+  }
+
+  nav a{
+    display:inline-block;
+    margin:8px;
+  }
+
+  .video-container iframe{
+    height:260px;
+  }
+
+  .section-title{
+    font-size:28px;
+  }
+
+  .flag-item{
+    margin-right:28px;
+  }
+
+  .flag-item img,
+  .trnc-flag{
+    width:34px;
+    height:23px;
+  }
+
+  .flag-item span{
+    font-size:13px;
+  }
 }
 </style>
 </head>
@@ -241,7 +362,7 @@ footer{
       <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png"><span>Bulgaria</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png"><span>Georgia</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png"><span>Kyrgyzstan</span></div>
-      <div class="flag-item"><img src="Flag_of_the_Turkish_Republic_of_Northern_Cyprus.svg.png"><span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item"><i class="trnc-flag"></i><span>Turkish Republic of Northern Cyprus</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png"><span>Kenya</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png"><span>Hungary</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png"><span>Egypt</span></div>
@@ -263,7 +384,7 @@ footer{
       <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png"><span>Bulgaria</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png"><span>Georgia</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png"><span>Kyrgyzstan</span></div>
-      <div class="flag-item"><img src="Flag_of_the_Turkish_Republic_of_Northern_Cyprus.svg.png"><span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item"><i class="trnc-flag"></i><span>Turkish Republic of Northern Cyprus</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png"><span>Kenya</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png"><span>Hungary</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png"><span>Egypt</span></div>
@@ -284,6 +405,8 @@ footer{
   <a href="#about">About</a>
   <a href="#video">Video</a>
   <a href="#programme">Programme</a>
+  <a href="#declaration">Declaration</a>
+  <a href="#gallery">Photo Gallery</a>
   <a href="#countries">Countries</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -361,6 +484,59 @@ footer{
   </div>
 </section>
 
+<section id="declaration">
+  <h2 class="section-title">Baku Declaration</h2>
+  <p class="section-lead">
+    The Baku Declaration on Artificial Intelligence and Human Rights will reflect the key outcomes of the International Baku Summit of Ombudsmen.
+  </p>
+
+  <div class="declaration-box">
+    <p>
+      The document will be made available after its adoption by the participants of the Summit.
+    </p>
+    <a href="Baku Declaration.pdf" target="_blank" class="button">View Declaration</a>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2 class="section-title">Photo Gallery</h2>
+  <p class="section-lead">
+    Highlights from the International Baku Summit of Ombudsmen.
+  </p>
+
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <img src="gallery1.jpg" alt="Summit photo 1">
+      <p>Opening Session</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="gallery2.jpg" alt="Summit photo 2">
+      <p>Plenary Session</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="gallery3.jpg" alt="Summit photo 3">
+      <p>Parallel Sessions</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="gallery4.jpg" alt="Summit photo 4">
+      <p>International Participants</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="gallery5.jpg" alt="Summit photo 5">
+      <p>Media Interaction</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="gallery6.jpg" alt="Summit photo 6">
+      <p>Cultural Programme</p>
+    </div>
+  </div>
+</section>
+
 <section id="countries">
   <h2 class="section-title">Participating Countries</h2>
   <p class="section-lead">Countries represented at the International Baku Summit of Ombudsmen.</p>
@@ -375,7 +551,7 @@ footer{
     <div class="country"><img src="https://flagcdn.com/w80/bg.png">Bulgaria</div>
     <div class="country"><img src="https://flagcdn.com/w80/ge.png">Georgia</div>
     <div class="country"><img src="https://flagcdn.com/w80/kg.png">Kyrgyzstan</div>
-    <div class="country"><img src="Flag_of_the_Turkish_Republic_of_Northern_Cyprus.svg.png">Turkish Republic of Northern Cyprus</div>
+    <div class="country"><i class="trnc-flag"></i>Turkish Republic of Northern Cyprus</div>
     <div class="country"><img src="https://flagcdn.com/w80/ke.png">Kenya</div>
     <div class="country"><img src="https://flagcdn.com/w80/hu.png">Hungary</div>
     <div class="country"><img src="https://flagcdn.com/w80/eg.png">Egypt</div>
