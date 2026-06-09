@@ -25,8 +25,6 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER */
-
 header {
   background:
     linear-gradient(rgba(0,43,92,0.78), rgba(0,119,182,0.78)),
@@ -69,8 +67,6 @@ header p {
   transform: translateY(-2px);
 }
 
-/* MOVING FLAGS */
-
 .flags-marquee {
   width: 100%;
   overflow: hidden;
@@ -92,8 +88,7 @@ header p {
   white-space: nowrap;
 }
 
-.flag-item img,
-.trnc-flag {
+.flag-item img {
   width: 42px;
   height: 28px;
   object-fit: cover;
@@ -109,36 +104,6 @@ header p {
   font-weight: 600;
 }
 
-/* TRNC FLAG CREATED WITH CSS */
-
-.trnc-flag {
-  display: inline-block;
-  position: relative;
-  border-top: 3px solid #d40000;
-  border-bottom: 3px solid #d40000;
-}
-
-.trnc-flag::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 6px;
-  width: 12px;
-  height: 12px;
-  border: 2px solid #d40000;
-  border-radius: 50%;
-}
-
-.trnc-flag::after {
-  content: "★";
-  position: absolute;
-  left: 24px;
-  top: 6px;
-  color: #d40000;
-  font-size: 10px;
-  line-height: 1;
-}
-
 @keyframes flagsScroll {
   from {
     transform: translateX(0);
@@ -147,8 +112,6 @@ header p {
     transform: translateX(-50%);
   }
 }
-
-/* NAVIGATION */
 
 nav {
   background: white;
@@ -171,8 +134,6 @@ nav a {
 nav a:hover {
   color: #0077b6;
 }
-
-/* GENERAL SECTIONS */
 
 section {
   max-width: 1200px;
@@ -205,8 +166,6 @@ section {
   font-size: 18px;
 }
 
-/* VIDEO */
-
 .video-container {
   max-width: 1000px;
   margin: auto;
@@ -219,8 +178,6 @@ section {
   border-radius: 16px;
   box-shadow: 0 5px 18px rgba(0,0,0,0.15);
 }
-
-/* PROGRAMME */
 
 .programme-grid {
   display: grid;
@@ -267,8 +224,6 @@ section {
   border-left-color: #1b7f5a;
 }
 
-/* DECLARATION */
-
 .declaration-box {
   background: white;
   max-width: 850px;
@@ -282,8 +237,6 @@ section {
 .declaration-box p {
   margin-bottom: 20px;
 }
-
-/* GALLERY */
 
 .gallery-grid {
   display: grid;
@@ -313,8 +266,6 @@ section {
   color: #002b5c;
 }
 
-/* COUNTRIES */
-
 .countries-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -333,23 +284,20 @@ section {
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-.country img,
-.country .trnc-flag {
+.country img {
   width: 42px;
   height: 28px;
+  object-fit: cover;
+  border-radius: 4px;
   margin-right: 8px;
   vertical-align: middle;
 }
-
-/* CONTACT */
 
 .contact-link {
   color: #0077b6;
   font-weight: bold;
   text-decoration: none;
 }
-
-/* FOOTER */
 
 footer {
   background: #002b5c;
@@ -358,8 +306,6 @@ footer {
   padding: 30px 20px;
   margin-top: 50px;
 }
-
-/* MOBILE */
 
 @media(max-width:768px) {
   header {
@@ -391,8 +337,7 @@ footer {
     margin-right: 28px;
   }
 
-  .flag-item img,
-  .trnc-flag {
+  .flag-item img {
     width: 34px;
     height: 23px;
   }
@@ -425,7 +370,7 @@ footer {
       <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria"><span>Bulgaria</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia"><span>Georgia</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan"><span>Kyrgyzstan</span></div>
-      <div class="flag-item"><i class="trnc-flag"></i><span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item"><img src="Flag_of_the_Turkish_Republic_of_Northern_Cyprus.svg.png" alt="Turkish Republic of Northern Cyprus"><span>Turkish Republic of Northern Cyprus</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya"><span>Kenya</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary"><span>Hungary</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt"><span>Egypt</span></div>
@@ -449,7 +394,7 @@ footer {
       <div class="flag-item"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria"><span>Bulgaria</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia"><span>Georgia</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan"><span>Kyrgyzstan</span></div>
-      <div class="flag-item"><i class="trnc-flag"></i><span>Turkish Republic of Northern Cyprus</span></div>
+      <div class="flag-item"><img src="Flag_of_the_Turkish_Republic_of_Northern_Cyprus.svg.png" alt="Turkish Republic of Northern Cyprus"><span>Turkish Republic of Northern Cyprus</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya"><span>Kenya</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary"><span>Hungary</span></div>
       <div class="flag-item"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt"><span>Egypt</span></div>
@@ -676,7 +621,7 @@ footer {
     <div class="country"><img src="https://flagcdn.com/w80/bg.png" alt="Bulgaria">Bulgaria</div>
     <div class="country"><img src="https://flagcdn.com/w80/ge.png" alt="Georgia">Georgia</div>
     <div class="country"><img src="https://flagcdn.com/w80/kg.png" alt="Kyrgyzstan">Kyrgyzstan</div>
-    <div class="country"><i class="trnc-flag"></i>Turkish Republic of Northern Cyprus</div>
+    <div class="country"><img src="Flag_of_the_Turkish_Republic_of_Northern_Cyprus.svg.png" alt="Turkish Republic of Northern Cyprus">Turkish Republic of Northern Cyprus</div>
     <div class="country"><img src="https://flagcdn.com/w80/ke.png" alt="Kenya">Kenya</div>
     <div class="country"><img src="https://flagcdn.com/w80/hu.png" alt="Hungary">Hungary</div>
     <div class="country"><img src="https://flagcdn.com/w80/eg.png" alt="Egypt">Egypt</div>
