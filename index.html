@@ -656,7 +656,55 @@ footer {
 <footer>
   © 2026 International Baku Summit of Ombudsmen. All rights reserved.
 </footer>
+<div class="chat-launcher" onclick="toggleChat()">
+  <img src="Robot chatbox.png" alt="Summit AI Assistant">
+</div>
 
+<div class="chatbox" id="chatbox">
+
+  <div class="chat-header">
+    <img src="Robot chatbox.png" alt="Summit AI Assistant">
+
+    <div>
+      <strong>Summit AI Assistant</strong>
+      <span>Ask about the Summit</span>
+    </div>
+
+    <button onclick="toggleChat()">×</button>
+  </div>
+
+  <div class="chat-body" id="chatBody">
+    <div class="bot-message">
+      Hello! I can help you with information about the International Baku Summit of Ombudsmen.
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input
+      type="text"
+      id="chatInput"
+      placeholder="Type your question..."
+      onkeydown="if(event.key==='Enter') sendMessage()">
+
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+</div>
+  <script>
+
+function toggleChat(){
+...
+}
+
+function sendMessage(){
+...
+}
+
+function getReply(text){
+...
+}
+
+</script>
 </body>
 </html>
 ```
